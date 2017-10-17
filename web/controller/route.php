@@ -8,30 +8,42 @@ function getIncludeFile($_fileName){
  */
 function getAllLinks(){
     $list = array(
-        "home" => array("file" => "home.php", "needConnection" => false),
-        "shop" => array("file" => "", "needConnection" => false),
-        "contact_us" => array("file" => "", "needConnection" => false),
-        "login" => array("file" => "login.php", "needConnection" => false),
-        "profile" => array("file" => "", "needConnection" => true),
-        "cart" => array("file" => "", "needConnection" => true)
+        "home" => array("file" => "home.php", "title" => "Accueil"),
+        "shop" => array("file" => "shop.php", "title" => "Catalogue"),
+        "contact_us" => array("file" => "contact_us.php", "title" => "Nous joindre"),
+        "login" => array("file" => "login.php", "title" => "Connexion"),
+        "profile" => array("file" => "", "needConnection" => true, "title" => "Profile"),
+        "cart" => array("file" => "", "needConnection" => true, "title" => "Panier"),
+        "error" => array("file" => "error.php", "title" => "Erreur"),
+        "logout" => array("file" => "index.php", "title" => "Se déconnecter", "needConnection" => true)
     );
     return $list;
 }
 
 /**
- * @param string $_key
+ * @param string $_page
  * @return array
  * @throws Exception
  */
-function getLink($_key){
+function getLink($_page){
 
     $navigation = getAllLinks();
 
-    if(!isset($navigation[$_key])){
-        throw new Exception("The item you requested ($_key) is not defined.");
+    if(!isset($navigation[$_page])){
+        throw new Exception("The item you requested ($_page) is not defined.");
     }
 
-    return $navigation[$_key]["file"];
+    return $navigation[$_page]["file"];
+}
+
+function getPageTitle($_page){
+    $navigation = getAllLinks();
+
+    if(!isset($navigation[$_page])){
+        throw new Exception("The item you requested ($_page) is not defined.");
+    }
+
+    return (isset($navigation[$_page]["title"]) ? $navigation[$_page]["title"] : "Page inconnue");
 }
 
 /**
@@ -39,9 +51,19 @@ function getLink($_key){
  * @return bool
  */
 function pageNeedsConnection($_page){
-    return isset(getAllLinks()[$_page])? getAllLinks()[$_page]["needConnection"] : false;
+    $links = getAllLinks();
+    if(isset($links[$_page])){
+        if(isset($links[$_page]["needConnection"])){
+            return $links[$_page]["needConnection"];
+        }
+    }
+    return false;
 }
 
+/**
+ * @param string $_link
+ * @param string $_template
+ */
 function buildPage($_link, $_template = "default.php"){
     $page = __DIR__."/../views/pages/$_link";
     $template = __DIR__."/../views/templates/$_template";

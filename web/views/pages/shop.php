@@ -1,3 +1,3 @@
 <?php ob_start(); ?>
-Welcome to the main page
+    Welcome to the shop page
 <?php $content = ob_get_clean();

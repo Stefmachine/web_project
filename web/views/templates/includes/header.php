@@ -1,12 +1,20 @@
 <?php
-$title = (isset($title)? $title : "UnknownPage");
+$pageExceptions = array("error");
+if(empty($_SESSION["connectedUser"])){
+    $pageExceptions[] = "logout";
+}
+else{
+    $pageExceptions[] = "login";
+}
 ?>
 <header>
-    <h2><?= $title ?></h2>
+    <h2><?= getPageTitle(XGet("page")) ?></h2>
     <nav>
         <ul>
             <?php foreach (getAllLinks() as $pageName => $attributes) {
-                ?><li><a href="<?="/controller/pageLoader.php?page=$pageName"?>"><?= ucwords($pageName) ?></a></li><?php
+                if(!in_array($pageName,$pageExceptions)) {
+                    ?><li><a href="<?= "/controller/pageLoader.php?page=$pageName" ?>"><?= isset($attributes["title"])? $attributes["title"] : "Page inconnue" ?></a></li><?php
+                }
             } ?>
         </ul>
     </nav>
