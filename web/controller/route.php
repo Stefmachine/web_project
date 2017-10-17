@@ -8,13 +8,12 @@ function getIncludeFile($_fileName){
  */
 function getAllLinks(){
     $list = array(
-        "home" => "home.php",
-        "shop" => "",
-        "contact_us" => "",
-        "login" => "",
-        "disconnect" => "",
-        "profile" => "",
-        "cart" => ""
+        "home" => array("file" => "home.php", "needConnection" => false),
+        "shop" => array("file" => "", "needConnection" => false),
+        "contact_us" => array("file" => "", "needConnection" => false),
+        "login" => array("file" => "login.php", "needConnection" => false),
+        "profile" => array("file" => "", "needConnection" => true),
+        "cart" => array("file" => "", "needConnection" => true)
     );
     return $list;
 }
@@ -32,7 +31,15 @@ function getLink($_key){
         throw new Exception("The item you requested ($_key) is not defined.");
     }
 
-    return $navigation[$_key];
+    return $navigation[$_key]["file"];
+}
+
+/**
+ * @param string $_page
+ * @return bool
+ */
+function pageNeedsConnection($_page){
+    return isset(getAllLinks()[$_page])? getAllLinks()[$_page]["needConnection"] : false;
 }
 
 function buildPage($_link, $_template = "default.php"){

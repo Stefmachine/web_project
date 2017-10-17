@@ -1,10 +1,21 @@
 <?php
 session_start();
 include_once "route.php";
+require_once "UserController.php";
+
+if(XPost("username") && XPost("password")){
+    UserController::login(XPost("username"),XPost("password"));
+}
 
 $pageRequest = XGet("page");
 if(!empty($pageRequest)) {
-    $theLink = getLink($pageRequest);
+    if(pageNeedsConnection($pageRequest) && empty($_SESSION["connectedUser"])){
+        $theLink = getLink("login");
+    }
+    else{
+        $theLink = getLink($pageRequest);
+
+    }
     buildPage($theLink);
 }
 else{
