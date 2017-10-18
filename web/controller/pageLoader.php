@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "route.php";
-require_once "UserController.php";
+require_once "controllerLoader.php";
 
 if(XPost("username") && XPost("password")){
     UserController::login(XPost("username"),XPost("password"));
@@ -44,6 +44,13 @@ function XGet($_key){
  */
 function XPost($_key){
     return isset($_POST[$_key]) ? htmlentities($_POST[$_key]) : "" ;
+}
+
+function pageFromRequestURI(){
+    $uri = $_SERVER["REQUEST_URI"];
+    $needle = "page=";
+    $page = substr($uri,strpos($uri,$needle)+strlen($needle));
+    return $page;
 }
 
 /**

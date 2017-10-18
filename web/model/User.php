@@ -9,28 +9,13 @@ class User extends Entity
     protected $firstName;
     protected $lastName;
 
+    /**
+     * User constructor.
+     * @param int|null $_id
+     */
     function __construct($_id = null)
     {
-        $user = array(
-            "username" => "",
-            "password" => "",
-            "firstName" => "",
-            "lastName" => ""
-        );
-
-        if($_id) {
-            $queryString = "SELECT * FROM tbl_user WHERE id = :id";
-            $query = $this->db()->prepare($queryString);
-            $query->execute(array('id' => $_id));
-            if($query){
-                $user = $query;
-            }
-        }
-
-        $this->username = $user["username"];
-        $this->password = $user["password"];
-        $this->firstName = $user["firstName"];
-        $this->lastName = $user["lastName"];
+        parent::__construct($_id);
     }
 
     /**
@@ -50,6 +35,7 @@ class User extends Entity
 
     /**
      * @param string $username
+     * @return User
      */
     public function setUsername($username)
     {
@@ -67,6 +53,7 @@ class User extends Entity
 
     /**
      * @param string $password
+     * @return User
      */
     public function setPassword($password)
     {
@@ -84,6 +71,7 @@ class User extends Entity
 
     /**
      * @param string $firstName
+     * @return User
      */
     public function setFirstName($firstName)
     {
@@ -101,6 +89,7 @@ class User extends Entity
 
     /**
      * @param string $lastName
+     * @return User
      */
     public function setLastName($lastName)
     {
