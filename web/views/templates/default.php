@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php getIncludeFile("header");?>
-<?= $content; ?>
+<?= $content ?>
 <?php getIncludeFile("footer");?>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

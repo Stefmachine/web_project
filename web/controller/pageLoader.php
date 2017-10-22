@@ -14,11 +14,11 @@ if(XGet("logout")){
 $pageRequest = XGet("page");
 if(!empty($pageRequest)) {
     if(pageNeedsConnection($pageRequest) && empty($_SESSION["connectedUser"])){
-        $theLink = getLink("login");
+        $theLink = getFile("login");
     }
     else{
         try {
-            $theLink = getLink($pageRequest);
+            $theLink = getFile($pageRequest);
         }
         catch (Exception $e){
             generateErrorPost($e);

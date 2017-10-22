@@ -6,7 +6,7 @@ class Product extends Entity
     private $name;
     private $description;
     private $cost;
-    private $attributes;
+    private $attributes = array();
 
     /**
      * Product constructor.
@@ -15,21 +15,6 @@ class Product extends Entity
     function __construct($_id = null)
     {
         parent::__construct($_id);
-        $this->populateAttributes();
-    }
-
-    private function populateAttributes(){ //TODO: create some magic function for array population
-        $this->attributes = array();
-        if($this->id) {
-            $queryString = "SELECT attribute_id FROM tbl_product_attributes WHERE product_id = :id";
-            $query = $this->db()->prepare($queryString);
-            $query->execute(array('id' => $this->id));
-            if ($query) {
-                foreach ($query as $key => $a_id) {
-                    $this->attributes[] = new Attribute($a_id);
-                }
-            }
-        }
     }
 
     /**
@@ -88,9 +73,27 @@ class Product extends Entity
      * @param float $cost
      * @return Product
      */
-    public function setCost($cost)
+    public function setCost($_cost)
     {
-        $this->cost = $cost;
+        $this->cost = $_cost;
+        return $this;
+    }
+
+    /**
+     * @return Attribute[]
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param Attribute[] $_attributes
+     * @return Product
+     */
+    public function setAttributes($_attributes)
+    {
+        $this->attributes = $_attributes;
         return $this;
     }
 

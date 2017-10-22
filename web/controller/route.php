@@ -25,12 +25,12 @@ function getAllLinks(){
  * @return array
  * @throws Exception
  */
-function getLink($_page){
+function getFile($_page){
 
     $navigation = getAllLinks();
 
     if(!isset($navigation[$_page])){
-        throw new Exception("The item you requested ($_page) is not defined.");
+        throw new Exception("La page recherchée ($_page) n'existe pas.");
     }
 
     return $navigation[$_page]["file"];
@@ -40,7 +40,7 @@ function getPageTitle($_page){
     $navigation = getAllLinks();
 
     if(!isset($navigation[$_page])){
-        throw new Exception("The item you requested ($_page) is not defined.");
+        throw new Exception("La page recherchée ($_page) n'existe pas.");
     }
 
     return (isset($navigation[$_page]["title"]) ? $navigation[$_page]["title"] : "Page inconnue");
