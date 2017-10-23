@@ -2,7 +2,6 @@
 require_once "Attribute.php";
 class Product extends Entity
 {
-    private $id;
     private $name;
     private $description;
     private $cost;
@@ -15,14 +14,6 @@ class Product extends Entity
     function __construct($_id = null)
     {
         parent::__construct($_id);
-    }
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
