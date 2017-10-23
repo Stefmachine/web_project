@@ -11,8 +11,9 @@ function getAllLinks(){
         "home" => array("file" => "home.php", "title" => "Accueil"),
         "shop" => array("file" => "shop.php", "title" => "Catalogue"),
         "contact_us" => array("file" => "contact_us.php", "title" => "Nous joindre"),
-        "login" => array("file" => "login.php", "title" => "Connexion"),
-        "profile" => array("file" => "", "needConnection" => true, "title" => "Profile"),
+        "history" => array("file" => "history.php", "title" => "Historique"),
+		"login" => array("file" => "login.php", "title" => "Connexion"),
+		"profile" => array("file" => "", "needConnection" => true, "title" => "Profile"),
         "cart" => array("file" => "", "needConnection" => true, "title" => "Panier"),
         "error" => array("file" => "error.php", "title" => "Erreur"),
         "logout" => array("file" => "index.php", "title" => "Se déconnecter", "needConnection" => true)
