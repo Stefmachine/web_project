@@ -1,4 +1,5 @@
 <?php
+require_once "DatabaseConnector.php";
 
 abstract class Entity
 {
@@ -12,21 +13,12 @@ abstract class Entity
         return $this->id;
     }
 
-    const DB_NAME = "";
-    const DB_USER = "root";
-    const DB_PASSWORD = "";
-    const HOST = "localhost";
-
-    private function getCNN(){
-        $dsn = "mysql:host=".self::HOST.";dbname=".self::DB_NAME;
-        $cnn = new PDO($dsn,self::DB_USER,self::DB_PASSWORD);
-        $cnn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $cnn->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-        return $cnn;
-    }
-
-    protected function db(){
-        return $this->getCNN();
+    /**
+     * @return DatabaseConnector
+     */
+    private function db(){
+        $dbc = new DatabaseConnector(PDO::FETCH_CLASS,get_class($this));
+        return $dbc;
     }
 
     function __construct($_id = null)
@@ -41,11 +33,9 @@ abstract class Entity
         $classData = array();
         if($_id) {
             try{
-                $queryString = "SELECT * FROM $table WHERE id = :id";
-                $query = $this->db()->prepare($queryString);
-                $query->execute(array('id' => $_id));
+                $query = $this->db()->select("*")->from($table)->where("id = $_id")->getRow();
                 if($query){
-                    $classData = $query;
+                     //= $query;
                 }
                 else{
                     throw new Exception("This instance of $class does not exist in $table.");
@@ -108,12 +98,10 @@ abstract class Entity
             $currentClassId = strtolower($currentClass) . "_id";
 
             try {
-                $queryString = "SELECT $classId FROM $table WHERE $currentClassId = :id";
-                $query = $this->db()->prepare($queryString);
-                $query->execute(array('id' => $this->id));
+                $query = $this->db()->select($classId)->from($table)->where("$currentClassId = $this->id")->getArray();
                 if ($query) {
                     foreach ($query as $key => $id) {
-                        $this->$property[] = new $class($id);
+                        $this->$property = array(new $class($id));
                     }
                 }
             } catch (PDOException $PDOException) {
@@ -159,20 +147,14 @@ abstract class Entity
         $refClass = new ReflectionClass($class);
         $table = $this->classToTableName($class);
 
-        $updateString = "";
-        $updateParameters = array();
+        $updateFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
-            if (!is_array($this->$propertyName)) {
-                if ($propertyName != "id") {
-                    $updateString .= "`$propertyName`=:$propertyName";
-                }
-                $updateParameters[$propertyName] = $this->$propertyName;
+            if ($propertyName != "id" && !is_array($this->$propertyName)) {
+                $updateFields[$propertyName] = $this->$propertyName;
             }
         }
-        $queryString = "UPDATE $table SET $updateString WHERE id=:id";
-        $query = $this->db()->prepare($queryString);
-        $query->execute($updateParameters);
+        $this->db()->update($table)->set($updateFields)->where("id = $this->id")->execute();
     }
 
     private function insertEntity(){
@@ -180,29 +162,14 @@ abstract class Entity
         $refClass = new ReflectionClass($class);
         $table = $this->classToTableName($class);
 
-        $insertStrings = array(
-            "columns" => "",
-            "values" => ""
-        );
-        $insertParameters = array();
-        $count = 0;
+        $insertFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
             if ($propertyName != "id" && !is_array($this->$propertyName)) {
-                if ($count != 0) {
-                    $insertStrings["columns"] .= ",";
-                    $insertStrings["values"] .= ",";
-                }
-                $insertStrings["columns"] .= "`$propertyName`";
-                $insertStrings["values"] .= ":$propertyName";
-                $insertParameters[$propertyName] = $this->$propertyName;
-                $count++;
+                $insertFields[$propertyName] = $this->$propertyName;
             }
         }
-
-        $queryString = "INSERT INTO $table({$insertStrings["columns"]}) VALUES({$insertStrings["values"]})";
-        $query = $this->db()->prepare($queryString);
-        $query->execute($insertParameters);
+        $this->db()->insert($table,$insertFields)->execute();
     }
 
     private function getCallerFunction(){ //TODO: Put it somewhere convenient

@@ -46,6 +46,22 @@ function XPost($_key){
     return isset($_POST[$_key]) ? htmlentities($_POST[$_key]) : "" ;
 }
 
+function XSession($_key){
+    return isset($_SESSION[$_key]) ? htmlentities($_SESSION[$_key]) : "" ;
+}
+
+function removeXSession($_key){
+    if(isset($_SESSION[$_key])){
+        unset($_SESSION[$_key]);
+        return true;
+    }
+    return false;
+}
+
+function setXSession($_key,$_value){
+    $_SESSION[$_key] = htmlentities($_value);
+}
+
 function pageFromRequestURI(){
     $uri = $_SERVER["REQUEST_URI"];
     $needle = "page=";

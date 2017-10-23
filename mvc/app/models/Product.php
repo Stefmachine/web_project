@@ -2,9 +2,9 @@
 require_once "Attribute.php";
 class Product extends Entity
 {
-    private $name;
-    private $description;
-    private $cost;
+    private $name = "";
+    private $description = "";
+    private $cost = (double)0.00;
     private $attributes = array();
 
     /**
@@ -86,30 +86,5 @@ class Product extends Entity
     {
         $this->attributes = $_attributes;
         return $this;
-    }
-
-    /**
-     * Saves the entity to the database
-     */
-    public function persist(){
-        if($this->id){
-            $queryString = "UPDATE tbl_product SET `name`=:name,description=:description,cost=:cost WHERE id=:id";
-            $query = $this->db()->prepare($queryString);
-            $query->execute(array(
-                "id" => $this->id,
-                "name" => $this->name,
-                "description" => $this->description,
-                "cost" => $this->cost
-            ));
-        }
-        else{
-            $queryString = "INSERT INTO tbl_product(`name`,description,cost) VALUES(:name, :description, :cost)";
-            $query = $this->db()->prepare($queryString);
-            $query->execute(array(
-                "name" => $this->name,
-                "description" => $this->description,
-                "cost" => $this->cost
-            ));
-        }
     }
 }

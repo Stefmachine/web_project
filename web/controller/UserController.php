@@ -5,7 +5,7 @@ class UserController
     static function login($_username, $_password){
         $user = UserRepository::GetByUsernamePassword($_username,$_password);
         if($user){
-            $_SESSION["connectedUser"] = $user;
+            setXSession("connectedUser",$user);
             return $user;
         }
         else{
@@ -14,10 +14,6 @@ class UserController
     }
 
     static function logout(){
-        if(isset($_SESSION["connectedUser"])){
-            unset($_SESSION["connectedUser"]);
-            return true;
-        }
-        return false;
+        return removeXSession("connectedUser");
     }
 }
