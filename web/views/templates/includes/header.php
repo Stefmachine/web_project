@@ -26,11 +26,7 @@ else{
 	
 		<div class="col-sm-4"><a href="/controller/pageLoader.php?page=cart" class="glyphicon glyphicon-shopping-cart"></a></div>
 		<div class="col-sm-4"><a href="/controller/pageLoader.php?page=profile" class="glyphicon glyphicon-user"></a></div>
-		
-		<?php
-			
-			<?= <div class="col-sm-4"><a href="/controller/pageLoader.php?page=logout" class="glyphicon glyphicon-log-out"></a></div>?>
-		?>
+		<div class="col-sm-4"><a href="/controller/pageLoader.php?page=logout" class="glyphicon glyphicon-log-out"></a></div>
 
     </ul>
   </div>
