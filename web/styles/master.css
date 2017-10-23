@@ -1,99 +1,83 @@
-body
+.glyphicon
 {
-	font-family: sans-serif;
-	padding: 0;
-	margin: 0;
+	font-size: 25px;
 }
 
-header
+.user-icons
 {
-	background-color: #3287A6;
-	color: #fff;
-	position: sticky;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 36px;
-	padding: 5px;
-	vertical-align: middle;
-}
-
-.cnn 
-{
-	position: fixed;
-	top: 6px;
-	right: 16px;
-}
-
-.logo
-{
-	position: fixed;
-	top: 6px;
-	left: 6px;
-}
-
-.sidebar
-{
-	position: static;
-	top:0;
-	left:0;
-	box-shadow: 0 0 8px 3px rgba(0,0,0,0.1);
-	width: 150px;
-	margin: 9px;
-}
-
-.sidebar li {
-	color: #3287A6;
-	padding: 5px 15px;
-}
-
-.content {
-	position: relative;
-	top: -160px;
-	left: 175px;
-	width: 85%;
-	background: rgba(0,0,0,0.05);
-	z-index: -1;
-	padding: 15px;
-}
-
-.grid
-{
-	width: 100%;
-	height: 100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.grid .item
-{
-	width: 250px;
-	height: 380px;
-	background-color: #fff;
-	box-shadow: 0 0 4px 3px rgba(0,0,0,0.15);
-	color: gray;
-}
-
-.grid .item .description
-{
-	padding: 3px 8px;
-}
-
-.grid .item .description .price
-{
-	color: red;
-}
-
-.thumbnail
-{
-	width: 250px;
-	height: 250px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 
 footer
 {
 	padding: 20px 15px;
-	background-color: #3287A6;
-	color: #fff;
+	background-color: rgba(0,0,0,0.03);
+	color: #000;
 	text-align: center;
+	border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.sidebar 
+{
+	background-color: rgba(0,0,0,0.03);
+	border: 1px solid rgba(0,0,0,0.05);
+	margin-bottom: 15px;
+}
+
+.sidebar ul
+{
+	list-style-type: none;
+	font-size: 18px;
+}
+
+.sidebar ul li
+{
+	padding: 10px 4px;
+	margin-left: -8px;
+}
+
+.sidebar ul a
+{
+	color: gray;
+	text-decoration: none;
+}
+
+.content
+{
+	font-size: 16px;	
+}
+
+.grid
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: rgba(0,0,0,0.03);
+	border: inset 1px rgba(0,0,0,0.05);
+}
+
+.grid .product {
+	padding: 20px 30px;
+}
+
+.thumbnail
+{
+	height: 100%;
+	width: 100%;
+}
+
+.btn-login
+{
+	background-color: rgba(0,0,0,0.05);
+	color: black;
+}
+
+.big-icon
+{
+	font-size: 150px;
+}
+
+.red 
+{
+	color: red;
 }

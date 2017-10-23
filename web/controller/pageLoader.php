@@ -3,6 +3,9 @@ session_start();
 require_once "route.php";
 require_once "controllerLoader.php";
 
+// Generate product code to include in Grid
+require_once "../views/templates/product.php";
+
 if(XPost("username") && XPost("password")){
     UserController::login(XPost("username"),XPost("password"));
 }
