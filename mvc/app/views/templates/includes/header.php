@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav navbar-right user-icons">
 		<?php
 			foreach ($this->getAllRoutes() as $route) {
-                ?><li><a href="<?= $route ?>"><?= isset($attributes["title"])? $attributes["title"] : "Page inconnue" ?></a></li><?php
+                ?><li><a href="<?= $route ?>"><?= isset($title)? $title : "Page inconnue" ?></a></li><?php
 			}
 		?>
 	

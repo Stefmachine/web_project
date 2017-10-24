@@ -1,9 +1,26 @@
 <?php
 require_once "ConvenientFunctions.php";
+require_once __DIR__."/../configs/PageConfig.php";
 
-class Controller extends ConvenientFunctions
+class Controller
 {
     private $template = "default";
+    private $configs;
+
+    function __construct()
+    {
+        $pageConfigs = json_decode(file_get_contents(__DIR__."/../configs/pagesConfigs.json"),true);
+        foreach ($pageConfigs as $key => $config){
+            if($key != "default") {
+                foreach ($config as $pageName => $page){
+                    $this->configs[$key."_".$pageName] = new PageConfig($page,$pageConfigs["default"]);
+                }
+            }
+        }
+        die(var_dump($this->configs));
+        @set_exception_handler(array($this,'ExceptionHandler'));
+        @set_error_handler(array($this,'ErrorHandler'));
+    }
 
     protected function model($_model){
         $modelPath = __DIR__."/../models/$_model.php";
@@ -16,8 +33,7 @@ class Controller extends ConvenientFunctions
         $viewPath = __DIR__."/../views/$_view.php";
         $templatePath = __DIR__."/../views/templates/$this->template.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
-            @set_exception_handler('ErrorHandler'); // MAKE ERROR HANDLING WORK
-            echo $somevarthatdoesnotexist;
+            $title = "";
             ob_start();
             require_once $viewPath;
             $content = ob_get_clean();
@@ -26,14 +42,6 @@ class Controller extends ConvenientFunctions
         else{
             echo "file not found";
         }
-    }
-
-    protected function resource($_resource){
-        $resourcePath = __DIR__."/../../public/resources/$_resource";
-        if(file_exists($resourcePath)) {
-            return $resourcePath;
-        }
-        return false;
     }
 
     protected function templateInclude($_file){
@@ -97,14 +105,20 @@ class Controller extends ConvenientFunctions
         return $allRoutes;
     }
 
-    function ErrorHandler($exception){
-        die("hey");
-        $error = $this->XSession("error");
-        if(!empty($error)){
-            $this->view("/home/error");
-        }
-        else{
-            $this->view("/home/index");
-        }
+    /**
+     * @param Exception $exception
+     */
+    function ExceptionHandler($exception){
+        $this->view("/home/error",$exception);
+        die();
     }
+
+    /**
+     * @param Error $error
+     */
+    function ErrorHandler($no , $message, $file, $line){
+        throw new Exception("Error #$no: $message in $file on line $line");
+    }
+
+
 }

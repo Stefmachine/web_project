@@ -1,7 +1,7 @@
 <?php
 require_once "ConvenientFunctions.php";
 
-class App extends ConvenientFunctions
+class App
 {
     protected $controller = 'HomeController';
     protected $method = 'indexAction';
@@ -42,8 +42,8 @@ class App extends ConvenientFunctions
 
     public function parseUrl()
     {
-        if(!empty($this->XGet("url"))){
-            return $url = explode("/",filter_var(rtrim($this->XGet("url"), "/"),FILTER_SANITIZE_URL));
+        if(!empty(XGet("url"))){
+            return $url = explode("/",filter_var(rtrim(XGet("url"), "/"),FILTER_SANITIZE_URL));
         }
     }
 }

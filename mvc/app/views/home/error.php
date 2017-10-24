@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var Exception $error
+ */
+$error = $_data['error']; ?>
 <div class="text-center">
     <i class="glyphicon big-icon red glyphicon-remove-sign"></i>
 

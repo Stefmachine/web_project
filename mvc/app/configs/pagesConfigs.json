@@ -1,0 +1,22 @@
+{
+  "default":{
+    "title":"Page inconnue",
+    "template":"default"
+  },
+  "home":{
+    "index":{
+      "title":"Accueil"
+    },
+    "error":{
+      "title":"Erreur"
+    }
+  },
+  "shop":{
+    "index":{
+      "title":"Catalogue"
+    },
+    "product":{
+      "title":"Produit"
+    }
+  }
+}

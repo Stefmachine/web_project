@@ -9,14 +9,14 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
 	<!-- Custom Styles -->
-	<link rel="stylesheet" href="<?= $this->resource("css/master.css"); ?>">
+	<link rel="stylesheet" href="<?= resource("css/master.css"); ?>">
 	
-	<title></title>
+	<title><?= $title ?></title>
 </head>
 <body>
 	<?php $this->templateInclude("header"); ?>
 	<div class="container-fluid">
-		<div class="col-sm-2"><?php $this->templateInclude("aside"); ?></div>
+		<div class="col-sm-2"><?php //$this->templateInclude("aside"); ?></div>
 		<div class="col-sm-10 content"><?= $content ?></div>
 	</div>
 
