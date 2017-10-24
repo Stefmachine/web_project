@@ -9,18 +9,18 @@
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	
 	<!-- Custom Styles -->
-	<link rel="stylesheet" href="../../styles/master.css">
+	<link rel="stylesheet" href="<?= $this->resource("css/master.css"); ?>">
 	
-	<title><?= getPageTitle(XGet("page")) ?></title>
+	<title></title>
 </head>
 <body>
-	<?php getIncludeFile("header");?>
+	<?php $this->templateInclude("header"); ?>
 	<div class="container-fluid">
-		<div class="col-sm-2"><?php getIncludeFile("aside");?></div>	
+		<div class="col-sm-2"><?php $this->templateInclude("aside"); ?></div>
 		<div class="col-sm-10 content"><?= $content ?></div>
 	</div>
-	
-	<?php getIncludeFile("footer");?>
+
+    <?php $this->templateInclude("footer"); ?>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
