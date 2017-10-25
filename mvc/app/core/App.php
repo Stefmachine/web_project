@@ -30,6 +30,10 @@ class App
                 $this->method = $method;
                 unset($url[1]);
             }
+            elseif (method_exists($this->controller,$url[1])){
+                $this->method = $url[1];
+                unset($url[1]);
+            }
         }
 
         if($url){

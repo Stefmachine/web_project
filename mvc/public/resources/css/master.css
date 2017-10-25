@@ -9,51 +9,17 @@
 	margin-bottom: 15px;
 }
 
-footer
-{
-	padding: 20px 15px;
-	background-color: rgba(0,0,0,0.03);
-	color: #000;
-	text-align: center;
-	border-top: 1px solid rgba(0,0,0,0.07);
-}
-
-.sidebar 
-{
-	background-color: rgba(0,0,0,0.03);
-	border: 1px solid rgba(0,0,0,0.05);
-	margin-bottom: 15px;
-}
-
-.sidebar ul
-{
-	list-style-type: none;
-	font-size: 18px;
-}
-
-.sidebar ul li
-{
-	padding: 10px 4px;
-	margin-left: -8px;
-}
-
-.sidebar ul a
-{
-	color: gray;
-	text-decoration: none;
-}
-
 .content
 {
-	font-size: 16px;	
+	font-size: 16px;
 }
 
 .grid
 {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	background-color: rgba(0,0,0,0.03);
-	border: inset 1px rgba(0,0,0,0.05);
+	background-color: #E6E6E6;
+	border: inset 1px #A0A0A0;
 }
 
 .grid .product {
@@ -66,18 +32,18 @@ footer
 	width: 100%;
 }
 
-.btn-login
-{
-	background-color: rgba(0,0,0,0.05);
-	color: black;
-}
-
 .big-icon
 {
 	font-size: 150px;
 }
 
-.red 
+.red
 {
 	color: red;
+}
+
+body
+{
+	overflow: -moz-scrollbars-vertical!important;
+	overflow-y: scroll!important;
 }

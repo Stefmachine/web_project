@@ -1,14 +1,16 @@
 {
   "default":{
     "title":"Page inconnue",
-    "template":"default"
+    "template":"default",
+    "secured":false
   },
   "home":{
     "index":{
       "title":"Accueil"
     },
     "error":{
-      "title":"Erreur"
+      "title":"Erreur",
+      "template":"empty"
     }
   },
   "shop":{
@@ -17,6 +19,24 @@
     },
     "product":{
       "title":"Produit"
+    }
+  },
+  "user":{
+    "profile":{
+      "title":"Profile",
+      "glyphicon":"user"
+    },
+    "login":{
+      "title":"Connexion",
+      "glyphicon":"log-in"
+    },
+    "logout":{
+      "title":"Déconnexion",
+      "glyphicon":"log-out"
+    },
+    "cart":{
+      "title":"Panier",
+      "glyphicon":"shopping-cart"
     }
   }
 }

@@ -4,20 +4,21 @@ require_once __DIR__."/../configs/PageConfig.php";
 
 class Controller
 {
-    private $template = "default";
+    /**
+     * @var PageConfig[] $configs
+     */
     private $configs;
 
     function __construct()
     {
         $pageConfigs = json_decode(file_get_contents(__DIR__."/../configs/pagesConfigs.json"),true);
-        foreach ($pageConfigs as $key => $config){
-            if($key != "default") {
+        foreach ($pageConfigs as $controller => $config){
+            if($controller != "default") {
                 foreach ($config as $pageName => $page){
-                    $this->configs[$key."_".$pageName] = new PageConfig($page,$pageConfigs["default"]);
+                    $this->configs[$controller."/".$pageName] = new PageConfig($page,$pageConfigs["default"],$controller, $pageName);
                 }
             }
         }
-        die(var_dump($this->configs));
         @set_exception_handler(array($this,'ExceptionHandler'));
         @set_error_handler(array($this,'ErrorHandler'));
     }
@@ -30,17 +31,20 @@ class Controller
     }
 
     protected function view($_view, $_data = []){
+        $viewConfig = $this->configs["$_view"];
+        $_data["pageConfigs"] = $viewConfig;
+        $_data["configs"] = $this->configs;
         $viewPath = __DIR__."/../views/$_view.php";
-        $templatePath = __DIR__."/../views/templates/$this->template.php";
+        $templatePath = __DIR__."/../views/templates/{$viewConfig->getTemplate()}.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
-            $title = "";
+            $title = $viewConfig->getTitle();
             ob_start();
             require_once $viewPath;
             $content = ob_get_clean();
             require_once $templatePath;
         }
         else{
-            echo "file not found";
+            throw new Exception("View ($_view) does not exist.");
         }
     }
 
@@ -52,42 +56,46 @@ class Controller
         return false;
     }
 
-    protected function getRoute($_route, $_controller = ''){
-        if(empty($_controller)){
-            $_controller = get_class($this);
-        }
-
-        $parsedRoute = false;
-        if(class_exists($_controller)) {
-            if (method_exists($_controller."Controller", $_route . "Action")) {
-                $parsedRoute = "/public/$_controller/$_route";
-            }
-        }
+    protected function getLink($_route){
+        $parsedRoute = "/public/$_route";
 
         return $parsedRoute;
     }
 
     protected function getControllerRoutes($_controller = ''){
         if(empty($_controller)){
-            $_controller = get_class($this);
+            $class = get_class($this);
         }
-        $controller = $_controller."Controller";
-        $actions = false;
-        if(class_exists($controller)) {
-            require_once __DIR__ . "/../controllers/$controller.php";
-            $refClass = new ReflectionClass($controller);
-            $methods = $refClass->getMethods();
-            $actions = preg_grep("/(Action)/", $methods);
+        else{
+            $class = $this->RouteToClass($_controller);
         }
 
-        return $actions;
+        $actions = false;
+        $controllerPath = __DIR__ . "/../controllers/$class.php";
+        if(file_exists($controllerPath)) {
+            require_once $controllerPath;
+            if (class_exists($class)) {
+                $refClass = new ReflectionClass($class);
+                $methods = $refClass->getMethods();
+                $actions = preg_grep("/(Action)/", $methods);
+            }
+        }
+
+        $allRoutes = array();
+        foreach ($actions as $route) {
+            $parsedAction = $this->MethodToRoute($route->name);
+            $parsedController = $this->ClassToRoute($route->class);
+            $allRoutes[] = "$parsedController/$parsedAction";
+        }
+
+        return $allRoutes;
     }
 
     protected function getAllRoutes(){
         $actions = array();
-        foreach (glob(__DIR__."/../controllers/*.php") as $controller){
-            require_once $controller;
-            $class = basename($controller,".php");
+        foreach (glob(__DIR__."/../controllers/*.php") as $controllerPath){
+            require_once $controllerPath;
+            $class = basename($controllerPath,".php");
             if(class_exists($class)){
                 $refClass = new ReflectionClass($class);
                 $methods = $refClass->getMethods();
@@ -97,27 +105,45 @@ class Controller
 
         $allRoutes = array();
         foreach ($actions as $route) {
-            $parsedAction = substr($route->name, 0, strpos($route->name,"Action"));
-            $parsedController = substr($route->class, 0, strpos($route->class,"Controller"));
-            $allRoutes[] = "/public/$parsedController/$parsedAction";
+            $parsedAction = $this->MethodToRoute($route->name);
+            $parsedController = $this->ClassToRoute($route->class);
+            $allRoutes[] = "$parsedController/$parsedAction";
         }
 
         return $allRoutes;
+    }
+
+    private function ClassToRoute($_class){
+        $_class = strtolower($_class);
+        return substr($_class,0,strpos($_class,"controller"));
+    }
+
+    private function RouteToClass($_route){
+        $_route = ucwords($_route);
+        return "{$_route}Controller";
+    }
+
+    private function MethodToRoute($_method){
+        return substr($_method,0,strpos($_method,"Action"));
+    }
+
+    private function RouteToMethod($_route){
+        return "{$_route}Action";
     }
 
     /**
      * @param Exception $exception
      */
     function ExceptionHandler($exception){
-        $this->view("/home/error",$exception);
-        die();
+        $_SESSION["error"] = $exception;
+        header("location:/public/home/error");
     }
 
     /**
      * @param Error $error
      */
     function ErrorHandler($no , $message, $file, $line){
-        throw new Exception("Error #$no: $message in $file on line $line");
+        throw new Exception("#$no - $message in $file on line $line");
     }
 
 
