@@ -1,4 +1,4 @@
-<div class="panel panel-default col-lg-4 col-md-8 col-sm-12">
+<div class="panel panel-primary col-lg-4 col-md-8 col-sm-12">
     <div class="panel-heading">
         Veuillez vous connecter pour continuer
     </div>
@@ -8,7 +8,7 @@
                 <form id="login-form" role="form" action="/public/user/validateLogin" method="post">
                     <div class="form-group">
                         <label>Nom d'utilisateur</label>
-                        <input class="form-control" name="username" id="username" placeholder="Username">
+                        <input class="form-control" name="username" id="username" placeholder="Nom d'utilisateur">
                     </div>
                     <div class="form-group">
                         <label>Mot de passe</label>
@@ -22,7 +22,7 @@
                             </label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-default">Se connecter</button>
+                    <button type="submit" class="btn btn-primary">Se connecter</button>
                 </form>
             </div>
         </div>
