@@ -3,21 +3,6 @@
  * @var PageConfig[] $allConfigs
  */
 $allConfigs = $_data["configs"];
-$actionsExceptions = array();
-if(1){ //TODO:if user is not connected
-    $actionsExceptions = array(
-        "user/logout",
-        "user/profile",
-    );
-}
-else{
-    $actionsExceptions = array(
-        "user/login"
-    );
-}
-
-$allUserActions = $this->getControllerRoutes("user");
-$menuActions = array_diff($allUserActions,$actionsExceptions);
 ?>
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,12 +16,28 @@ $menuActions = array_diff($allUserActions,$actionsExceptions);
 <!-- /.navbar-header -->
 
 <ul class="nav navbar-top-links navbar-right">
-    <?php foreach ($menuActions as $route){ ?>
-        <li>
-            <a title="<?= $allConfigs[$route]->getTitle(); ?>" href="<?= $this->getLink($route); ?>">
-                <i class="<?= $allConfigs[$route]->getGlyphiconClass(); ?>"></i>
-            </a>
-        </li>
+    <?php if(1){ //todo:user is not connected ?>
+    <li>
+        <a title="<?= $allConfigs["user/login"]->getTitle(); ?>" href="<?= $this->getLink("user/login"); ?>">
+            <i class="glyphicon glyphicon-log-in"></i>
+        </a>
+    </li>
+    <?php } else { ?>
+    <li>
+        <a title="<?= $allConfigs["user/logout"]->getTitle(); ?>" href="<?= $this->getLink("user/logout"); ?>">
+            <i class="glyphicon glyphicon-log-out"></i>
+        </a>
+    </li>
+    <li>
+        <a title="<?= $allConfigs["user/profile"]->getTitle(); ?>" href="<?= $this->getLink("user/profile"); ?>">
+            <i class="glyphicon glyphicon-user"></i>
+        </a>
+    </li>
     <?php } ?>
+    <li>
+        <a title="<?= $allConfigs["user/cart"]->getTitle(); ?>" href="<?= $this->getLink("user/cart"); ?>">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+        </a>
+    </li>
 </ul>
 <!-- /.navbar-top-links -->

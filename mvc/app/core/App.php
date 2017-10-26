@@ -1,5 +1,6 @@
 <?php
 require_once "ConvenientFunctions.php";
+require_once "Secure.php";
 
 class App
 {
@@ -34,6 +35,11 @@ class App
                 $this->method = $url[1];
                 unset($url[1]);
             }
+        }
+
+        if(1) { //todo:user is not connected
+            $security = new Secure("/public/user/login");
+            $security->validateSecurity($this->controller, $this->method);
         }
 
         if($url){

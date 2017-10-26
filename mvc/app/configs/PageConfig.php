@@ -53,11 +53,4 @@ class PageConfig
     function getRoute(){
         return "/$this->controllerName/$this->pageName";
     }
-
-    function getGlyphiconClass(){
-        if(!empty($this->glyphicon)){
-            return "glyphicon glyphicon-{$this->glyphicon}";
-        }
-        return "";
-    }
 }

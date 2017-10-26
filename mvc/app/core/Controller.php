@@ -31,13 +31,11 @@ class Controller
     }
 
     protected function view($_view, $_data = []){
-        $viewConfig = $this->configs["$_view"];
-        $_data["pageConfigs"] = $viewConfig;
+        $_data["pageConfigs"] = $this->configs["$_view"];
         $_data["configs"] = $this->configs;
         $viewPath = __DIR__."/../views/$_view.php";
-        $templatePath = __DIR__."/../views/templates/{$viewConfig->getTemplate()}.php";
+        $templatePath = __DIR__."/../views/templates/{$_data["pageConfigs"]->getTemplate()}.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
-            $title = $viewConfig->getTitle();
             ob_start();
             require_once $viewPath;
             $content = ob_get_clean();
@@ -67,7 +65,7 @@ class Controller
             $class = get_class($this);
         }
         else{
-            $class = $this->RouteToClass($_controller);
+            $class = RouteToClass($_controller);
         }
 
         $actions = false;
@@ -83,8 +81,8 @@ class Controller
 
         $allRoutes = array();
         foreach ($actions as $route) {
-            $parsedAction = $this->MethodToRoute($route->name);
-            $parsedController = $this->ClassToRoute($route->class);
+            $parsedAction = MethodToRoute($route->name);
+            $parsedController = ClassToRoute($route->class);
             $allRoutes[] = "$parsedController/$parsedAction";
         }
 
@@ -105,30 +103,12 @@ class Controller
 
         $allRoutes = array();
         foreach ($actions as $route) {
-            $parsedAction = $this->MethodToRoute($route->name);
-            $parsedController = $this->ClassToRoute($route->class);
+            $parsedAction = MethodToRoute($route->name);
+            $parsedController = ClassToRoute($route->class);
             $allRoutes[] = "$parsedController/$parsedAction";
         }
 
         return $allRoutes;
-    }
-
-    private function ClassToRoute($_class){
-        $_class = strtolower($_class);
-        return substr($_class,0,strpos($_class,"controller"));
-    }
-
-    private function RouteToClass($_route){
-        $_route = ucwords($_route);
-        return "{$_route}Controller";
-    }
-
-    private function MethodToRoute($_method){
-        return substr($_method,0,strpos($_method,"Action"));
-    }
-
-    private function RouteToMethod($_route){
-        return "{$_route}Action";
     }
 
     /**

@@ -1,8 +1,7 @@
 {
   "default":{
     "title":"Page inconnue",
-    "template":"default",
-    "secured":false
+    "template":"default"
   },
   "home":{
     "index":{
@@ -11,6 +10,9 @@
     "error":{
       "title":"Erreur",
       "template":"empty"
+    },
+    "contact":{
+      "title":"Nous joindre"
     }
   },
   "shop":{
@@ -23,20 +25,16 @@
   },
   "user":{
     "profile":{
-      "title":"Profile",
-      "glyphicon":"user"
+      "title":"Profile"
     },
     "login":{
-      "title":"Connexion",
-      "glyphicon":"log-in"
+      "title":"Connexion"
     },
     "logout":{
-      "title":"Déconnexion",
-      "glyphicon":"log-out"
+      "title":"Déconnexion"
     },
     "cart":{
-      "title":"Panier",
-      "glyphicon":"shopping-cart"
+      "title":"Panier"
     }
   }
 }

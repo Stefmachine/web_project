@@ -17,4 +17,11 @@ class HomeController extends Controller
             header("location:/public/home/index");
         }
     }
+
+    /**
+     * Contact page view
+     */
+    function contactAction(){
+        $this->view("home/contact");
+    }
 }
