@@ -37,12 +37,12 @@ function resource($_resource){
     return $resourcePath;
 }
 
-function ClassToRoute($_class){
+function ControllerToRoute($_class){
     $_class = strtolower($_class);
     return substr($_class,0,strpos($_class,"controller"));
 }
 
-function RouteToClass($_route){
+function RouteToController($_route){
     $_route = ucwords($_route);
     return "{$_route}Controller";
 }

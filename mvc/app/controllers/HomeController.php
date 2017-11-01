@@ -2,11 +2,17 @@
 
 class HomeController extends Controller
 {
+    /**
+     * Home page view
+     */
     function indexAction()
     {
         $this->view("home/index");
     }
 
+    /**
+     * Error page view
+     */
     function errorAction(){
         if(!empty($_SESSION["error"])){
             $error = $_SESSION["error"];
@@ -14,7 +20,7 @@ class HomeController extends Controller
             $this->view("home/error",array("error" => $error));
         }
         else{
-            header("location:/public/home/index");
+            throw new Exception("An unexpected error occured.");
         }
     }
 

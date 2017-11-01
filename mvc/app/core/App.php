@@ -1,7 +1,7 @@
 <?php
 require_once "ConvenientFunctions.php";
 require_once "Secure.php";
-
+require_once "../app/models/User.php";
 class App
 {
     protected $controller = 'HomeController';
@@ -20,6 +20,9 @@ class App
                 $this->controller = $controllerName;
                 unset($url[0]);
             }
+            else{
+                throw new Exception("404 - La page n'existe pas.");
+            }
         }
 
         require_once "../app/controllers/$this->controller.php";
@@ -35,9 +38,12 @@ class App
                 $this->method = $url[1];
                 unset($url[1]);
             }
+            else{
+                throw new Exception("404 - La page n'existe pas.");
+            }
         }
 
-        if(1) { //todo:user is not connected
+        if(!$this->userIsConnected()) {
             $security = new Secure("/public/user/login");
             $security->validateSecurity($this->controller, $this->method);
         }
@@ -55,5 +61,9 @@ class App
         if(!empty(XGet("url"))){
             return $url = explode("/",filter_var(rtrim(XGet("url"), "/"),FILTER_SANITIZE_URL));
         }
+    }
+
+    public function userIsConnected(){
+        return !empty($_SESSION["user"]);
     }
 }

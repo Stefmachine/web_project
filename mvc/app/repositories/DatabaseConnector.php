@@ -1,7 +1,7 @@
 <?php
 class DatabaseConnector
 {
-    const DB_NAME = "";
+    const DB_NAME = "db_ooze";
     const DB_USER = "root";
     const DB_PASSWORD = "";
     const HOST = "localhost";
@@ -11,14 +11,14 @@ class DatabaseConnector
     private $fetchMode;
     private $fetchClass;
 
-    function __construct($_fetchMode = PDO::FETCH_ASSOC, $_fetchClass = "")
+    function __construct($_fetchMode = PDO::FETCH_ASSOC, $_fetchedClass = "")
     {
-        if($this->fetchMode == PDO::FETCH_CLASS){
-            if($_fetchClass) {
-                $this->fetchClass = $_fetchClass;
+        if($_fetchMode == PDO::FETCH_CLASS){
+            if(empty($_fetchedClass)){
+                throw new Exception("Class fetch mode needs a valid class.");
             }
             else{
-                $_fetchMode = PDO::FETCH_ASSOC;
+                $this->fetchClass = $_fetchedClass;
             }
         }
         $this->fetchMode = $_fetchMode;
@@ -43,7 +43,7 @@ class DatabaseConnector
 
     public function select(){
         $args = implode(",",func_get_args());
-        $this->query .= "SELECT $args ";
+        $this->query .= "SELECT $args";
         return $this;
     }
 
@@ -54,16 +54,19 @@ class DatabaseConnector
     }
 
     public function where(){
-        $this->query .= " WHERE ";
         $conditions = array();
         foreach (func_get_args() as $condition){
-            $parts = explode(" ",$condition);
-            $name = $parts[0];
-            $operator = $parts[1];
-            $value = $parts[2];
-
-            $conditions[] = "$name $operator :$name";
-            $this->executeArguments[$name] = $value;
+            if(!is_array($condition)){
+                $condition = array($condition);
+            }
+            foreach ($condition as $subCondition){
+                $parts = explode(" ",$subCondition);
+                $name = $parts[0];
+                $operator = $parts[1];
+                $value = $parts[2];
+                $conditions[] = "$name $operator :$name";
+                $this->executeArguments[$name] = $value;
+            }
         }
         $args = implode(" AND ",$conditions);
         $this->query .= " WHERE $args";
@@ -102,19 +105,10 @@ class DatabaseConnector
     }
 
     public function getRow(){
-        $result = false;
-        try {
-            $statement = $this->db()->prepare($this->query);
-            $this->fetchMode($statement);
-            $statement->execute($this->executeArguments);
-            $result = $statement->fetch();
-        }
-        catch (PDOException $PDOException){
-            echo "Erreur de base de donnée: ".$PDOException->getMessage();
-        }
-        catch (Exception $exception){
-            echo "Erreur: ".$exception->getMessage();
-        }
+        $statement = $this->db()->prepare($this->query);
+        $this->fetchMode($statement);
+        $statement->execute($this->executeArguments);
+        $result = $statement->fetch();
 
         $this->clearQuery();
 
@@ -122,18 +116,9 @@ class DatabaseConnector
     }
 
     public function getOne(){
-        $result = false;
-        try {
-            $statement = $this->db()->prepare($this->query);
-            $statement->execute($this->executeArguments);
-            $result = $statement->fetchColumn();
-        }
-        catch (PDOException $PDOException){
-            echo "Erreur de base de donnée: ".$PDOException->getMessage();
-        }
-        catch (Exception $exception){
-            echo "Erreur: ".$exception->getMessage();
-        }
+        $statement = $this->db()->prepare($this->query);
+        $statement->execute($this->executeArguments);
+        $result = $statement->fetchColumn();
 
         $this->clearQuery();
 
@@ -141,19 +126,10 @@ class DatabaseConnector
     }
 
     public function getArray(){
-        $result = false;
-        try {
-            $statement = $this->db()->prepare($this->query);
-            $this->fetchMode($statement);
-            $statement->execute($this->executeArguments);
-            $result = $statement->fetchAll();
-        }
-        catch (PDOException $PDOException){
-            echo "Erreur de base de donnée: ".$PDOException->getMessage();
-        }
-        catch (Exception $exception){
-            echo "Erreur: ".$exception->getMessage();
-        }
+        $statement = $this->db()->prepare($this->query);
+        $this->fetchMode($statement);
+        $statement->execute($this->executeArguments);
+        $result = $statement->fetchAll();
 
         $this->clearQuery();
 
@@ -161,16 +137,8 @@ class DatabaseConnector
     }
 
     public function execute(){
-        try {
-            $statement = $this->db()->prepare($this->query);
-            $statement->execute($this->executeArguments);
-        }
-        catch (PDOException $PDOException){
-            echo "Erreur de base de donnée: ".$PDOException->getMessage();
-        }
-        catch (Exception $exception){
-            echo "Erreur: ".$exception->getMessage();
-        }
+        $statement = $this->db()->prepare($this->query);
+        $statement->execute($this->executeArguments);
 
         $this->clearQuery();
     }
@@ -180,7 +148,7 @@ class DatabaseConnector
      */
     private function fetchMode(&$_statement){
         if($this->fetchMode == PDO::FETCH_CLASS){
-            $_statement->setFetchMode($this->fetchMode,$this->fetchClass);
+            $_statement->setFetchMode($this->fetchMode,$this->fetchClass,array());
         }
         else{
             $_statement->setFetchMode($this->fetchMode);

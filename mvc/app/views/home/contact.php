@@ -1,4 +1,4 @@
-<div class="panel panel-primary col-lg-8 col-md-10 col-sm-12">
+<div class="panel panel-primary col-lg-8 col-md-10 col-sm-10">
     <div class="panel-heading">
         Nous apprécions votre point de vue!
     </div>
@@ -33,7 +33,7 @@
                 <div class="col-lg-12">
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea class="form-control" name="message" id="message" placeholder="Laissez votre message..."></textarea>
+                        <textarea class="form-control" name="message" id="message" rows="12" placeholder="Laissez votre message..."></textarea>
                     </div>
                     <div class="form-group text-right">
                         <button type="submit" class="btn btn-primary">Envoyer</button>

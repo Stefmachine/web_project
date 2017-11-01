@@ -27,4 +27,15 @@
             </div>
         </div>
     </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <?php if(!empty($_data["name"]) && $_data["name"] == "InvalidIdentifiers"){ ?>
+                        <div class="red"><?= $_data["message"] ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

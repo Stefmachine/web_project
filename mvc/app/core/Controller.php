@@ -4,6 +4,13 @@ require_once __DIR__."/../configs/PageConfig.php";
 
 class Controller
 {
+    const APP_DIR = __DIR__ . "/..";
+    const VIEWS_DIR = __DIR__."/../views";
+    const MODELS_DIR = __DIR__."/../models";
+    const REPOSITORIES_DIR = __DIR__."/../repositories";
+    const CONTROLLERS_DIR = __DIR__."/../controllers";
+    const TEMPLATES_DIR = __DIR__."/../views/templates";
+
     /**
      * @var PageConfig[] $configs
      */
@@ -24,17 +31,37 @@ class Controller
     }
 
     protected function model($_model){
-        $modelPath = __DIR__."/../models/$_model.php";
+        $modelPath = $this::MODELS_DIR."/$_model.php";
         if(file_exists($modelPath)) {
             require_once $modelPath;
+        }
+        else{
+            throw new Exception("The model $_model does not exist.");
+        }
+    }
+
+    /**
+     * @param string $_model
+     * @return Repository
+     * @throws Exception
+     */
+    protected function repository($_model){
+        $repositoryName = "{$_model}Repository";
+        $repoPath = $this::REPOSITORIES_DIR."/$repositoryName.php";
+        if(file_exists($repoPath)) {
+            require_once $repoPath;
+            return new $repositoryName;
+        }
+        else{
+            throw new Exception("The repository of $_model does not exist.");
         }
     }
 
     protected function view($_view, $_data = []){
         $_data["pageConfigs"] = $this->configs["$_view"];
         $_data["configs"] = $this->configs;
-        $viewPath = __DIR__."/../views/$_view.php";
-        $templatePath = __DIR__."/../views/templates/{$_data["pageConfigs"]->getTemplate()}.php";
+        $viewPath = $this::VIEWS_DIR."/$_view.php";
+        $templatePath = $this::TEMPLATES_DIR."/{$_data["pageConfigs"]->getTemplate()}.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
             ob_start();
             require_once $viewPath;
@@ -47,7 +74,7 @@ class Controller
     }
 
     protected function templateInclude($_file){
-        $includeFile = __DIR__."/../views/templates/includes/$_file.php";
+        $includeFile = $this::TEMPLATES_DIR."/includes/$_file.php";
         if(file_exists($includeFile)) {
             require_once $includeFile;
         }
@@ -65,11 +92,11 @@ class Controller
             $class = get_class($this);
         }
         else{
-            $class = RouteToClass($_controller);
+            $class = RouteToController($_controller);
         }
 
         $actions = false;
-        $controllerPath = __DIR__ . "/../controllers/$class.php";
+        $controllerPath = $this::CONTROLLERS_DIR."/$class.php";
         if(file_exists($controllerPath)) {
             require_once $controllerPath;
             if (class_exists($class)) {
@@ -82,7 +109,7 @@ class Controller
         $allRoutes = array();
         foreach ($actions as $route) {
             $parsedAction = MethodToRoute($route->name);
-            $parsedController = ClassToRoute($route->class);
+            $parsedController = ControllerToRoute($route->class);
             $allRoutes[] = "$parsedController/$parsedAction";
         }
 
@@ -91,7 +118,7 @@ class Controller
 
     protected function getAllRoutes(){
         $actions = array();
-        foreach (glob(__DIR__."/../controllers/*.php") as $controllerPath){
+        foreach (glob($this::CONTROLLERS_DIR."/*.php") as $controllerPath){
             require_once $controllerPath;
             $class = basename($controllerPath,".php");
             if(class_exists($class)){
@@ -104,7 +131,7 @@ class Controller
         $allRoutes = array();
         foreach ($actions as $route) {
             $parsedAction = MethodToRoute($route->name);
-            $parsedController = ClassToRoute($route->class);
+            $parsedController = ControllerToRoute($route->class);
             $allRoutes[] = "$parsedController/$parsedAction";
         }
 

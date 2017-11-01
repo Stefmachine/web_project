@@ -1,17 +1,17 @@
 <?php
-
+require_once "Entity.php";
 class Attribute extends Entity
 {
+    private $id = 0;
     private $name;
     private $description;
 
     /**
-     * Product constructor.
-     * @param int|null $_id
+     * @return int
      */
-    function __construct($_id = null)
+    public function getId()
     {
-        parent::__construct($_id);
+        return $this->id;
     }
 
     /**

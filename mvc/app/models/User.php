@@ -1,21 +1,22 @@
 <?php
 require_once "Entity.php";
-
 class User extends Entity
 {
+    private $id = 0;
     protected $username = "";
     protected $password = "";
     protected $firstName = "";
     protected $lastName = "";
+    protected $email = "";
 
     /**
-     * User constructor.
-     * @param int|null $_id
+     * @return int
      */
-    function __construct($_id = null)
+    public function getId()
     {
-        parent::__construct($_id);
+        return $this->id;
     }
+
     /**
      * @return string
      */
@@ -85,6 +86,24 @@ class User extends Entity
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
         return $this;
     }
 }

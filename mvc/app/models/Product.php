@@ -1,19 +1,20 @@
 <?php
+require_once "Entity.php";
 require_once "Attribute.php";
 class Product extends Entity
 {
+    private $id = 0;
     private $name = "";
     private $description = "";
     private $cost = (double)0.00;
     private $attributes = array();
 
     /**
-     * Product constructor.
-     * @param int|null $_id
+     * @return int
      */
-    function __construct($_id = null)
+    public function getId()
     {
-        parent::__construct($_id);
+        return $this->id;
     }
 
     /**
@@ -76,6 +77,15 @@ class Product extends Entity
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @param $_attribute
+     * @return $this
+     */
+    public function addAttribute($_attribute){
+        $this->attributes[] = $_attribute;
+        return $this;
     }
 
     /**
