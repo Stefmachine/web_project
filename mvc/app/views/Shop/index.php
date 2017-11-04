@@ -8,16 +8,16 @@
 <?php
 
 function makeProduct($title, $price, $id, $img) {
-    $var =
-        '
-	<div class="col-sm-4 text-center product">
-		<a href="/public/shop/product/' .$id . '">
-			<img class="thumbnail" src="' . $img . '"/>
-			<h2>' . $title . '</h2>
-			<h3>' . $price . '</h3>
-		</a>
-	</div>
-	';
+    ob_start()?>
+    <div class="col-sm-4 text-center product">
+        <a href="<?= GlobalHelper::pageLink("shop/product/$id")?>">
+            <img class="thumbnail" src="<?= $img ?>"/>
+            <h2><?= $title ?></h2>
+            <h3><?= $price ?></h3>
+        </a>
+    </div>
+    <?php
+    $var = ob_get_clean();
     return $var;
 }
 

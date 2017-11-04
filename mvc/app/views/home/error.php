@@ -23,7 +23,7 @@ $error = $_data["error"]; ?>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <a class="btn btn-primary" href="/public/home/index">Retour à la page d'accueil</a>
+                    <a class="btn btn-primary" href="<?= GlobalHelper::pageLink("home/index")?>" >Retour à la page d'accueil</a>
                 </div>
             </div>
         </div>

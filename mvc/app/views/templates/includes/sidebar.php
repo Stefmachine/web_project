@@ -9,17 +9,17 @@ $allConfigs = $this->configs;
     <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
             <li>
-                <a href="<?= $this->getLink("home/index"); ?>">
+                <a href="<?= GlobalHelper::pageLink("home/index"); ?>">
                     <i class=""></i><?= $allConfigs["home/index"]->getTitle(); ?>
                 </a>
             </li>
             <li>
-                <a href="<?= $this->getLink("home/contact"); ?>">
+                <a href="<?= GlobalHelper::pageLink("home/contact"); ?>">
                     <i class=""></i><?= $allConfigs["home/contact"]->getTitle(); ?>
                 </a>
             </li>
             <li>
-                <a href="<?= $this->getLink("shop/index"); ?>">
+                <a href="<?= GlobalHelper::pageLink("shop/index"); ?>">
                     <i class=""></i><?= $allConfigs["shop/index"]->getTitle(); ?>
                 </a>
             </li>

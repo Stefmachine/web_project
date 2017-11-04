@@ -32,14 +32,14 @@ class UserController extends Controller
             $user = $userRepository->findOneBy(array("username" => $username, "password" => $password));
             if(!empty($user)){
                 $_SESSION["user"] = $user;
-                header("location:/public");
+                GlobalHelper::redirect();
             }
             else{
-                header("location:/public/user/login/error1");
+                GlobalHelper::redirect("user/login/error1");
             }
         }
         else{
-            header("location:/public/user/login/error2");
+            GlobalHelper::redirect("user/login/error2");
         }
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
      */
     function logoutAction(){
         removeXSession("user");
-        header("location:/public");
+        GlobalHelper::redirect();
     }
 
     /**

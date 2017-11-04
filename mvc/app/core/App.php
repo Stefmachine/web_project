@@ -2,6 +2,7 @@
 require_once "ConvenientFunctions.php";
 require_once "Secure.php";
 require_once "../app/models/User.php";
+require_once "GlobalHelper.php";
 class App
 {
     protected $controller = 'HomeController';
@@ -44,7 +45,7 @@ class App
         }
 
         if(!$this->userIsConnected()) {
-            $security = new Secure("/public/user/login");
+            $security = new Secure(GlobalHelper::pageLink("user/login"));
             $security->validateSecurity($this->controller, $this->method);
         }
 

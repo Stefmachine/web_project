@@ -33,7 +33,7 @@ function setXSession($_key,$_value){
 }
 
 function resource($_resource){
-    $resourcePath = "/public/resources/$_resource";
+    $resourcePath = "resources/$_resource";
     return $resourcePath;
 }
 

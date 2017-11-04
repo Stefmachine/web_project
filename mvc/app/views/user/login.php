@@ -5,7 +5,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-lg-12">
-                <form id="login-form" role="form" action="/public/user/validateLogin" method="post">
+                <form id="login-form" role="form" action="<?= GlobalHelper::pageLink("user/validateLogin")?>" method="post">
                     <div class="form-group">
                         <label>Nom d'utilisateur</label>
                         <input class="form-control" name="username" id="username" placeholder="Nom d'utilisateur">

@@ -81,12 +81,6 @@ class Controller
         return false;
     }
 
-    protected function getLink($_route){
-        $parsedRoute = "/public/$_route";
-
-        return $parsedRoute;
-    }
-
     protected function getControllerRoutes($_controller = ''){
         if(empty($_controller)){
             $class = get_class($this);
@@ -143,7 +137,7 @@ class Controller
      */
     function ExceptionHandler($exception){
         $_SESSION["error"] = $exception;
-        header("location:/public/home/error");
+        GlobalHelper::redirect("home/error");
     }
 
     /**
