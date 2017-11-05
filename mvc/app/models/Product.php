@@ -8,6 +8,7 @@ class Product extends Entity
     private $description = "";
     private $cost = (double)0.00;
     private $attributes = array();
+	private $picture = "";
 
     /**
      * @return int
@@ -71,6 +72,24 @@ class Product extends Entity
         return $this;
     }
 
+	/**
+     * @return string
+     */
+	 public function getPicture()
+	 {
+		 return $this->picture;
+	 }
+	 
+	 /**
+	  * @param string $picture
+	  * @return Product
+	  */
+	 public function setPicture($_picture)
+	 {
+		 $this->picture = $_picture;
+		 return $this;
+	 }
+	
     /**
      * @return Attribute[]
      */
