@@ -63,11 +63,6 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.js");?>" ></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/raphael/raphael.min.js");?>" ></script>
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.min.js");?>" ></script>
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/data/morris-data.js");?>" ></script>
-
 <!-- Custom Theme JavaScript -->
 <script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.js");?>" ></script>
 
