@@ -4,7 +4,7 @@
             <h2>Welcome to OOZE's main page</h2>
         </div>
         <div class="row">
-            <img src="public/resources/img/ad1.PNG">" alt="This is an ad for the Poutinator"/>
+            <img src="public/resources/img/ad1.PNG" alt="This is an ad for the Poutinator"/>
         </div>
     </div>
 </div>
