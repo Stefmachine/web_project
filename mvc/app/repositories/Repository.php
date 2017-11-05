@@ -1,5 +1,5 @@
 <?php
-require_once "DatabaseConnector.php";
+
 abstract class Repository
 {
     protected $model;
@@ -40,8 +40,6 @@ abstract class Repository
         if(!file_exists($modelPath)){
             throw new Exception("Repository name ($repository) doesn't match any model.");
         }
-
-        require_once $modelPath;
 
         return $modelName;
     }

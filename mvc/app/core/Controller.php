@@ -1,6 +1,4 @@
 <?php
-require_once "ConvenientFunctions.php";
-require_once __DIR__."/../configs/PageConfig.php";
 
 class Controller
 {
@@ -32,10 +30,7 @@ class Controller
 
     protected function model($_model){
         $modelPath = $this::MODELS_DIR."/$_model.php";
-        if(file_exists($modelPath)) {
-            require_once $modelPath;
-        }
-        else{
+        if(!file_exists($modelPath)) {
             throw new Exception("The model $_model does not exist.");
         }
     }
@@ -49,7 +44,6 @@ class Controller
         $repositoryName = "{$_model}Repository";
         $repoPath = $this::REPOSITORIES_DIR."/$repositoryName.php";
         if(file_exists($repoPath)) {
-            require_once $repoPath;
             return new $repositoryName;
         }
         else{
@@ -92,7 +86,6 @@ class Controller
         $actions = false;
         $controllerPath = $this::CONTROLLERS_DIR."/$class.php";
         if(file_exists($controllerPath)) {
-            require_once $controllerPath;
             if (class_exists($class)) {
                 $refClass = new ReflectionClass($class);
                 $methods = $refClass->getMethods();
@@ -113,7 +106,6 @@ class Controller
     protected function getAllRoutes(){
         $actions = array();
         foreach (glob($this::CONTROLLERS_DIR."/*.php") as $controllerPath){
-            require_once $controllerPath;
             $class = basename($controllerPath,".php");
             if(class_exists($class)){
                 $refClass = new ReflectionClass($class);

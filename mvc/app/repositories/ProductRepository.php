@@ -1,5 +1,5 @@
 <?php
-require_once "Repository.php";
+
 class ProductRepository extends Repository
 {
     function find($_id)

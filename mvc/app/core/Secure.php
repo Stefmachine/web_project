@@ -1,5 +1,5 @@
 <?php
-require_once "AnnotationReader.php";
+
 class Secure extends AnnotationReader
 {
     private $headerRedirect;

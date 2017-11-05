@@ -1,8 +1,7 @@
 <?php
+
 require_once "ConvenientFunctions.php";
-require_once "Secure.php";
-require_once "../app/models/User.php";
-require_once "GlobalHelper.php";
+
 class App
 {
     protected $controller = 'HomeController';
@@ -26,7 +25,6 @@ class App
             }
         }
 
-        require_once "../app/controllers/$this->controller.php";
         $this->controller = new $this->controller;
 
         if(isset($url[1])){
@@ -59,8 +57,8 @@ class App
 
     public function parseUrl()
     {
-        if(!empty(XGet("url"))){
-            return $url = explode("/",filter_var(rtrim(XGet("url"), "/"),FILTER_SANITIZE_URL));
+        if(!empty(GlobalHelper::XGet("url"))){
+            return $url = explode("/",filter_var(rtrim(GlobalHelper::XGet("url"), "/"),FILTER_SANITIZE_URL));
         }
     }
 

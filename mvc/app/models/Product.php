@@ -1,13 +1,11 @@
 <?php
-require_once "Entity.php";
-require_once "Attribute.php";
+
 class Product extends Entity
 {
     private $id = 0;
     private $name = "";
     private $description = "";
     private $cost = (double)0.00;
-    private $attributes = array();
 	private $picture = "";
 
     /**
@@ -89,31 +87,4 @@ class Product extends Entity
 		 $this->picture = $_picture;
 		 return $this;
 	 }
-	
-    /**
-     * @return Attribute[]
-     */
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * @param $_attribute
-     * @return $this
-     */
-    public function addAttribute($_attribute){
-        $this->attributes[] = $_attribute;
-        return $this;
-    }
-
-    /**
-     * @param Attribute[] $_attributes
-     * @return Product
-     */
-    public function setAttributes($_attributes)
-    {
-        $this->attributes = $_attributes;
-        return $this;
-    }
 }
