@@ -2,12 +2,12 @@
 
 class Controller
 {
-    public $APP_DIR = __DIR__ . "/..";
-    public $VIEWS_DIR = __DIR__."/../views";
-    public $MODELS_DIR = __DIR__."/../models";
-    public $REPOSITORIES_DIR = __DIR__."/../repositories";
-    public $CONTROLLERS_DIR = __DIR__."/../controllers";
-    public $TEMPLATES_DIR = __DIR__."/../views/templates";
+    public $APP_DIR;
+    public $VIEWS_DIR;
+    public $MODELS_DIR;
+    public $REPOSITORIES_DIR;
+    public $CONTROLLERS_DIR;
+    public $TEMPLATES_DIR;
 
     /**
      * @var PageConfig[] $configs
@@ -16,6 +16,13 @@ class Controller
 
     function __construct()
     {
+        $this->APP_DIR = __DIR__ . "/..";
+        $this->VIEWS_DIR = __DIR__."/../views";
+        $this->MODELS_DIR = __DIR__."/../models";
+        $this->REPOSITORIES_DIR = __DIR__."/../repositories";
+        $this->CONTROLLERS_DIR = __DIR__."/../controllers";
+        $this->TEMPLATES_DIR = __DIR__."/../views/templates";
+        
         $pageConfigs = json_decode(file_get_contents(__DIR__."/../configs/pagesConfigs.json"),true);
         foreach ($pageConfigs as $controller => $config){
             if($controller != "default") {
