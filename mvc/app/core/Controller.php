@@ -58,21 +58,13 @@ class Controller
         $templatePath = $this::TEMPLATES_DIR."/{$_data["pageConfigs"]->getTemplate()}.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
             ob_start();
-            require_once $viewPath;
+            include_once $viewPath;
             $content = ob_get_clean();
-            require_once $templatePath;
+            include_once $templatePath;
         }
         else{
             throw new Exception("View ($_view) does not exist.");
         }
-    }
-
-    protected function templateInclude($_file){
-        $includeFile = $this::TEMPLATES_DIR."/includes/$_file.php";
-        if(file_exists($includeFile)) {
-            require_once $includeFile;
-        }
-        return false;
     }
 
     protected function getControllerRoutes($_controller = ''){

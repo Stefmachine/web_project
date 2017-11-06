@@ -26,8 +26,8 @@ class UserController extends Controller
      */
     function validateLogin(){
         $userRepository = $this->repository("User");
-        $username = XPost("username");
-        $password = XPost("password");
+        $username = GlobalHelper::XPost("username");
+        $password = GlobalHelper::XPost("password");
         if($username && $password) {
             $user = $userRepository->findOneBy(array("username" => $username, "password" => $password));
             if(!empty($user)){
@@ -47,7 +47,7 @@ class UserController extends Controller
      * @Secured
      */
     function logoutAction(){
-        removeXSession("user");
+        GlobalHelper::removeXSession("user");
         GlobalHelper::redirect();
     }
 
