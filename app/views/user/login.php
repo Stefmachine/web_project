@@ -13,12 +13,12 @@
                     <div class="form-group">
                         <label>Mot de passe</label>
                         <input class="form-control" name="password" id="password" type="password">
-                        <a class="help-block">Mot de passe oublié?</a>
+                        <a href="<?= GlobalHelper::pageLink("user/passwordRecovery") ?>" class="help-block">Mot de passe oublié?</a>
                     </div>
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" value="">Se rappeller de moi
+                                <input type="checkbox" value="">Se souvenir de moi
                             </label>
                         </div>
                     </div>
@@ -27,12 +27,15 @@
             </div>
         </div>
     </div>
-    <div class="panel-body">
+    <?php if(!empty($_data["type"])){
+        $cssClass = ($_data["type"] == "error") ? "alert-danger" : "alert-success";
+    } ?>
+    <div class="panel-footer <?= (isset($cssClass) ? $cssClass : ""); ?>">
         <div class="row">
             <div class="col-lg-12">
                 <div>
-                    <?php if(!empty($_data["name"])){ ?>
-                        <div class="red"><?= $_data["message"] ?></div>
+                    <?php if(!empty($_data["type"])){ ?>
+                        <div><?= $_data["message"] ?></div>
                     <?php } ?>
                 </div>
             </div>

@@ -35,6 +35,9 @@
     },
     "cart":{
       "title":"Panier"
+    },
+    "passwordRecovery":{
+      "title":"Récupération de mot de passe"
     }
   }
 }

@@ -20,12 +20,22 @@ class UserController extends Controller
         }
     }
 
+    function passwordRecoveryAction(){
+        $this->view("user/passwordRecovery");
+    }
+
+    function sendPassword(){
+        //todo: Send mail for password recovery
+        GlobalHelper::redirect("user/login/mailSent");
+    }
+
     /**
      * Login form view
      */
     function loginAction($_error = ""){
-        $error1 = array("name" => "InvalidIdentifiers","message" => "Le nom d'utilisateur et/ou le mot de passe sont invalides.");
-        $error2 = array("name" => "MissingIdentifiers","message" => "Vous devez inscrire un nom d'utilisateur et un mot de passe pour vous connecter.");
+        $error1 = array("type" => "error","message" => "Le nom d'utilisateur et/ou le mot de passe sont invalides.");
+        $error2 = array("tpe" => "error","message" => "Vous devez inscrire un nom d'utilisateur et un mot de passe pour vous connecter.");
+        $mailSent = array("type" => "success","message" => "Un lien pour récupérer votre mot de passe vous parviendra sous peu à l'adresse indiqué.");
 
         $loginError = isset($$_error) ? $$_error : array();
         $this->view("user/login",$loginError);

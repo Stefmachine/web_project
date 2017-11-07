@@ -66,6 +66,8 @@
 <!-- Custom Theme JavaScript -->
 <script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.js");?>" ></script>
 
+<script src="<?= resource("/jquery-validation-1.17.0/dist/jquery.validate.js") ?>"></script>
+
 </body>
 
 </html>

@@ -74,6 +74,10 @@ class Controller
             include_once $viewPath;
             $content = ob_get_clean();
             include_once $templatePath;
+            $viewParts = explode("/",$_view);
+            if(file_exists(__DIR__."/../../public/js/{$viewParts[0]}.{$viewParts[1]}.js")) {
+                include_once $this->TEMPLATES_DIR . "/includes/javascript.php";
+            }
         }
         else{
             throw new Exception("View ($_view) does not exist.");

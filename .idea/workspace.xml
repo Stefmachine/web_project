@@ -2,214 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d13d0a94-0f22-48fd-9285-c2fadaee5db5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/core/ViewConfigReader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/Entity.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mvc/app/core/ConvenientFunctions.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mvc/app/models/Entity.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mvc/public/index.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/configs/PageConfig.php" afterPath="$PROJECT_DIR$/app/configs/PageConfig.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/configs/pagesConfigs.json" afterPath="$PROJECT_DIR$/app/configs/pagesConfigs.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/controllers/HomeController.php" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/controllers/ShopController.php" afterPath="$PROJECT_DIR$/app/controllers/ShopController.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/controllers/UserController.php" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/Annotation.php" afterPath="$PROJECT_DIR$/app/core/Annotation.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/AnnotationReader.php" afterPath="$PROJECT_DIR$/app/core/AnnotationReader.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/App.php" afterPath="$PROJECT_DIR$/app/core/App.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/Controller.php" afterPath="$PROJECT_DIR$/app/core/Controller.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/GlobalHelper.php" afterPath="$PROJECT_DIR$/app/core/GlobalHelper.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/core/Secure.php" afterPath="$PROJECT_DIR$/app/core/Secure.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/init.php" afterPath="$PROJECT_DIR$/app/init.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/models/Product.php" afterPath="$PROJECT_DIR$/app/models/Product.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/models/User.php" afterPath="$PROJECT_DIR$/app/models/User.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/models/order.php" afterPath="$PROJECT_DIR$/app/models/order.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/repositories/DatabaseConnector.php" afterPath="$PROJECT_DIR$/app/repositories/DatabaseConnector.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/repositories/ProductRepository.php" afterPath="$PROJECT_DIR$/app/repositories/ProductRepository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/repositories/Repository.php" afterPath="$PROJECT_DIR$/app/repositories/Repository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/repositories/UserRepository.php" afterPath="$PROJECT_DIR$/app/repositories/UserRepository.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/Shop/index.php" afterPath="$PROJECT_DIR$/app/views/Shop/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/Shop/product.php" afterPath="$PROJECT_DIR$/app/views/Shop/product.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/home/contact.php" afterPath="$PROJECT_DIR$/app/views/home/contact.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/home/error.php" afterPath="$PROJECT_DIR$/app/views/home/error.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/home/index.php" afterPath="$PROJECT_DIR$/app/views/home/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/templates/default.php" afterPath="$PROJECT_DIR$/app/views/templates/default.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/templates/empty.php" afterPath="$PROJECT_DIR$/app/views/templates/empty.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/templates/includes/footer.php" afterPath="$PROJECT_DIR$/app/views/templates/includes/footer.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/templates/includes/header.php" afterPath="$PROJECT_DIR$/app/views/templates/includes/header.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/templates/includes/sidebar.php" afterPath="$PROJECT_DIR$/app/views/templates/includes/sidebar.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/user/cart.php" afterPath="$PROJECT_DIR$/app/views/user/cart.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/user/login.php" afterPath="$PROJECT_DIR$/app/views/user/login.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/app/views/user/profile.php" afterPath="$PROJECT_DIR$/app/views/user/profile.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/.gitignore" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/.gitignore" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/LICENSE" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/LICENSE" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/README.md" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/README.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/bower.json" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/bower.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/data/flot-data.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/data/flot-data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/data/morris-data.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/data/morris-data.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/dist/css/sb-admin-2.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/dist/css/sb-admin-2.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/dist/css/sb-admin-2.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/dist/css/sb-admin-2.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/gulpfile.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/gulpfile.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/index.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/js/sb-admin-2.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/js/sb-admin-2.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/less/mixins.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/less/mixins.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/less/sb-admin-2.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/less/sb-admin-2.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/less/variables.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/less/variables.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/package.json" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/package.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/blank.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/blank.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/buttons.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/buttons.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/flot.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/flot.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/forms.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/forms.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/grid.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/grid.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/icons.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/icons.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/index.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/login.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/login.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/morris.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/morris.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/notifications.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/notifications.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/panels-wells.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/panels-wells.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/tables.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/tables.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/pages/typography.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/typography.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap-social/bootstrap-social.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/js/bootstrap.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/js/bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/js/bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/dataTables.bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/index.html" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-plugins/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables-responsive/dataTables.responsive.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap4.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap4.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap4.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.bootstrap4.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.foundation.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.foundation.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.foundation.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.foundation.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.jqueryui.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.jqueryui.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.jqueryui.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.jqueryui.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.material.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.material.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.material.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.material.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.semanticui.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.semanticui.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.semanticui.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.semanticui.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.uikit.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.uikit.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.uikit.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/dataTables.uikit.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables_themeroller.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/css/jquery.dataTables_themeroller.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/Sorting icons.psd" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/Sorting icons.psd" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/favicon.ico" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/favicon.ico" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_asc.png" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_asc.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_asc_disabled.png" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_asc_disabled.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_both.png" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_both.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_desc.png" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_desc.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_desc_disabled.png" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/images/sort_desc_disabled.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap4.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap4.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap4.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.bootstrap4.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.foundation.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.foundation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.foundation.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.foundation.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.jqueryui.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.jqueryui.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.jqueryui.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.jqueryui.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.material.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.material.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.material.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.material.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.semanticui.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.semanticui.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.semanticui.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.semanticui.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.uikit.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.uikit.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.uikit.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/dataTables.uikit.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.dataTables.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.dataTables.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.dataTables.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.dataTables.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/datatables/js/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.source.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot-tooltip/jquery.flot.tooltip.source.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/excanvas.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/excanvas.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/excanvas.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/excanvas.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.colorhelpers.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.colorhelpers.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.canvas.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.canvas.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.categories.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.categories.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.crosshair.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.crosshair.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.errorbars.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.errorbars.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.fillbetween.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.fillbetween.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.image.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.image.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.navigate.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.navigate.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.pie.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.pie.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.resize.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.resize.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.selection.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.selection.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.stack.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.stack.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.symbol.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.symbol.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.threshold.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.threshold.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.time.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.flot.time.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/flot/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/HELP-US-OUT.txt" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/HELP-US-OUT.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.css.map" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.css.map" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/FontAwesome.otf" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/FontAwesome.otf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.eot" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.eot" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.svg" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.ttf" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.woff" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.woff" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/fonts/fontawesome-webfont.woff2" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/animated.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/animated.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/bordered-pulled.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/bordered-pulled.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/core.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/core.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/extras.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/extras.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/fixed-width.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/fixed-width.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/font-awesome.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/font-awesome.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/icons.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/icons.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/larger.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/larger.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/list.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/list.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/mixins.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/mixins.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/path.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/path.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/rotated-flipped.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/rotated-flipped.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/screen-reader.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/screen-reader.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/spinning.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/spinning.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/stacked.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/stacked.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/variables.less" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/less/variables.less" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_animated.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_animated.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_bordered-pulled.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_bordered-pulled.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_core.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_core.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_extras.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_extras.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_fixed-width.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_fixed-width.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_icons.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_icons.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_larger.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_larger.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_list.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_list.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_mixins.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_mixins.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_path.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_path.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_rotated-flipped.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_rotated-flipped.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_screen-reader.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_screen-reader.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_spinning.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_spinning.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_stacked.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_stacked.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_variables.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/_variables.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/font-awesome.scss" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/scss/font-awesome.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.css" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/raphael/raphael.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/raphael/raphael.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/bootstrap/theme-sb-admin-2-gh/vendor/raphael/raphael.min.js" afterPath="$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/vendor/raphael/raphael.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/css/master.css" afterPath="$PROJECT_DIR$/public/css/master.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/img/ad1.PNG" afterPath="$PROJECT_DIR$/public/img/ad1.PNG" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mvc/public/resources/js/ajax.js" afterPath="$PROJECT_DIR$/public/js/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/templates/includes/javascript.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user/passwordRecovery.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/home.contact.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/configs/pagesConfigs.json" afterPath="$PROJECT_DIR$/app/configs/pagesConfigs.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/UserController.php" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/core/Controller.php" afterPath="$PROJECT_DIR$/app/core/Controller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/templates/default.php" afterPath="$PROJECT_DIR$/app/views/templates/default.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/user/login.php" afterPath="$PROJECT_DIR$/app/views/user/login.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -271,75 +72,19 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="84" lean-forward="false" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/core/App.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="46" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/user/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/templates/includes/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="34" column="11" lean-forward="false" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sidebar.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/templates/includes/sidebar.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="22" column="77" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="324" column="96" lean-forward="false" selection-start-line="324" selection-start-column="96" selection-end-line="324" selection-end-column="126" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>require_once</find>
       <find>re</find>
       <find>resour</find>
-      <find>resource</find>
       <find>dir</find>
       <find>di</find>
       <find>__</find>
@@ -366,6 +111,8 @@
       <find>$productCount</find>
       <find>l</find>
       <find>location</find>
+      <find>r</find>
+      <find>resource</find>
     </findStrings>
     <replaceStrings>
       <replace>$allConfigs</replace>
@@ -383,11 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mvc/.htaccess" />
-        <option value="$PROJECT_DIR$/web/views/pages/shop.php" />
-        <option value="$PROJECT_DIR$/web/views/templates/product.php" />
-        <option value="$PROJECT_DIR$/mvc/app/models/Attribute.php" />
-        <option value="$PROJECT_DIR$/mvc/app/repositories/DatabaseConnector.php" />
         <option value="$PROJECT_DIR$/mvc/public/.htaccess" />
         <option value="$PROJECT_DIR$/mvc/app/views/home/error.php" />
         <option value="$PROJECT_DIR$/mvc/app/views/Shop/index.php" />
@@ -417,8 +159,6 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/app/core/GlobalHelper.php" />
         <option value="$PROJECT_DIR$/app/core/ConvenientFunctions.php" />
-        <option value="$PROJECT_DIR$/app/views/user/login.php" />
-        <option value="$PROJECT_DIR$/app/core/Controller.php" />
         <option value="$PROJECT_DIR$/app/core/ViewConfigReader.php" />
         <option value="$PROJECT_DIR$/app/repositories/DatabaseConnector.php" />
         <option value="$PROJECT_DIR$/app/views/Shop/product.php" />
@@ -432,8 +172,15 @@
         <option value="$PROJECT_DIR$/app/views/templates/includes/header.php" />
         <option value="$PROJECT_DIR$/app/core/Secure.php" />
         <option value="$PROJECT_DIR$/app/core/App.php" />
-        <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/views/templates/includes/sidebar.php" />
+        <option value="$PROJECT_DIR$/app/configs/pagesConfigs.json" />
+        <option value="$PROJECT_DIR$/app/views/user/passwordRecovery.php" />
+        <option value="$PROJECT_DIR$/app/controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/app/views/user/login.php" />
+        <option value="$PROJECT_DIR$/app/views/templates/default.php" />
+        <option value="$PROJECT_DIR$/app/core/Controller.php" />
+        <option value="$PROJECT_DIR$/public/js/home.contact.js" />
+        <option value="$PROJECT_DIR$/app/views/templates/includes/javascript.php" />
       </list>
     </option>
   </component>
@@ -472,6 +219,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -497,26 +245,8 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web_project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_project" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme-sb-admin-2-gh" />
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -531,18 +261,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="theme-sb-admin-2-gh" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -746,9 +464,26 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web_project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web_project" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -986,11 +721,14 @@
       <workItem from="1510000986323" duration="1777000" />
       <workItem from="1510002792290" duration="1781000" />
       <workItem from="1510004598114" duration="1885000" />
+      <workItem from="1510029072032" duration="1816000" />
+      <workItem from="1510030913753" duration="1787000" />
+      <workItem from="1510032718812" duration="1618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169508000" />
+    <option name="totallyTimeSpent" value="174729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1004,11 +742,10 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3608742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37313432" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1020,6 +757,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1058,20 +796,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mvc/index.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/pages/contact_us.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/pages/history.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/pages/home.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/pages/profile.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/pages/shop.php" />
-    <entry file="file://$PROJECT_DIR$/web/views/templates/product.php" />
-    <entry file="file://$PROJECT_DIR$/public/css/master.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="36" column="21" lean-forward="true" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/repositories/UserRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -1099,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/templates/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="40" column="6" lean-forward="false" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/core/ConvenientFunctions.php" />
     <entry file="file://$PROJECT_DIR$/app/controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1119,14 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="25" column="93" lean-forward="false" selection-start-line="25" selection-start-column="93" selection-end-line="25" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1193,14 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1257,13 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/tables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7272">
-          <caret line="382" column="26" lean-forward="true" selection-start-line="382" selection-start-column="26" selection-end-line="382" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/Shop/product.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1296,14 +990,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/user/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="25" lean-forward="true" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ShopController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1320,18 +1006,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
+    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="84" lean-forward="false" selection-start-line="17" selection-start-column="84" selection-end-line="17" selection-end-column="84" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5832">
+          <caret line="324" column="96" lean-forward="false" selection-start-line="324" selection-start-column="96" selection-end-line="324" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/tables.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="382" column="26" lean-forward="true" selection-start-line="382" selection-start-column="26" selection-end-line="382" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/configs/pagesConfigs.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="43" lean-forward="false" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/passwordRecovery.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/jq_validate/demo/marketo/stylesheet.css" />
+    <entry file="file://$PROJECT_DIR$/public/jq_validate/build/release.js" />
+    <entry file="file://$PROJECT_DIR$/public/jq_validate/demo/index.html" />
+    <entry file="file://$PROJECT_DIR$/public/jquery-validation-1.17.0/demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="43" column="6" lean-forward="false" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
+          <folding>
+            <marker date="1510032728076" expanded="true" signature="1094:1139" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/templates/includes/sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="25" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/user/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/core/App.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="46" selection-end-column="23" />
+        <state relative-caret-position="810">
+          <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="46" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/templates/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="45" column="31" lean-forward="true" selection-start-line="45" selection-start-column="31" selection-end-line="45" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1344,26 +1111,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/index.html">
+    <entry file="file://$PROJECT_DIR$/app/views/templates/includes/javascript.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="54">
+          <caret line="3" column="81" lean-forward="false" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/bootstrap/theme-sb-admin-2-gh/pages/index.html">
+    <entry file="file://$PROJECT_DIR$/public/js/home.contact.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="324" column="96" lean-forward="false" selection-start-line="324" selection-start-column="96" selection-end-line="324" selection-end-column="126" />
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/templates/includes/sidebar.php">
+    <entry file="file://$PROJECT_DIR$/app/core/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="22" column="77" lean-forward="true" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="77" />
+        <state relative-caret-position="684">
+          <caret line="77" column="16" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
           <folding />
         </state>
       </provider>
