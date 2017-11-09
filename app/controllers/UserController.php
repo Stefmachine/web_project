@@ -5,6 +5,7 @@ class UserController extends Controller
     /**
      * Profile form view
      * @Secured
+     * @Page(title="Profile d'utilisateur")
      */
     function profileAction(){
         $userId = GlobalHelper::XSession("user");
@@ -20,6 +21,11 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Password recovery page
+     *
+     * @Page(title="Récupération de mot de passe")
+     */
     function passwordRecoveryAction(){
         $this->view("user/passwordRecovery");
     }
@@ -31,6 +37,8 @@ class UserController extends Controller
 
     /**
      * Login form view
+     *
+     * @Page(title="Connexion")
      */
     function loginAction($_error = ""){
         $error1 = array("type" => "error","message" => "Le nom d'utilisateur et/ou le mot de passe sont invalides.");
@@ -67,7 +75,10 @@ class UserController extends Controller
     }
 
     /**
+     * Logout the user
+     *
      * @Secured
+     * @Page(title="Déconnexion")
      */
     function logoutAction(){
         GlobalHelper::removeXSession("user");
@@ -77,6 +88,7 @@ class UserController extends Controller
     /**
      * Cart page view
      * @Secured
+     * @Page(title="Votre panier")
      */
     function cartAction(){
         $this->view("user/cart");

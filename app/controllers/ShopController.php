@@ -5,6 +5,8 @@ class ShopController extends Controller
     /**
      * Product list view
      *
+     * @Page(title="Catalogue")
+     *
      * @param int $_page
      * @param string $_tag
      */
@@ -23,6 +25,8 @@ class ShopController extends Controller
 
     /**
      * Single product view
+     *
+     * @Page(title="Produit")
      *
      * @param int $_id
      */

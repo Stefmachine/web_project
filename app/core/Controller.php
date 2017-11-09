@@ -23,14 +23,6 @@ class Controller
         $this->CONTROLLERS_DIR = __DIR__."/../controllers";
         $this->TEMPLATES_DIR = __DIR__."/../views/templates";
 
-        $pageConfigs = json_decode(file_get_contents(__DIR__."/../configs/pagesConfigs.json"),true);
-        foreach ($pageConfigs as $controller => $config){
-            if($controller != "default") {
-                foreach ($config as $pageName => $page){
-                    $this->configs[$controller."/".$pageName] = new PageConfig($page,$pageConfigs["default"],$controller, $pageName);
-                }
-            }
-        }
         @set_exception_handler(array($this,'ExceptionHandler'));
         @set_error_handler(array($this,'ErrorHandler'));
     }
@@ -65,16 +57,21 @@ class Controller
             return $resourcePath;
         }
 
-        $_data["pageConfigs"] = $this->configs["$_view"];
-        $_data["configs"] = $this->configs;
+        $viewParts = explode("/",$_view);
+        $_data["pageConfigs"] = $this->getViewConfigs($_view);
+        foreach ($this->getAllRoutes() as $route) {
+            $_data["configs"][$route] = $this->getViewConfigs($route);
+        }
+
+
         $viewPath = $this->VIEWS_DIR."/$_view.php";
-        $templatePath = $this->TEMPLATES_DIR."/{$_data["pageConfigs"]->getTemplate()}.php";
+        $templatePath = $this->TEMPLATES_DIR."/{$_data["pageConfigs"]["template"]}.php";
         if(file_exists($viewPath) && file_exists($templatePath)) {
             ob_start();
             include_once $viewPath;
             $content = ob_get_clean();
             include_once $templatePath;
-            $viewParts = explode("/",$_view);
+
             if(file_exists(__DIR__."/../../public/js/{$viewParts[0]}.{$viewParts[1]}.js")) {
                 include_once $this->TEMPLATES_DIR . "/includes/javascript.php";
             }
@@ -82,6 +79,16 @@ class Controller
         else{
             throw new Exception("View ($_view) does not exist.");
         }
+    }
+
+    protected function getViewConfigs($_view){
+        $reader = new AnnotationReader();
+        $viewParts = explode("/",$_view);
+        $config = $reader->getPage($this->RouteToController($viewParts[0]),$this->RouteToMethod($viewParts[1]));
+        $config["title"] = !empty($config ["title"]) ? $config["title"] : "" ;
+        $config["template"] = !empty($config["template"]) ? $config["template"] : "default" ;
+
+        return $config;
     }
 
     protected function getControllerRoutes($_controller = ''){

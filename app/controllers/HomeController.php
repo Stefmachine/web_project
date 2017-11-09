@@ -4,6 +4,8 @@ class HomeController extends Controller
 {
     /**
      * Home page view
+     *
+     * @Page(title="Accueil")
      */
     function indexAction()
     {
@@ -12,6 +14,8 @@ class HomeController extends Controller
 
     /**
      * Error page view
+     *
+     * @Page(title="Erreur",template="empty")
      */
     function errorAction(){
         if(!empty($_SESSION["error"])){
@@ -26,6 +30,8 @@ class HomeController extends Controller
 
     /**
      * Contact page view
+     *
+     * @Page(title="Nous joindre")
      */
     function contactAction(){
         $this->view("home/contact");

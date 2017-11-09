@@ -60,9 +60,22 @@ class AnnotationReader
      */
     private function sanitizeComment($_comments){
         $comments = $_comments;
+
+        while (strpos($comments,'"')){
+            $stringStart = strpos($comments,'"');
+            $stringEnd = strpos($comments,'"',$stringStart + 1);
+            $orig = substr($comments,$stringStart,$stringEnd - $stringStart + 1);
+            $rep = str_replace(" ", "+",$orig);
+            $rep = str_replace('"', "",$rep);
+            $comments = str_replace($orig,$rep,$comments);
+        }
+
+
         foreach (array("/**","*/"," ","\n","\r") as $string){
             $comments = str_replace($string,"",$comments);
         }
+        $comments = str_replace("+"," ",$comments);
+
         $comments = array_filter(explode("*",$comments));
         return $comments;
     }
@@ -85,5 +98,42 @@ class AnnotationReader
             }
         }
         return $parsedParams;
+    }
+
+    function __call($name, $arguments)
+    {
+        if(!empty($arguments[0])){
+            $class = $arguments[0];
+
+            if(!empty($arguments[1])){
+                $method = $arguments[1];
+                $annotations = $this->getMethodAnnotations($class,$method);
+            }
+            else{
+                $annotations = $this->getClassAnnotations($class);
+            }
+
+            if(substr($name,0,3) == "get") {
+                $lookedUpAnnotation = substr($name,3);
+                foreach ($annotations as $annotation){
+                    if($annotation->isAnnotationType($lookedUpAnnotation)){
+                        return $annotation->getParameters();
+                    }
+                }
+                throw new Exception("The annotation $lookedUpAnnotation is missing in $class" . (!empty($method) ? "on method $method." : "" ));
+            }
+            else if(substr($name,0,2) == "is"){
+                $lookedUpAnnotation = substr($name,2);
+                $isValid = false;
+                foreach ($annotations as $annotation){
+                    if($annotation->isAnnotationType($lookedUpAnnotation)){
+                        $isValid = true;
+                    }
+                }
+                return $isValid;
+            }
+        }
+
+        throw new BadMethodCallException("Method $name does not exist in AnnotationReader class.");
     }
 }

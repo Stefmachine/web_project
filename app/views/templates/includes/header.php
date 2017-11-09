@@ -27,26 +27,26 @@ if(!empty($userId)){
 <ul class="nav navbar-top-links navbar-right">
     <?php if(empty($user)){ ?>
         <li>
-            <a title="<?= $allConfigs["user/login"]->getTitle(); ?>" href="<?= GlobalHelper::pageLink("user/login"); ?>">
+            <a title="<?= $allConfigs["user/login"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/login"); ?>">
                 <i class="glyphicon glyphicon-log-in"></i>
             </a>
         </li>
     <?php } else { ?>
         <li>Bonjour <?= $user->getFirstName()," ",$user->getLastName(); ?></li>
         <li>
-            <a title="<?= $allConfigs["user/logout"]->getTitle(); ?>" href="<?= GlobalHelper::pageLink("user/logout"); ?>">
+            <a title="<?= $allConfigs["user/logout"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/logout"); ?>">
                 <i class="glyphicon glyphicon-log-out"></i>
             </a>
         </li>
         <li>
-            <a title="<?= $allConfigs["user/profile"]->getTitle(); ?>" href="<?= GlobalHelper::pageLink("user/profile"); ?>">
+            <a title="<?= $allConfigs["user/profile"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/profile"); ?>">
                 <i class="glyphicon glyphicon-user"></i>
             </a>
         </li>
     <?php } ?>
 
     <li>
-        <a title="<?= $allConfigs["user/cart"]->getTitle(); ?>" href="<?= GlobalHelper::pageLink("user/cart"); ?>">
+        <a title="<?= $allConfigs["user/cart"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/cart"); ?>">
             <i class="glyphicon glyphicon-shopping-cart"></i>
         </a>
     </li>

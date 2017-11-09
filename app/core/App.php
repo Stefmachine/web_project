@@ -41,7 +41,7 @@ class App
         }
 
         if(!$this->userIsConnected()) {
-            $security = new Secure();
+            $security = new AnnotationReader();
             if($security->isSecured($this->controller, $this->method)){
                 GlobalHelper::redirect("user/login");
                 exit();

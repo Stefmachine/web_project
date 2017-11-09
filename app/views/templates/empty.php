@@ -9,7 +9,7 @@
     <meta name="description" content="Site web pour projet final en web III">
     <meta name="author" content="Christian Medel & Stéphane Godin">
 
-    <title><?= $_data["pageConfigs"]->getTitle(); ?></title>
+    <title><?= $_data["pageConfigs"]["title"]; ?></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">

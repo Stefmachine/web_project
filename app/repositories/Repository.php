@@ -62,9 +62,6 @@ abstract class Repository
         return $table;
     }
 
-    /**
-     * @param Entity $_entity
-     */
     public function persist($_entity){
         try {
             if ($_entity->getId()) {
@@ -81,9 +78,6 @@ abstract class Repository
         }
     }
 
-    /**
-     * @param Entity $_entity
-     */
     private function updateEntity($_entity){
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
@@ -99,9 +93,6 @@ abstract class Repository
         $this->db()->update($table)->set($updateFields)->where("id = $id")->execute();
     }
 
-    /**
-     * @param Entity $_entity
-     */
     private function insertEntity($_entity){
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();

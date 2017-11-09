@@ -1,8 +1,5 @@
 <?php
-/**
- * @var PageConfig[] $allConfigs
- */
-$allConfigs = $this->configs;
+$allConfigs = $_data["configs"];
 
 ?>
 <div class="navbar-default sidebar" role="navigation">
@@ -10,12 +7,12 @@ $allConfigs = $this->configs;
         <ul class="nav nav-first-level" id="side-menu">
             <li>
                 <a href="<?= GlobalHelper::pageLink("home/index"); ?>">
-                    <i class=""></i><?= $allConfigs["home/index"]->getTitle(); ?>
+                    <i class=""></i><?= $allConfigs["home/index"]["title"]; ?>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class=""></i><?= $allConfigs["shop/index"]->getTitle(); ?>
+                    <i class=""></i><?= $allConfigs["shop/index"]["title"]; ?>
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
@@ -57,7 +54,7 @@ $allConfigs = $this->configs;
             </li>
             <li>
                 <a href="<?= GlobalHelper::pageLink("home/contact"); ?>">
-                    <i class=""></i><?= $allConfigs["home/contact"]->getTitle(); ?>
+                    <i class=""></i><?= $allConfigs["home/contact"]["title"]; ?>
                 </a>
             </li>
         </ul>
