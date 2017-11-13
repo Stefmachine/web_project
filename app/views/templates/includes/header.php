@@ -20,7 +20,7 @@ if(!empty($userId)){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>">OOZE</a>
+    <a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>"><img src="<?= resource("img/lch-min.png");?>" alt="Los Charros Hermanos"/></a>
 </div>
 <!-- /.navbar-header -->
 

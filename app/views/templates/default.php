@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="<?= resource("css/master.css"); ?>" type="text/css">
 
     <script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.min.js");?>" ></script>
+	<link rel="shortcut icon" href=" <?= resource("img/favicon.ico"); ?>"/>
+	
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -53,6 +55,8 @@
         </div>
         <?= $content ?>
     </div>
+	
+	<?php include_once "includes/footer.php"; ?>
 </div>
 
 <!-- jQuery -->
