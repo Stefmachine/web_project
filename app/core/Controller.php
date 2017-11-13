@@ -9,11 +9,6 @@ class Controller
     public $CONTROLLERS_DIR;
     public $TEMPLATES_DIR;
 
-    /**
-     * @var PageConfig[] $configs
-     */
-    private $configs;
-
     function __construct()
     {
         $this->APP_DIR = __DIR__ . "/..";

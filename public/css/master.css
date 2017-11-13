@@ -1,49 +1,49 @@
+body
+{
+	font-size: 20px;
+}
+
 .glyphicon
 {
-	font-size: 25px;
+font-size: 25px;
 }
 
 .user-icons
 {
-	margin-top: 15px;
-	margin-bottom: 15px;
+margin-top: 15px;
+margin-bottom: 15px;
 }
 
 .content
 {
-	font-size: 16px;
+font-size: 16px;
 }
 
 .grid
 {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	background-color: #E6E6E6;
-	border: inset 1px #A0A0A0;
+margin-top: 20px;
+margin-bottom: 20px;
+background-color: #E6E6E6;
+border: inset 1px #A0A0A0;
 }
 
 .grid .product {
-	padding: 20px 30px;
+padding: 20px 30px;
 }
 
 .thumbnail
 {
-	height: 100%;
-	width: 100%;
+height: 100%;
+width: 100%;
 }
 
 .big-icon
 {
-	font-size: 150px;
+font-size: 150px;
 }
 
 .red
 {
-	color: red;
+color: red;
 }
 
-body
-{
-	overflow: -moz-scrollbars-vertical!important;
-	overflow-y: scroll!important;
-}
