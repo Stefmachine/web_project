@@ -19,7 +19,7 @@ if(!empty($userId)){
 <div class="header <?= $enableBanner ? "" : "head" ?>">
     <div class="container">
         <div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-            <h1><a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>"><img src="<?= resource("img/lch-min.png");?>" alt="Los Charros Hermanos"/></a></h1>
+            <h1><a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>"><img src="<?= resource("img/pages/logo.png");?>" alt="Los Charros Hermanos"/></a></h1>
         </div>
         <div class="nav-icon">
             <a href="#" class="navicon"></a>
@@ -49,7 +49,7 @@ if(!empty($userId)){
     </div>
     <?php if($enableBanner){ ?>
     <div class="banner">
-        <p class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">Le meilleur magasin en ligne de nourriture mexicaine.</p>
+        <p class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">Le meilleur restaurant mexicain en ligne.</p>
         <label></label>
         <h4 class="animated wow fadeInTop" data-wow-duration="1000ms" data-wow-delay="500ms">Bienvenue sur Los Charros Hermanos</h4>
         <a class="scroll down" href="#content-down"><img src="<?= resource("/eshop-theme/images/down.png");?>" alt=""></a>
