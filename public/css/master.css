@@ -41,11 +41,6 @@ font-size: 150px;
 color: red;
 }
 
-.footer {
-	padding: 30px 10px;
-	background-color: rgba(0,0,0,0.01);
-}
-
 .s-10 {
 	padding: 10px 0;
 }
@@ -60,49 +55,49 @@ color: red;
 
 
 .hover-fold .top .imgtopleft{
-	background: url(../img/pages/tacos1.jpg) top;
+	background: url(../img/pages/tacos.jpg) top;
 }
 
-.hover-fold .bottom .imgtopleft{
-	background: url(../img/pages/tacos2.jpg) top;
-}
-
-.hover-fold .top .imgtopcenter{
-	background: url(../img/pages/tortillas1.jpg) top;
-}
-
-.hover-fold .bottom .imgtopcenter{
-	background: url(../img/pages/tortillas2.jpg) top;
-}
-
-.hover-fold .top .imgtopright{
-	background: url(../img/pages/quesadilla1.jpg) top;
-}
-
-.hover-fold .bottom .imgtopright{
-	background: url(../img/pages/quesadilla2.jpg) top;
-}
-
-.hover-fold .top .imgtopleft{
-	background: url(../img/pages/enchiladas1.jpg) top;
-}
-
-.hover-fold .bottom .imgtopleft{
-	background: url(../img/pages/enchiladas2.jpg) top;
+.hover-fold .imgtopleft{
+	background: url(../img/pages/tacos.jpg) bottom;
 }
 
 .hover-fold .top .imgtopcenter{
-	background: url(../img/pages/burritos1.jpg) top;
+	background: url(../img/pages/tortillas.jpg) top;
 }
 
-.hover-fold .bottom .imgtopcenter{
-	background: url(../img/pages/burritos2.jpg) top;
+.hover-fold .imgtopcenter{
+	background: url(../img/pages/tortillas.jpg) bottom;
 }
 
 .hover-fold .top .imgtopright{
-	background: url(../img/pages/chimichangas1.jpg) top;
+	background: url(../img/pages/quesadillas.jpg) top;
 }
 
-.hover-fold .bottom .imgtopright{
-	background: url(../img/pages/chimichangas2.jpg) top;
+.hover-fold .imgtopright{
+	background: url(../img/pages/quesadillas.jpg) bottom;
+}
+
+.hover-fold .top .imgbotleft{
+	background: url(../img/pages/enchiladas.jpg) top;
+}
+
+.hover-fold .imgbotleft{
+	background: url(../img/pages/enchiladas.jpg) bottom;
+}
+
+.hover-fold .top .imgbotcenter{
+	background: url(../img/pages/burritos.jpg) top;
+}
+
+.hover-fold .imgbotcenter{
+	background: url(../img/pages/burritos.jpg) bottom;
+}
+
+.hover-fold .top .imgbotright{
+	background: url(../img/pages/chimichangas.jpg) top;
+}
+
+.hover-fold .imgbotright{
+	background: url(../img/pages/chimichangas.jpg) bottom;
 }

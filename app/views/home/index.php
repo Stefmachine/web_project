@@ -105,7 +105,6 @@
         </div>
     </div>
 </div>
-</div>
 <div class="services">
     <div class="container">
         <div class="services-top">
