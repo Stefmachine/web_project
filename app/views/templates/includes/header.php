@@ -13,42 +13,37 @@ if(!empty($userId)){
     $this->model("User");
 }
 ?>
-<div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>">OOZE</a>
+<div class="header">
+    <div class="container">
+        <div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+            <h1><a href="index.html"><span>L</span><img src="<?= resource("/eshop-theme/images/oo.png");?>" alt=""><img src="<?= resource("/eshop-theme/images/oo.png");?>" alt="">kery</a></h1>
+        </div>
+        <div class="nav-icon">
+            <a href="#" class="navicon"></a>
+            <div class="toggle">
+                <ul class="toggle-menu">
+                    <li><a class="active" href="index.html">Home</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="typo.html">Codes</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <script>
+                $('.navicon').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).toggleClass('navicon--active');
+                    $('.toggle').toggleClass('toggle--active');
+                });
+            </script>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="banner">
+        <p class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">Sed ut perspiciatis unde omnis iste natus.</p>
+        <label></label>
+        <h4 class="animated wow fadeInTop" data-wow-duration="1000ms" data-wow-delay="500ms">Hello And Welcome To Food</h4>
+        <a class="scroll down" href="#content-down"><img src="<?= resource("/eshop-theme/images/down.png");?>" alt=""></a>
+    </div>
 </div>
-<!-- /.navbar-header -->
-
-<ul class="nav navbar-top-links navbar-right">
-    <?php if(empty($user)){ ?>
-        <li>
-            <a title="<?= $allConfigs["user/login"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/login"); ?>">
-                <i class="glyphicon glyphicon-log-in"></i>
-            </a>
-        </li>
-    <?php } else { ?>
-        <li>Bonjour <?= $user->getFirstName()," ",$user->getLastName(); ?></li>
-        <li>
-            <a title="<?= $allConfigs["user/logout"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/logout"); ?>">
-                <i class="glyphicon glyphicon-log-out"></i>
-            </a>
-        </li>
-        <li>
-            <a title="<?= $allConfigs["user/profile"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/profile"); ?>">
-                <i class="glyphicon glyphicon-user"></i>
-            </a>
-        </li>
-    <?php } ?>
-
-    <li>
-        <a title="<?= $allConfigs["user/cart"]["title"]; ?>" href="<?= GlobalHelper::pageLink("user/cart"); ?>">
-            <i class="glyphicon glyphicon-shopping-cart"></i>
-        </a>
-    </li>
-</ul>
-<!-- /.navbar-top-links -->
