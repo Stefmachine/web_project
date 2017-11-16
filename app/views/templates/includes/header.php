@@ -41,9 +41,9 @@ if(!empty($userId)){
         <div class="clearfix"></div>
     </div>
     <div class="banner">
-        <p class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">Sed ut perspiciatis unde omnis iste natus.</p>
+        <p class="animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">Le meilleur magasin en ligne de nourriture mexicaine.</p>
         <label></label>
-        <h4 class="animated wow fadeInTop" data-wow-duration="1000ms" data-wow-delay="500ms">Hello And Welcome To Food</h4>
+        <h4 class="animated wow fadeInTop" data-wow-duration="1000ms" data-wow-delay="500ms">Bienvenue sur Los Charros Hermanos</h4>
         <a class="scroll down" href="#content-down"><img src="<?= resource("/eshop-theme/images/down.png");?>" alt=""></a>
     </div>
 </div>
