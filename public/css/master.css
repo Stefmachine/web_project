@@ -41,9 +41,24 @@ width: 100%;
 {
 font-size: 150px;
 }
-
 .red
 {
 color: red;
 }
 
+.footer {
+	padding: 30px 10px;
+	background-color: rgba(0,0,0,0.01);
+}
+
+.s-10 {
+	padding: 10px 0;
+}
+
+.s-20 {
+	padding: 20px 0;
+}
+
+.s-30 {
+	padding: 30px 0;
+}
