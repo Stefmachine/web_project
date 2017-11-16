@@ -41,6 +41,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script>
         new WOW().init();
     </script>
+    <script src="<?= resource("/jquery-validation-1.17.0/dist/jquery.validate.js") ?>"></script>
     <!-- //animation-effect -->
     <link rel="stylesheet" href="<?= resource("/css/master.css");?>">
 </head>
