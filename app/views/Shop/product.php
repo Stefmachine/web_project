@@ -27,21 +27,21 @@ $product = $_data["product"]; ?>
 		
 	</div>
 	<div class="col-md-3">
-		<form>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
+		<div class="col-md-8">
+			<form>
+				<div class="row">
+					<div class="form-group col-md-6">
 						<input type="numeric" class="form-control" id="quantitee" placeholder="Quantity" value=1>
 					</div>
+					
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<a type="submit" class="btn btn-primary">
+				<div class="row">
+					<a type="submit" class="btn btn-primary col-md-6">
 						<i class="glyphicon glyphicon-shopping-cart"></i> <h4>Add to Cart</h4>
 					</a>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>

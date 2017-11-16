@@ -42,11 +42,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         new WOW().init();
     </script>
     <!-- //animation-effect -->
-
+    <link rel="stylesheet" href="<?= resource("/css/master.css");?>">
 </head>
 <body>
 <?php include_once "includes/header.php"; ?>
-
 <div class="content" id="content-down">
     <?= $content ?>
 </div>

@@ -5,7 +5,7 @@ class HomeController extends Controller
     /**
      * Home page view
      *
-     * @Page(title="Accueil")
+     * @Page(title="Accueil", banner="true")
      */
     function indexAction()
     {
