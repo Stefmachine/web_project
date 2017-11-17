@@ -9,7 +9,10 @@ class HomeController extends Controller
      */
     function indexAction()
     {
-        $this->view("home/index");
+        $rep = new ProductRepository();
+        $count = $rep->countAll();
+
+        $this->view("home/index",array("productCount" => $count));
     }
 
     /**

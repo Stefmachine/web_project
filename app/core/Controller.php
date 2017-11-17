@@ -17,9 +17,6 @@ class Controller
         $this->REPOSITORIES_DIR = __DIR__."/../repositories";
         $this->CONTROLLERS_DIR = __DIR__."/../controllers";
         $this->TEMPLATES_DIR = __DIR__."/../views/templates";
-
-        @set_exception_handler(array($this,'ExceptionHandler'));
-        @set_error_handler(array($this,'ErrorHandler'));
     }
 
     protected function model($_model){
@@ -134,22 +131,6 @@ class Controller
 
         return $allRoutes;
     }
-
-    /**
-     * @param Exception $exception
-     */
-    function ExceptionHandler($exception){
-        $_SESSION["error"] = $exception;
-        GlobalHelper::redirect("home/error");
-    }
-
-    /**
-     * @param Error $error
-     */
-    function ErrorHandler($no , $message, $file, $line){
-        throw new Exception("#$no - $message in $file on line $line");
-    }
-
 
     /**
      * @param $_class

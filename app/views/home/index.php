@@ -1,13 +1,13 @@
 <div class="content-top-top">
     <div class="container">
         <div class="content-top">
-            <div class="col-md-4 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <h3>About</h3>
+            <div class="col-md-6 content-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+                <a href="<?= GlobalHelper::pageLink("shop/index"); ?>"><h3>Notre menu</h3></a>
                 <label><i class="glyphicon glyphicon-menu-up"></i></label>
-                <span>There are many variations</span>
+                <span>Découvrez notre variété en quelques clics</span>
             </div>
-            <div class="col-md-8 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour , or randomised words which don't look even slightly believable.There are many variations by injected humour. There are many variations of passages of Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form by injected humour , or randomised words</p>
+            <div class="col-md-6 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+                <p>Plus de <?= $_data["productCount"];?> plats différents composent notre savoureux menu. Nos repas varient du style classique à l'audacieux et sont préparé avec l'amour du salaire minimum légal du Viet-Nam.</p>
             </div>
             <div class="clearfix"> </div>
         </div>
