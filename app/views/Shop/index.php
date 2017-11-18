@@ -6,16 +6,12 @@ $productCount = count($_data["products"]); ?>
         <?php if ($productCount) { ?>
             <div class="menu-top">
                 <div class="col-md-5 menu-left animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-                    <h3>Menu des <?= ucfirst($_data["tag"]) ?>s</h3>
+                    <h3>Menu<?= !empty($_data["tag"]) ? " des " . ucfirst($_data["tag"]) . "s" : "" ?></h3>
                     <label><i class="glyphicon glyphicon-menu-up"></i></label>
                     <span>Jusqu'à <?= $productCount ?> repas</span>
                 </div>
                 <div class="col-md-7 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
-                        alteration in some form, by injected humour , or randomised words which don't look even slightly
-                        believable.There are many variations by injected humour. There are many variations of passages of
-                        Lorem Ipsum available.There are many variations of passages of Lorem Ipsum available, but the
-                        majority have suffered alteration in some form by injected humour , or randomised words</p>
+                    <p>Nos menus variés sont connus à travers le monde. Nos plats ont été conceptualisé au mexique, sont formés d'ingrédients récoltés en Chine, cuisinés au Viet-Nam et consommés en Amérique du Nord</p>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -24,7 +20,7 @@ $productCount = count($_data["products"]); ?>
              * @type Product $product
              */
             foreach ($_data["products"] as $key => $product) {
-                if ($key % 3 == 0){ ?>
+                if (!boolval($key % 3)){ ?>
                     <div class="menu-bottom animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
                 <?php } ?>
                 <div class="col-md-4 menu-bottom1">
@@ -33,12 +29,13 @@ $productCount = count($_data["products"]); ?>
                             <img src="<?= resource('img/products/' . $product->getPicture()) ?>" alt="" class="img-responsive">
                             <div class="captn">
                                 <h4><?= $product->getName() ?></h4>
-                                <p><?= $product->getCost() ?></p>
+                                <p><?= $product->getCost() ?>$</p>
+                                <p class="btn fitIn" onclick="addToCart(<?= $product->getId(); ?>); return false;">Ajouter au panier</p>
                             </div>
                         </a>
                     </div>
                 </div>
-                <?php if (($key % 3 == 0 && $key > 0) || $key+1 == $productCount){ ?>
+                <?php if ((!boolval(($key + 1) % 3) && $key > 0) || $key + 1 == $productCount){ ?>
                     <div class="clearfix"></div>
                     </div>
                 <?php } ?>

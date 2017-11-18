@@ -2,19 +2,16 @@
     <div class="container">
         <div class="footer-head">
             <div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <ul class=" in">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a  href="menu.html">Menu</a></li>
-                    <li><a  href="blog.html">Blog</a></li>
-                    <li><a  href="events.html">Events</a></li>
-                    <li><a  href="contact.html">Contact</a></li>
+                <ul class="in">
+                    <li><a href="<?= GlobalHelper::pageLink("home/index"); ?>"> Accueil </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("shop/index"); ?>"> Menu </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("home/contact"); ?>"> Nous joindre </a></li>
                 </ul>
-                <span>There are many variations of passages</span>
             </div>
             <div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <h2>Follow Us</h2>
+                <h2>Rejoignez-nous</h2>
                 <label><i class="glyphicon glyphicon-menu-up"></i></label>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+                <p>Visiter nos différentes pages sur divers réseaux sociaux</p>
                 <ul class="social-ic">
                     <li><a href="#"><i></i></a></li>
                     <li><a href="#"><i class="ic"></i></a></li>

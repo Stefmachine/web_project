@@ -16,6 +16,15 @@ class HomeController extends Controller
     }
 
     /**
+     * Contact page view
+     *
+     * @Page(title="Nous joindre")
+     */
+    function contactAction(){
+        $this->view("home/contact");
+    }
+
+    /**
      * Error page view
      *
      * @Page(title="Erreur",template="empty")
@@ -29,14 +38,5 @@ class HomeController extends Controller
         else{
             throw new Exception("An unexpected error occured.");
         }
-    }
-
-    /**
-     * Contact page view
-     *
-     * @Page(title="Nous joindre")
-     */
-    function contactAction(){
-        $this->view("home/contact");
     }
 }

@@ -7,7 +7,7 @@
                 <span>Découvrez notre variété en quelques clics</span>
             </div>
             <div class="col-md-6 content-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <p>Plus de <?= $_data["productCount"];?> plats différents composent notre savoureux menu. Nos repas varient du style classique à l'audacieux et sont préparé avec l'amour du salaire minimum légal du Viet-Nam.</p>
+                <p>Plus de <?= $_data["productCount"];?> plats différents composent notre savoureux menu. Nos repas varient du style classique à l'audacieux et sont préparé avec l'amour des salairiés minimum du Viet-Nam.</p>
             </div>
             <div class="clearfix"> </div>
         </div>

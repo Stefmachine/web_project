@@ -3,6 +3,21 @@
 	background-size: cover;
 }
 
+.fitIn{
+	background-color:#97824b;
+	color: #ffffff;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+
+.fitIn:hover{
+	background-color:#67522b;
+	color: white;
+}
+
 .paddingTopBot15{
 	padding-top: 15px;
 	padding-bottom: 15px;
