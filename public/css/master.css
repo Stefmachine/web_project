@@ -103,6 +103,15 @@ color: red;
 	padding-right: 40px;
 }
 
+.pager {
+	font-size: 30px;
+}
+
+.cart-button {
+	background-color: orange;
+	color: white;
+}
+
 /* Images */
 .hover-fold .top .imgtopleft{
 	background: url(../img/pages/tacos.jpg) top;

@@ -45,7 +45,7 @@ $productCount = count($_data["products"]); ?>
             if ($pageCount > 1) { ?>
                 <div class="col-md-12 text-center pager">Pages
                     <?php for ($i = 1; $i <= $pageCount; $i++) { ?>
-                        <a href="<?= GlobalHelper::pageLink("shop/index/{$i}/{$_data["tag"]}") ?>"> <b><?= $i ?> </b></a>
+                        <a href="<?= GlobalHelper::pageLink("shop/index/{$i}/{$_data["tag"]}") ?>"> <?= $i ?> </a>
                     <?php } ?>
                 </div>
             <?php }
