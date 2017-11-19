@@ -39,9 +39,8 @@ $productCount = count($_data["products"]); ?>
                     <div class="clearfix"></div>
                     </div>
                 <?php } ?>
-            <?php } ?>
+            <?php }
 
-            <?php
             if ($pageCount > 1) { ?>
                 <div class="col-md-12 text-center pager">Pages
                     <?php for ($i = 1; $i <= $pageCount; $i++) { ?>
