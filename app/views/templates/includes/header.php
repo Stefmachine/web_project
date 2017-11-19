@@ -23,20 +23,25 @@ if(!empty($userId)){
         </div>
         <div class="nav-icon">
             <a href="#" class="navicon"></a>
+			<?php
+				/* mettre la page courante en évidence */
+				$datos = $_data["pageConfigs"];
+				$context = $datos["index"];
+			?>
             <div class="toggle">
                 <ul class="toggle-menu">
-                    <li><a href="<?= GlobalHelper::pageLink("home/index"); ?>"> Accueil </a></li>
-                    <li><a href="<?= GlobalHelper::pageLink("shop/index"); ?>"> Menu </a></li>
-                    <li><a href="<?= GlobalHelper::pageLink("home/contact"); ?>"> Nous joindre </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("home/index"); ?>"<?= ($context == 'home/index' ? 'class="bold"' : '');?>> Accueil </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("shop/index"); ?>"<?= ($context == 'shop/index' ? 'class="bold"' : '');?>> Menu </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("home/contact"); ?>"<?= ($context == 'home/contact' ? 'class="bold"' : '');?>> Nous joindre </a></li>
                 </ul>
                 <hr>
                 <ul class="toggle-menu">
-                    <li><a href="<?= GlobalHelper::pageLink("user/cart"); ?>"> Panier </a></li>
+                    <li><a href="<?= GlobalHelper::pageLink("user/cart"); ?>"<?= ($context == 'user/cart' ? 'class="bold"' : '');?>> Panier </a></li>
                     <?php if(empty($user)){ ?>
-                        <li><a href="<?= GlobalHelper::pageLink("user/login"); ?>"> Connexion </a></li>
+                        <li><a href="<?= GlobalHelper::pageLink("user/login"); ?>"<?= ($context == 'user/login' ? 'class="bold"' : '');?>> Connexion </a></li>
                     <?php } else { ?>
-                        <li><a href="<?= GlobalHelper::pageLink("user/profile"); ?>"> Profile </a></li>
-                        <li><a href="<?= GlobalHelper::pageLink("user/logout"); ?>"> Déconnexion </a></li>
+                        <li><a href="<?= GlobalHelper::pageLink("user/profile"); ?>"<?= ($context == 'user/profile' ? 'class="bold"' : '');?>> Profile </a></li>
+                        <li><a href="<?= GlobalHelper::pageLink("user/logout"); ?>"<?= ($context == 'user/logout' ? 'class="bold"' : '');?>> Déconnexion </a></li>
                     <?php } ?>
                 </ul>
             </div>

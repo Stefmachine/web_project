@@ -19,6 +19,9 @@ $productCount = count($_data["products"]); ?>
             /**
              * @type Product $product
              */
+			
+			/* Check shopController var_dump for corresponding variable */
+			
             foreach ($_data["products"] as $key => $product) {
                 if (!boolval($key % 3)){ ?>
                     <div class="menu-bottom animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -42,6 +45,7 @@ $productCount = count($_data["products"]); ?>
             <?php } ?>
 
             <?php
+			
             if ($pageCount > 1) { ?>
                 <div class="col-md-12 text-center pager">Pages
                     <?php for ($i = 1; $i <= $pageCount; $i++) { ?>

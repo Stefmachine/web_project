@@ -79,6 +79,7 @@ class Controller
         $config = $reader->getPage($this->RouteToController($viewParts[0]),$this->RouteToMethod($viewParts[1]));
         $config["title"] = !empty($config ["title"]) ? $config["title"] : "" ;
         $config["template"] = !empty($config["template"]) ? $config["template"] : "default" ;
+		$config["index"] = $_view;
 
         return $config;
     }
