@@ -105,7 +105,7 @@
         </div>
     </div>
 </div>
-<div class="services">
+<!--<div class="services">
     <div class="container">
         <div class="services-top">
             <div class="col-md-8 services-right animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -265,4 +265,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
