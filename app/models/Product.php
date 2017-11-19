@@ -2,20 +2,11 @@
 
 class Product extends Entity
 {
-    private $id;
     private $name;
     private $description;
     private $cost;
 	private $picture;
 	private $tags;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return string

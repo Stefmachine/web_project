@@ -2,20 +2,11 @@
 
 class User extends Entity
 {
-    private $id;
     protected $username;
     protected $password;
     protected $firstName;
     protected $lastName;
     protected $email;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return string

@@ -2,9 +2,6 @@
 
 $enableBanner = (!empty($_data["pageConfigs"]["banner"]) ? $_data["pageConfigs"]["banner"] : false);
 
-/**
- * @var PageConfig[] $allConfigs
- */
 $allConfigs = $_data["configs"];
 /**
  * @type User $userId

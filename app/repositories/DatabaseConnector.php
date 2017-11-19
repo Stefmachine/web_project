@@ -61,7 +61,7 @@ class DatabaseConnector
                 $condition = array($condition);
             }
             foreach ($condition as $subCondition){
-                $parts = explode(" ",$subCondition);
+                $parts = explode(" ",$subCondition); //fixme: a blank space isn't an intuitive delimiter
                 $name = $parts[0];
                 $operator = $parts[1];
                 $value = $parts[2];
@@ -70,7 +70,7 @@ class DatabaseConnector
             }
         }
         $args = implode(" AND ",$conditions);
-        $this->query .= " WHERE $args";
+        $this->query .= " WHERE ($args)";
         return $this;
     }
 

@@ -3,6 +3,40 @@
 	background-size: cover;
 }
 
+.panel-fitIn {
+	border-color: #005238;
+}
+.panel-fitIn > .panel-heading {
+	color: #fff;
+	background-color: #005238;
+	border-color: #005238;
+}
+.panel-fitIn > .panel-heading + .panel-collapse > .panel-body {
+	border-top-color: #005238;
+}
+.panel-fitIn > .panel-heading .badge {
+	color: #005238;
+	background-color: #fff;
+}
+.panel-fitIn > .panel-footer + .panel-collapse > .panel-body {
+	border-bottom-color: #005238;
+}
+
+.btn-fitIn {
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	color: #fff;
+	background-color: #005238;
+	border-color: #003218;
+}
+
+.btn-fitIn:hover{
+	background-color: #97824b;
+}
+
 .fitIn{
 	background-color:#97824b;
 	color: #ffffff;

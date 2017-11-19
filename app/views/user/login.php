@@ -1,5 +1,5 @@
 <div class="container s-10">
-	<div class="panel panel-primary col-lg-4 col-md-8 col-sm-12">
+	<div class="panel panel-fitIn col-lg-4 col-md-8 col-sm-12">
 		<div class="panel-heading">
 			Veuillez vous connecter pour continuer
 		</div>
@@ -19,11 +19,11 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" value="">Se souvenir de moi
+									<input name="save-session" type="checkbox" value="">Se souvenir de moi
 								</label>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Se connecter</button>
+						<button type="submit" class="btn btn-fitIn">Se connecter</button>
 					</form>
 				</div>
 			</div>
