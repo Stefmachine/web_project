@@ -18,7 +18,7 @@
 	color: white;
 }
 
-.paddingTopBot15{
+.paddingTopBot15 {
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
@@ -56,19 +56,54 @@ font-size: 150px;
 color: red;
 }
 
+/* vertical padding classes */
 .s-10 {
-	padding: 10px 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.s-15 {
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .s-20 {
-	padding: 20px 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .s-30 {
-	padding: 30px 0;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 
+.s-40 {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
 
+/* horizontal padding classes */
+.m-10 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.m-20 {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.m-30 {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.m-40 {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+/* Images */
 .hover-fold .top .imgtopleft{
 	background: url(../img/pages/tacos.jpg) top;
 }
