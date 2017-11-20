@@ -24,6 +24,6 @@
             <div class="clearfix"> </div>
 
         </div>
-        <p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2017 . Stéphane Godin & Christian Medel <a href="http://cegepba.qc.ca">Cégep Beauce-Appalaches</a></p>
+        <p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2017 - Stéphane Godin & Christian Medel <a href="http://cegepba.qc.ca">Cégep Beauce-Appalaches</a></p>
     </div>
 </div>

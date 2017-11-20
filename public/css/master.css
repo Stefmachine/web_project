@@ -81,6 +81,10 @@ height: 100%;
 width: 100%;
 }
 
+.bold {
+	font-weight: bold;
+}
+
 .big-icon
 {
 font-size: 150px;
@@ -135,6 +139,15 @@ color: red;
 .m-40 {
 	padding-left: 40px;
 	padding-right: 40px;
+}
+
+.pager {
+	font-size: 30px;
+}
+
+.cart-button {
+	background-color: orange;
+	color: white;
 }
 
 /* Images */

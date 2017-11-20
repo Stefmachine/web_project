@@ -14,15 +14,15 @@ abstract class Repository
     }
 
     function find($_id){
-        return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id","enabled = 1")->getRow();
+        return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id"/*,"enabled = 1"*/)->getRow();
     }
 
     function findAll($_limit = 0,$_offset = 0){
         if(!empty($_limit)) {
-            return $this->db()->select("*")->from($this->getModelTable())->where("enabled = 1")->limit($_limit)->offset($_offset)->getArray();
+            return $this->db()->select("*")->from($this->getModelTable())->/*where("enabled = 1")->*/limit($_limit)->offset($_offset)->getArray();
         }
         else{
-            return $this->db()->select("*")->from($this->getModelTable())->where("enabled = 1")->getArray();
+            return $this->db()->select("*")->from($this->getModelTable())->/*where("enabled = 1")->*/getArray();
         }
     }
 
@@ -31,7 +31,7 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        $conditions[] = "enabled = 1";
+        //$conditions[] = "enabled = 1";
         return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getRow();
     }
 
@@ -40,7 +40,7 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        $conditions[] = "enabled = 1";
+        //$conditions[] = "enabled = 1";
         return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getArray();
     }
 
