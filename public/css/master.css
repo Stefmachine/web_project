@@ -47,8 +47,8 @@ height: 100%;
 width: 100%;
 }
 
-a.bold {
-	text-shadow: 0 0 6px white;
+.bold {
+	font-weight: bold;
 }
 
 .big-icon

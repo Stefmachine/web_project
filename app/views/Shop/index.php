@@ -20,8 +20,6 @@ $productCount = count($_data["products"]); ?>
              * @type Product $product
              */
 			
-			/* Check shopController var_dump for corresponding variable */
-			
             foreach ($_data["products"] as $key => $product) {
                 if (!boolval($key % 3)){ ?>
                     <div class="menu-bottom animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
@@ -49,7 +47,7 @@ $productCount = count($_data["products"]); ?>
             if ($pageCount > 1) { ?>
                 <div class="col-md-12 text-center pager">Pages
                     <?php for ($i = 1; $i <= $pageCount; $i++) { ?>
-                        <a href="<?= GlobalHelper::pageLink("shop/index/{$i}/{$_data["tag"]}") ?>"> <?= $i ?> </a>
+                        <a class="<?= ($_data["index"] == $i ? 'bold' : '') ?>" href="<?= GlobalHelper::pageLink("shop/index/{$i}/{$_data["tag"]}") ?>"> <?= $i ?> </a>
                     <?php } ?>
                 </div>
             <?php }

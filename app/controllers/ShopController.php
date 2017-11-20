@@ -13,8 +13,6 @@ class ShopController extends Controller
     function indexAction($_page = 1,$_tag = ""){
         $rep = new ProductRepository();
 		
-		var_dump($_page);
-		
         $limit = 9;
         $offset = ($_page - 1) * $limit;
         $productCount = $rep->countAllByTag($_tag);
@@ -22,7 +20,7 @@ class ShopController extends Controller
 
         $products = $rep->findAllByTag($limit,$offset,$_tag);
 
-        $this->view('shop/index',array("products" => $products,"pagesCount" => $pageCount,"tag" => $_tag));
+        $this->view('shop/index',array("products" => $products,"pagesCount" => $pageCount,"tag" => $_tag, "index" => $_page));
     }
 
     /**
