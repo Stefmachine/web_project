@@ -34,7 +34,7 @@
                             <div class="top">
                                 <div class="front face imgtopcenter"></div>
                                 <div class="back face">
-                                    <p>Les tortillas sont des galettes préparées à base de maïs où elles sont un aliment de base dans les repas depuis l'Antiquité.</p>
+                                    <p>Les tortillas sont des galettes préparées à base de maïs au Mexqieu où elles sont un aliment de base dans les repas depuis le Néolithique.</p>
                                 </div>
                             </div>
                             <div class="bottom imgtopcenter"></div>
@@ -66,7 +66,7 @@
                         <div class="top">
                             <div class="front face imgbotleft"></div>
                             <div class="back face">
-                                <p>Les enchiladas sont composées de tortillas de maïs fries recouvertes de sauce salsa ou de mole.</p>
+                                <p>Les enchiladas sont composées de tortillas de maïs frites recouvertes de salsa ou de mole.</p>
                             </div>
                         </div>
                         <div class="bottom imgbotleft"></div>
@@ -94,7 +94,7 @@
                         <div class="top">
                             <div class="front face imgbotright"></div>
                             <div class="back face">
-                                <p>Les chimichangas sont de délicieux burritos fris dans l'huile.</p>
+                                <p>Les chimichangas sont de délicieux burritos fris dans l'huile d'olives mexicaines.</p>
                             </div>
                         </div>
                         <div class="bottom imgbotright"></div>

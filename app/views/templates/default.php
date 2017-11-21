@@ -49,6 +49,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="<?= resource("/vendor/bootstrap/js/bootstrap.min.js"); ?>"></script>
 	
+	<!-- favicon -->
+	<link rel="shortcut icon" href="<?= resource('/img/pages/favicon.ico'); ?>"/>
+	
 </head>
 <body>
 <?php include_once "includes/header.php"; ?>

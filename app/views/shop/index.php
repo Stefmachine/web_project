@@ -11,7 +11,7 @@ $productCount = count($_data["products"]); ?>
                     <span>Jusqu'à <?= $productCount ?> repas</span>
                 </div>
                 <div class="col-md-7 menu-right animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
-                    <p>Nos menus variés sont connus à travers le monde. Nos plats ont été conceptualisé au mexique, sont formés d'ingrédients récoltés en Chine, cuisinés au Viet-Nam et consommés en Amérique du Nord</p>
+                    <p>Nos menus variés sont connus à travers le monde. Nos plats sont originaires du Mexique, sont composés d'ingrédients cultivés en Chine, cuisinés au Viet-Nam et vendus en Amérique du Nord</p>
                 </div>
                 <div class="clearfix"></div>
             </div>
