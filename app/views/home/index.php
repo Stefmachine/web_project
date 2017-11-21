@@ -12,7 +12,7 @@
             <div class="clearfix"> </div>
         </div>
         <div class="content-mid">
-            <div class="row paddingTopBot15">
+            <div class="row s-15">
                 <a href="<?= GlobalHelper::pageLink("shop/index/1/taco"); ?>">
                     <div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
                         <div class=" hover-fold">
@@ -58,7 +58,7 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-        <div class="row paddingTopBot15">
+        <div class="row s-15">
             <a href="<?= GlobalHelper::pageLink("shop/index/1/enchilada"); ?>">
                 <div class="col-md-4 food-grid animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
                     <div class=" hover-fold">

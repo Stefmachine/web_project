@@ -44,6 +44,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="<?= resource("/jquery-validation-1.17.0/dist/jquery.validate.js") ?>"></script>
     <!-- //animation-effect -->
     <link rel="stylesheet" href="<?= resource("/css/master.css");?>">
+	
+	<!-- collapsable-animations (accordéon) -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="<?= resource("/vendor/bootstrap/js/bootstrap.min.js"); ?>"></script>
+	
 </head>
 <body>
 <?php include_once "includes/header.php"; ?>
