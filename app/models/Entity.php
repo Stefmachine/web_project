@@ -2,62 +2,43 @@
 
 abstract class Entity
 {
-    protected $id;
-    protected $creation;
-    protected $update;
+    protected $creationTime;
+    protected $updateTime;
     protected $enabled = 1;
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     * @return Entity
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
 
     /**
      * @return int
      */
-    public function getCreation()
+    public function getCreationTime()
     {
-        return $this->creation;
+        return $this->creationTime;
     }
 
     /**
      * @param int $creation
      * @return Entity
      */
-    public function setCreation($creation)
+    public function setCreationTime($creation)
     {
-        $this->creation = $creation;
+        $this->creationTime = $creation;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getUpdate()
+    public function getUpdateTime()
     {
-        return $this->update;
+        return $this->updateTime;
     }
 
     /**
      * @param int $update
      * @return Entity
      */
-    public function setUpdate($update)
+    public function setUpdateTime($update)
     {
-        $this->update = $update;
+        $this->updateTime = $update;
         return $this;
     }
 }

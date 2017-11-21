@@ -14,15 +14,16 @@ abstract class Repository
     }
 
     function find($_id){
-        return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id"/*,"enabled = 1"*/)->getRow();
+
+        return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id")->getRow();
     }
 
     function findAll($_limit = 0,$_offset = 0){
         if(!empty($_limit)) {
-            return $this->db()->select("*")->from($this->getModelTable())->/*where("enabled = 1")->*/limit($_limit)->offset($_offset)->getArray();
+            return $this->db()->select("*")->from($this->getModelTable())->limit($_limit)->offset($_offset)->getArray();
         }
         else{
-            return $this->db()->select("*")->from($this->getModelTable())->/*where("enabled = 1")->*/getArray();
+            return $this->db()->select("*")->from($this->getModelTable())->getArray();
         }
     }
 
@@ -31,7 +32,6 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        //$conditions[] = "enabled = 1";
         return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getRow();
     }
 
@@ -40,7 +40,6 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        //$conditions[] = "enabled = 1";
         return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getArray();
     }
 
@@ -60,8 +59,14 @@ abstract class Repository
     }
 
     protected function getModelTable(){
-        $table = "tbl_".strtolower($this->model);
+        $table = DatabaseConnector::tablelize("tbl{$this->model}");
         return $table;
+    }
+
+    public function persistAll($_entities){
+        foreach ($_entities as $entity) {
+            $this->persist($entity);
+        }
     }
 
     /**
@@ -69,7 +74,18 @@ abstract class Repository
      * @param Entity $_entity
      */
     public function persist($_entity){
-        if ($_entity->getId()) {
+        $listOfIds = $this->getEntityMapping();
+        foreach ($listOfIds as $name => $id) {
+            $getter = sprintf("get%s",ucfirst($name));
+            $listOfIds[$name] = $_entity->$getter();
+        }
+
+        $result = $this->findOneBy($listOfIds);
+
+
+        die(var_dump($listOfIds,$result));
+
+        if ($result) {
             $this->updateEntity($_entity);
         } else {
             $this->insertEntity($_entity);
@@ -82,7 +98,7 @@ abstract class Repository
     private function updateEntity($_entity){
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
-
+        
         $updateFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
@@ -111,5 +127,26 @@ abstract class Repository
             }
         }
         $this->db()->insert($table,$insertFields)->execute();
+    }
+
+    private function getEntityMapping(){
+        $reader = new AnnotationReader();
+        $props = $reader->getAllPropertiesAnnotations($this->model);
+
+        /**
+         * @type Annotation $annotation
+         */
+        foreach ($props as $propName => $annotations) {
+            if(empty($annotations)){
+                unset($props[$propName]);
+            }
+            foreach ($annotations as $key => $annotation) {
+                if(!$annotation->isAnnotationType("Id")){
+                    unset($props[$propName]);
+                }
+            }
+        }
+
+        return $props;
     }
 }

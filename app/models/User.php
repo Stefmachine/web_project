@@ -2,11 +2,33 @@
 
 class User extends Entity
 {
+    /**
+     * @Id
+     */
+    protected $id;
     protected $username;
     protected $password;
     protected $firstName;
     protected $lastName;
     protected $email;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return Entity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return string

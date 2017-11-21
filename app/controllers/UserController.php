@@ -91,6 +91,8 @@ class UserController extends Controller
      * @Page(title="Votre panier")
      */
     function cartAction(){
+
+
         $this->view("user/cart");
     }
 

@@ -44,12 +44,14 @@ class DatabaseConnector
 
     public function select(){
         $args = implode(",",func_get_args());
+        $args = self::tablelize($args);
         $this->query .= "SELECT $args";
         return $this;
     }
 
     public function from(){
         $args = implode(",",func_get_args());
+        $args = self::tablelize($args);
         $this->query .= " FROM $args";
         return $this;
     }
@@ -65,7 +67,8 @@ class DatabaseConnector
                 $name = $parts[0];
                 $operator = $parts[1];
                 $value = $parts[2];
-                $conditions[] = "$name $operator :$name";
+                $column = self::tablelize($name);
+                $conditions[] = "$column $operator :$name";
                 $this->executeArguments[$name] = $value;
             }
         }
@@ -75,7 +78,17 @@ class DatabaseConnector
     }
 
     public function orderBy(){
-        $args = implode(",",func_get_args());
+        $args = array();
+        foreach (func_get_args() as $arg){
+            if($arg != "ASC" || $arg != "DESC") {
+                $args[] = self::tablelize($arg);
+            }
+            else{
+                $args[] = $arg;
+            }
+        }
+        $args = implode(",",$args);
+        $args = self::tablelize($args);
         $this->query .= " ORDER BY $args";
         return $this;
     }
@@ -83,7 +96,8 @@ class DatabaseConnector
     public function insert($_table,$_fields){
         $values = array();
         foreach ($_fields as $name => $newValue){
-            $values[] .= "$name = :$name";
+            $column = self::tablelize($name);
+            $values[] .= "$column = :$name";
             $this->executeArguments[$name] = $newValue;
         }
         $valueString = implode(",",$values);
@@ -99,7 +113,8 @@ class DatabaseConnector
     public function set($_fields){
         $this->query .= " SET ";
         foreach ($_fields as $name => $newValue){
-            $this->query .= "$name = :$name";
+            $column = self::tablelize($name);
+            $this->query .= "$column = :$name";
             $this->executeArguments[$name] = $newValue;
         }
         return $this;
@@ -166,57 +181,7 @@ class DatabaseConnector
         }
     }
 
-    public function createTable($_table,$_columns){
-
+    public static function tablelize($_word){
+        return strtolower(preg_replace('/\B([A-Z])/', '_$1', $_word));
     }
-
-    /*private function columnExists($_tableName,$_columnName){
-        if(!empty($_columnName)){
-            $query = "SHOW COLUMNS FROM `$_tableName` LIKE '$_columnName'";
-            $statement = $this->db()->prepare($query);
-            $columnExists = $statement->execute();
-            $rowNumber = $columnExists->_numOfRows;
-            if($rowNumber > 0){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private function compareAndCreateColumns($_tableName,$_columns){
-        foreach ($_columns as $columnName => $columnQuery) {
-            if (!$this->columnExists($_tableName,$columnName)) {
-                $sql=str_replace("PRIMARY","ADD PRIMARY","ALTER TABLE $_tableName ADD $columnQuery");
-                db()->execute($sql);
-            }
-        }
-    }
-
-    private function createTableOrCheckColumns($_tableName, $_columns)
-    {
-        if (!empty($_columns)) {
-            $columns = $this->compileColumns($_columns);
-            $sql = "CREATE TABLE IF NOT EXISTS $_tableName ($columns) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
-            $statement = $this->db()->prepare($sql);
-            $statement->execute();
-            $this->clearTableQuery();
-            $this->compareAndCreateColumns($_tableName, $_columns);
-        }
-    }
-
-    private function compileColumns($_columns){
-        $columnsSQL="";
-        $count=count($_columns);
-        foreach ($_columns as $key => $column) {
-            $columnsSQL.=$column;
-            if(--$count > 0){
-                $columnsSQL.=", ";
-            }
-        }
-        return $columnsSQL;
-    }
-
-    private function clearTableQuery(){
-        $this->tableQuery="";
-    }*/
 }

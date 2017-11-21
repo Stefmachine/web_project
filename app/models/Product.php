@@ -2,11 +2,33 @@
 
 class Product extends Entity
 {
+    /**
+     * @Id
+     */
+    protected $id;
     private $name;
     private $description;
     private $cost;
 	private $picture;
 	private $tags;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return Entity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return string

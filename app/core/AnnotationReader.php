@@ -46,6 +46,22 @@ class AnnotationReader
         return $propAnnotations;
     }
 
+    public function getAllPropertiesAnnotations($_class){
+        $refClass = new ReflectionClass($_class);
+        $props = $refClass->getProperties();
+        $everyAnnotations = array();
+        foreach ($props as $prop) {
+            $propComments = $prop->getDocComment();
+            $propAnnotations = array();
+            if(!empty($propComments)) {
+                $propAnnotations = $this->findAnnotations($propComments);
+            }
+            $everyAnnotations[$prop->getName()] = $propAnnotations;
+        }
+
+        return $everyAnnotations;
+    }
+
     /**
      * @param string $_comments
      * @return Annotation[]

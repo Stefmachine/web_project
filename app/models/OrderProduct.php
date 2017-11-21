@@ -1,8 +1,14 @@
 <?php
 
-class OrderProduct
+class OrderProduct extends Entity
 {
+    /**
+     * @Id
+     */
     private $orderId;
+    /**
+     * @Id
+     */
     private $productId;
     private $quantity;
     private $size;
