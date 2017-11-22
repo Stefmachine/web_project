@@ -1,77 +1,63 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Site web pour projet final en web III">
-    <meta name="author" content="Christian Medel & Stéphane Godin">
-
     <title><?= $_data["pageConfigs"]["title"]; ?></title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/css/bootstrap.min.css") ?>" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.css"); ?>" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/dist/css/sb-admin-2.css");?>" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/morrisjs/morris.css");?>" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/font-awesome/css/font-awesome.min.css");?>" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="<?= resource("css/master.css"); ?>" type="text/css">
-
-    <script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/jquery/jquery.min.js");?>" ></script>
-	<link rel="shortcut icon" href=" <?= resource("img/favicon.ico"); ?>"/>
+    <link href="<?= resource("/vendor/bootstrap/css/bootstrap.min.css");?>" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<?= resource("/vendor/jquery/jquery.min.js");?>"></script>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="<?= resource("/eshop-theme/css/style.css");?>" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!---->
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="<?= resource("/eshop-theme/js/move-top.js");?>"></script>
+    <script type="text/javascript" src="<?= resource("/eshop-theme/js/easing.js");?>"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <link href="<?= resource("/eshop-theme/css/styles.css");?>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= resource("/eshop-theme/css/component.css");?>" />
+    <!-- animation-effect -->
+    <link href="<?= resource("/eshop-theme/css/animate.min.css");?>" rel="stylesheet">
+    <script src="<?= resource("/eshop-theme/js/wow.min.js");?>"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="<?= resource("/jquery-validation-1.17.0/dist/jquery.validate.js") ?>"></script>
+    <!-- //animation-effect -->
+    <link rel="stylesheet" href="<?= resource("/css/master.css");?>">
 	
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
+	<!-- collapsable-animations (accordéon) -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="<?= resource("/vendor/bootstrap/js/bootstrap.min.js"); ?>"></script>
+	
+	<!-- favicon -->
+	<link rel="shortcut icon" href="<?= resource('/img/pages/favicon.ico'); ?>"/>
+	
 </head>
-
 <body>
-
-<div id="wrapper">
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <?php include_once "includes/header.php"; ?>
-        <?php include_once "includes/sidebar.php"; ?>
-    </nav>
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header"><?= $_data["pageConfigs"]["title"]; ?></h1>
-            </div>
-        </div>
-        <?= $content ?>
-    </div>
-	
-	<?php include_once "includes/footer.php"; ?>
+<?php include_once "includes/header.php"; ?>
+<div class="content" id="content-down">
+    <?= $content ?>
 </div>
-
-<!-- jQuery -->
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/bootstrap/js/bootstrap.min.js");?>" ></script>
-
-<!-- Metis Menu Plugin JavaScript -->
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/vendor/metisMenu/metisMenu.min.js");?>" ></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="<?= resource("/bootstrap/theme-sb-admin-2-gh/dist/js/sb-admin-2.js");?>" ></script>
-
-<script src="<?= resource("/jquery-validation-1.17.0/dist/jquery.validate.js") ?>"></script>
-
+<?php include_once "includes/footer.php"; ?>
 </body>
-
 </html>

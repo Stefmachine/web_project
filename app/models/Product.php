@@ -2,7 +2,10 @@
 
 class Product extends Entity
 {
-    private $id;
+    /**
+     * @Id(type="auto-increment")
+     */
+    protected $id;
     private $name;
     private $description;
     private $cost;
@@ -10,11 +13,21 @@ class Product extends Entity
 	private $tags;
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return Entity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     /**
@@ -94,16 +107,29 @@ class Product extends Entity
      */
     public function getTags()
     {
+        return $this->tags;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTagsArray()
+    {
         return explode(",",$this->tags);
     }
 
     /**
-     * @param array $_tags
+     * @param array|string $_tags
      * @return Product
      */
     public function setTags($_tags)
     {
-        $this->tags = implode(",",$_tags);
+        if(is_array($_tags)) {
+            $this->tags = implode(",", $_tags);
+        }
+        else{
+            $this->tags = $_tags;
+        }
         return $this;
     }
 

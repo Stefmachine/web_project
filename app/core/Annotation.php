@@ -30,4 +30,12 @@ class Annotation
     {
         return $this->parameters;
     }
+
+    /**
+     * @return string|bool
+     */
+    public function getParameter($_parameter)
+    {
+        return (!empty($this->parameters[$_parameter]) ? $this->parameters[$_parameter] : false );
+    }
 }

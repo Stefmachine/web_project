@@ -5,11 +5,23 @@ class HomeController extends Controller
     /**
      * Home page view
      *
-     * @Page(title="Accueil")
+     * @Page(title="Accueil", banner="true")
      */
     function indexAction()
     {
-        $this->view("home/index");
+        $rep = new ProductRepository();
+        $count = $rep->countAll();
+
+        $this->view("home/index",array("productCount" => $count));
+    }
+
+    /**
+     * Contact page view
+     *
+     * @Page(title="Nous joindre")
+     */
+    function contactAction(){
+        $this->view("home/contact");
     }
 
     /**
@@ -26,14 +38,5 @@ class HomeController extends Controller
         else{
             throw new Exception("An unexpected error occured.");
         }
-    }
-
-    /**
-     * Contact page view
-     *
-     * @Page(title="Nous joindre")
-     */
-    function contactAction(){
-        $this->view("home/contact");
     }
 }

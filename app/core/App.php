@@ -9,6 +9,9 @@ class App
 
     function __construct()
     {
+        @set_exception_handler(array($this,'ExceptionHandler'));
+        @set_error_handler(array($this,'ErrorHandler'));
+
         session_start();
         $url = $this->parseUrl();
 
@@ -65,5 +68,20 @@ class App
 
     public function userIsConnected(){
         return !empty($_SESSION["user"]);
+    }
+
+    /**
+     * @param Exception|PDOException $exception
+     */
+    function ExceptionHandler($exception){
+        $_SESSION["error"] = $exception;
+        GlobalHelper::redirect("home/error");
+    }
+
+    /**
+     * @param Error $error
+     */
+    function ErrorHandler($no , $message, $file, $line){
+        throw new Exception("#$no - $message in $file on line $line");
     }
 }

@@ -14,6 +14,6 @@ class ProductRepository extends Repository
 
     function countAllByTag($_tag = "")
     {
-        return $this->db()->select("COUNT(*)")->from($this->getModelTable())->where("tags LIKE %$_tag%")->getOne();
+        return $this->db()->select("count(*)")->from($this->getModelTable())->where("tags LIKE %$_tag%")->getOne();
     }
 }

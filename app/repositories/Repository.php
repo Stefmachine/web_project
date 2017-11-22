@@ -14,6 +14,7 @@ abstract class Repository
     }
 
     function find($_id){
+
         return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id")->getRow();
     }
 
@@ -43,7 +44,7 @@ abstract class Repository
     }
 
     function countAll(){
-        return $this->db()->select("COUNT(*)")->from($this->getModelTable())->getOne();
+        return $this->db()->select("count(*)")->from($this->getModelTable())->getOne();
     }
 
     private function getRepositoryModel(){
@@ -58,52 +59,131 @@ abstract class Repository
     }
 
     protected function getModelTable(){
-        $table = "tbl_".strtolower($this->model);
+        $table = DatabaseConnector::tablelize("tbl{$this->model}");
         return $table;
     }
 
-    public function persist($_entity){
-        try {
-            if ($_entity->getId()) {
-                $this->updateEntity($_entity);
-            } else {
-                $this->insertEntity($_entity);
-            }
-        }
-        catch (PDOException $PDOException){
-            echo $PDOException->getMessage();
-        }
-        catch (Exception $exception) {
-            echo $exception->getMessage();
+    public function persistAll($_entities){
+        foreach ($_entities as $entity) {
+            $this->persist($entity);
         }
     }
 
+    /**
+     * fixme: unstable, can't be used with association classes (multiple ids)
+     * @param Entity $_entity
+     */
+    public function persist($_entity){
+
+        $listOfTypes = array();
+        $skipLookup = false;
+        /**
+         * @type Annotation[] $listOfIds
+         */
+        $listOfIds = $this->getEntityMapping();
+        foreach ($listOfIds as $name => $id) {
+            $type = $id->getParameter("type");
+            $listOfTypes[$name] = !empty($type) ? $type : "manual";
+            $getter = sprintf("get%s",ucfirst($name));
+            $listOfIds[$name] = $_entity->$getter();
+
+            switch ($listOfTypes[$name]){
+                case "auto-increment":
+                    if(empty($listOfIds[$name])){
+                        $skipLookup = true;
+                    }
+                    break;
+                case "manual":
+                    if(empty($listOfIds[$name])){
+                        throw new Exception("Id ($name) of type manual cannot be null.");
+                    }
+                    break;
+                default:
+                    throw new Exception("Identifier of type '{$listOfTypes[$name]}' is not valid.");
+                    break;
+            }
+        }
+
+        $result = false;
+        if(!$skipLookup) {
+            $result = $this->findOneBy($listOfIds);
+        }
+
+        if ($result) {
+            $this->updateEntity($_entity);
+        } else {
+            $this->insertEntity($_entity);
+        }
+    }
+
+    /**
+     * @param Entity $_entity
+     */
     private function updateEntity($_entity){
+        $_entity->setUpdateTime(time());
+        if(empty($_entity->getCreationTime())){
+            $_entity->setCreationTime(time());
+        }
+
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
-
+        
         $updateFields = array();
+        $identifiers = array_keys($this->getEntityMapping());
+        $idFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
-            if ($propertyName != "id" && !is_array($this->$propertyName)) {
-                $updateFields[$propertyName] = $this->$propertyName;
+            $getter = sprintf("get%s", $propertyName);
+            if(!in_array($propertyName,$identifiers)) {
+                $updateFields[$propertyName] = $_entity->$getter();
+            }
+            else{
+                $idFields[] = "$propertyName = {$_entity->$getter()}";
             }
         }
-        $id = $_entity->getId();
-        $this->db()->update($table)->set($updateFields)->where("id = $id")->execute();
+
+        $this->db()->update($table)->set($updateFields)->where($idFields)->execute();
     }
 
+    /**
+     * @param Entity $_entity
+     */
     private function insertEntity($_entity){
+        $_entity->setCreationTime(time());
+        $_entity->setUpdateTime(time());
+
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
 
         $insertFields = array();
+        $identifiersAnnotations = $this->getEntityMapping();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
-            if ($propertyName != "id" && !is_array($this->$propertyName)) {
-                $insertFields[$propertyName] = $this->$propertyName;
+            $getter = sprintf("get%s", $propertyName);
+            if(!in_array($propertyName,array_keys($identifiersAnnotations)) || $identifiersAnnotations[$propertyName]->getParameter("type") == "manual") {
+                $insertFields[$propertyName] = $_entity->$getter();
             }
         }
+
         $this->db()->insert($table,$insertFields)->execute();
+    }
+
+    private function getEntityMapping(){
+        $reader = new AnnotationReader();
+        $props = $reader->getAllPropertiesAnnotations($this->model);
+
+        $identifiers = array();
+        /**
+         * @type Annotation $annotation
+         */
+        foreach ($props as $propName => $annotations) {
+            foreach ($annotations as $key => $annotation) {
+                if($annotation->isAnnotationType("Id")){
+                    $identifiers[$propName] = $annotation;
+                }
+            }
+        }
+
+        return $identifiers;
     }
 }

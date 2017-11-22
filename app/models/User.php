@@ -2,7 +2,10 @@
 
 class User extends Entity
 {
-    private $id;
+    /**
+     * @Id(type="auto-increment")
+     */
+    protected $id;
     protected $username;
     protected $password;
     protected $firstName;
@@ -10,11 +13,21 @@ class User extends Entity
     protected $email;
 
     /**
-     * @return int
+     * @return mixed
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     * @return Entity
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
     }
 
     /**

@@ -1,22 +1,61 @@
-body
-{
-	font-size: 20px;
+.header {
+	background: url(../img/pages/header.jpg) no-repeat center;
+	background-size: cover;
 }
 
-.glyphicon
-{
-font-size: 25px;
+.panel-fitIn {
+	border-color: #005238;
+}
+.panel-fitIn > .panel-heading {
+	color: #fff;
+	background-color: #005238;
+	border-color: #005238;
+}
+.panel-fitIn > .panel-heading + .panel-collapse > .panel-body {
+	border-top-color: #005238;
+}
+.panel-fitIn > .panel-heading .badge {
+	color: #005238;
+	background-color: #fff;
+}
+.panel-fitIn > .panel-footer + .panel-collapse > .panel-body {
+	border-bottom-color: #005238;
+}
+
+.btn-fitIn {
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	color: #fff;
+	background-color: #005238;
+	border-color: #003218;
+}
+
+.btn-fitIn:hover{
+	background-color: #97824b;
+}
+
+.fitIn{
+	background-color:#97824b;
+	color: #ffffff;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+
+.fitIn:hover{
+	background-color:#67522b;
+	color: white;
 }
 
 .user-icons
 {
 margin-top: 15px;
 margin-bottom: 15px;
-}
-
-.content
-{
-font-size: 16px;
 }
 
 .grid
@@ -37,6 +76,10 @@ height: 100%;
 width: 100%;
 }
 
+.bold {
+	font-weight: bold;
+}
+
 .big-icon
 {
 font-size: 150px;
@@ -46,19 +89,107 @@ font-size: 150px;
 color: red;
 }
 
-.footer {
-	padding: 30px 10px;
-	background-color: rgba(0,0,0,0.01);
+/* vertical padding classes */
+.s-10 {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
-.s-10 {
-	padding: 10px 0;
+.s-15 {
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
 .s-20 {
-	padding: 20px 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .s-30 {
-	padding: 30px 0;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.s-40 {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+/* horizontal padding classes */
+.m-10 {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.m-20 {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.m-30 {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.m-40 {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.pager {
+	font-size: 30px;
+}
+
+.cart-button {
+	background-color: orange;
+	color: white;
+}
+
+/* Images */
+.hover-fold .top .imgtopleft{
+	background: url(../img/pages/tacos.jpg) top;
+}
+
+.hover-fold .imgtopleft{
+	background: url(../img/pages/tacos.jpg) bottom;
+}
+
+.hover-fold .top .imgtopcenter{
+	background: url(../img/pages/tortillas.jpg) top;
+}
+
+.hover-fold .imgtopcenter{
+	background: url(../img/pages/tortillas.jpg) bottom;
+}
+
+.hover-fold .top .imgtopright{
+	background: url(../img/pages/quesadillas.jpg) top;
+}
+
+.hover-fold .imgtopright{
+	background: url(../img/pages/quesadillas.jpg) bottom;
+}
+
+.hover-fold .top .imgbotleft{
+	background: url(../img/pages/enchiladas.jpg) top;
+}
+
+.hover-fold .imgbotleft{
+	background: url(../img/pages/enchiladas.jpg) bottom;
+}
+
+.hover-fold .top .imgbotcenter{
+	background: url(../img/pages/burritos.jpg) top;
+}
+
+.hover-fold .imgbotcenter{
+	background: url(../img/pages/burritos.jpg) bottom;
+}
+
+.hover-fold .top .imgbotright{
+	background: url(../img/pages/chimichangas.jpg) top;
+}
+
+.hover-fold .imgbotright{
+	background: url(../img/pages/chimichangas.jpg) bottom;
 }

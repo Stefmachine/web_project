@@ -43,13 +43,13 @@ class DatabaseConnector
     }
 
     public function select(){
-        $args = implode(",",func_get_args());
+        $args = self::tablelize(implode(",",func_get_args()));
         $this->query .= "SELECT $args";
         return $this;
     }
 
     public function from(){
-        $args = implode(",",func_get_args());
+        $args = self::tablelize(implode(",",func_get_args()));
         $this->query .= " FROM $args";
         return $this;
     }
@@ -61,47 +61,65 @@ class DatabaseConnector
                 $condition = array($condition);
             }
             foreach ($condition as $subCondition){
-                $parts = explode(" ",$subCondition);
+                $parts = explode(" ",$subCondition); //fixme: a blank space isn't an intuitive delimiter
                 $name = $parts[0];
                 $operator = $parts[1];
                 $value = $parts[2];
-                $conditions[] = "$name $operator :$name";
-                $this->executeArguments[$name] = $value;
+                $column = self::tablelize($name);
+                $conditions[] = "$column $operator :$column";
+                $this->executeArguments[$column] = $value;
             }
         }
         $args = implode(" AND ",$conditions);
-        $this->query .= " WHERE $args";
+        $this->query .= " WHERE ($args)";
         return $this;
     }
 
     public function orderBy(){
-        $args = implode(",",func_get_args());
+        $args = array();
+        foreach (func_get_args() as $arg){
+            if($arg != "ASC" || $arg != "DESC") {
+                $args[] = $arg;
+            }
+            else{
+                $args[] = $arg;
+            }
+        }
+        $args = self::tablelize(implode(",",$args));
         $this->query .= " ORDER BY $args";
         return $this;
     }
 
     public function insert($_table,$_fields){
+        $table = self::tablelize($_table);
         $values = array();
         foreach ($_fields as $name => $newValue){
-            $values[] .= "$name = :$name";
-            $this->executeArguments[$name] = $newValue;
+            $column = self::tablelize($name);
+            $values[] .= ":$column";
+            $this->executeArguments[$column] = $newValue;
         }
-        $valueString = implode(",",$values);
-        $this->query .= " INSERT INTO $_table(".implode(",",array_keys($_fields)).") VALUES($valueString)";
+        $valueString = self::tablelize(implode(",",$values));
+        $fields = self::tablelize(implode(",",array_keys($_fields)));
+        $this->query .= " INSERT INTO $table($fields) VALUES($valueString)";
         return $this;
     }
 
     public function update($_table){
-        $this->query .= " UPDATE $_table";
+        $table = self::tablelize($_table);
+        $this->query .= "UPDATE $table";
         return $this;
     }
 
     public function set($_fields){
         $this->query .= " SET ";
+        $values = array();
         foreach ($_fields as $name => $newValue){
-            $this->query .= "$name = :$name";
-            $this->executeArguments[$name] = $newValue;
+            $column = self::tablelize($name);
+            $values[] = "$column = :$column";
+            $this->executeArguments[$column] = $newValue;
         }
+        $valueString = self::tablelize(implode(",",$values));
+        $this->query .= $valueString;
         return $this;
     }
 
@@ -116,42 +134,62 @@ class DatabaseConnector
     }
 
     public function getRow(){
-        $statement = $this->db()->prepare($this->query);
-        $this->fetchMode($statement);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetch();
+        try{
+            $statement = $this->db()->prepare($this->query);
+            $this->fetchMode($statement);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetch();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function getOne(){
-        $statement = $this->db()->prepare($this->query);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetchColumn();
+        try{
+            $statement = $this->db()->prepare($this->query);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetchColumn();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function getArray(){
-        $statement = $this->db()->prepare($this->query);
-        $this->fetchMode($statement);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetchAll();
+        try {
+            $statement = $this->db()->prepare($this->query);
+            $this->fetchMode($statement);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetchAll();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function execute(){
-        $statement = $this->db()->prepare($this->query);
-        $statement->execute($this->executeArguments);
+        try {
+            $statement = $this->db()->prepare($this->query);
+            $statement->execute($this->executeArguments);
 
-        $this->clearQuery();
+            $this->clearQuery();
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     /**
@@ -166,57 +204,7 @@ class DatabaseConnector
         }
     }
 
-    public function createTable($_table,$_columns){
-
+    public static function tablelize($_word){
+        return strtolower(preg_replace('/\B([A-Z])/', '_$1', $_word));
     }
-
-    /*private function columnExists($_tableName,$_columnName){
-        if(!empty($_columnName)){
-            $query = "SHOW COLUMNS FROM `$_tableName` LIKE '$_columnName'";
-            $statement = $this->db()->prepare($query);
-            $columnExists = $statement->execute();
-            $rowNumber = $columnExists->_numOfRows;
-            if($rowNumber > 0){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private function compareAndCreateColumns($_tableName,$_columns){
-        foreach ($_columns as $columnName => $columnQuery) {
-            if (!$this->columnExists($_tableName,$columnName)) {
-                $sql=str_replace("PRIMARY","ADD PRIMARY","ALTER TABLE $_tableName ADD $columnQuery");
-                db()->execute($sql);
-            }
-        }
-    }
-
-    private function createTableOrCheckColumns($_tableName, $_columns)
-    {
-        if (!empty($_columns)) {
-            $columns = $this->compileColumns($_columns);
-            $sql = "CREATE TABLE IF NOT EXISTS $_tableName ($columns) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;";
-            $statement = $this->db()->prepare($sql);
-            $statement->execute();
-            $this->clearTableQuery();
-            $this->compareAndCreateColumns($_tableName, $_columns);
-        }
-    }
-
-    private function compileColumns($_columns){
-        $columnsSQL="";
-        $count=count($_columns);
-        foreach ($_columns as $key => $column) {
-            $columnsSQL.=$column;
-            if(--$count > 0){
-                $columnsSQL.=", ";
-            }
-        }
-        return $columnsSQL;
-    }
-
-    private function clearTableQuery(){
-        $this->tableQuery="";
-    }*/
 }
