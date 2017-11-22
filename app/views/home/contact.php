@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="col-md-9 contact-para animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
-                <h5>Remplissez notre formulaire et laisser nous votre commentaire</h5>
+                <h5>Remplissez notre formulaire et laissez-nous votre commentaire</h5>
                 <form id="contactForm">
                     <div class="grid-contact">
                         <div class="col-md-6 contact-grid">

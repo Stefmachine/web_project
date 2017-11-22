@@ -91,9 +91,22 @@ class UserController extends Controller
      * @Page(title="Votre panier")
      */
     function cartAction(){
-
-
-        $this->view("user/cart");
+		$lib = new ProductRepository();		
+		$product = $lib->find(1);
+		
+		$variable = array(new Order());
+		$variable[0]->setId(1);
+		$variable[0]->setStatus("Canceled");
+		
+		$op = new OrderProduct();
+		$op->setOrderId($variable[0]->getId());
+		$op->setProductId($product);
+		$op->setQuantity(1);
+		$op->setSize('JUMBO');
+		
+		$variable[0]->addOrderProduct($op);
+		
+        $this->view("user/cart", array("order" => $variable, "product" => $product));
     }
 
     /**

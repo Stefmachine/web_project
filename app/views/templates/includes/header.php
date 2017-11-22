@@ -16,7 +16,7 @@ if(!empty($userId)){
 <div class="header <?= $enableBanner ? "" : "head" ?>">
     <div class="container">
         <div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
-            <h1><a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>">LOS CHARROS HERMANOS</a></h1>
+            <h1><a class="navbar-brand" href="<?= GlobalHelper::pageLink("home/index"); ?>"><img src="<?= resource('/img/pages/lch-text.png');?>"/></a></h1>
         </div>
         <div class="nav-icon">
             <a href="#" class="navicon"></a>
