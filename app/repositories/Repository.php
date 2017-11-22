@@ -44,7 +44,7 @@ abstract class Repository
     }
 
     function countAll(){
-        return $this->db()->select("COUNT(*)")->from($this->getModelTable())->getOne();
+        return $this->db()->select("count(*)")->from($this->getModelTable())->getOne();
     }
 
     private function getRepositoryModel(){
@@ -74,16 +74,40 @@ abstract class Repository
      * @param Entity $_entity
      */
     public function persist($_entity){
+
+        $listOfTypes = array();
+        $skipLookup = false;
+        /**
+         * @type Annotation[] $listOfIds
+         */
         $listOfIds = $this->getEntityMapping();
         foreach ($listOfIds as $name => $id) {
+            $type = $id->getParameter("type");
+            $listOfTypes[$name] = !empty($type) ? $type : "manual";
             $getter = sprintf("get%s",ucfirst($name));
             $listOfIds[$name] = $_entity->$getter();
+
+            switch ($listOfTypes[$name]){
+                case "auto-increment":
+                    if(empty($listOfIds[$name])){
+                        $skipLookup = true;
+                    }
+                    break;
+                case "manual":
+                    if(empty($listOfIds[$name])){
+                        throw new Exception("Id ($name) of type manual cannot be null.");
+                    }
+                    break;
+                default:
+                    throw new Exception("Identifier of type '{$listOfTypes[$name]}' is not valid.");
+                    break;
+            }
         }
 
-        $result = $this->findOneBy($listOfIds);
-
-
-        die(var_dump($listOfIds,$result));
+        $result = false;
+        if(!$skipLookup) {
+            $result = $this->findOneBy($listOfIds);
+        }
 
         if ($result) {
             $this->updateEntity($_entity);
@@ -96,36 +120,51 @@ abstract class Repository
      * @param Entity $_entity
      */
     private function updateEntity($_entity){
+        $_entity->setUpdateTime(time());
+        if(empty($_entity->getCreationTime())){
+            $_entity->setCreationTime(time());
+        }
+
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
         
         $updateFields = array();
+        $identifiers = array_keys($this->getEntityMapping());
+        $idFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
             $getter = sprintf("get%s", $propertyName);
-            if ($propertyName != "id" && !is_array($this->$propertyName)) {
+            if(!in_array($propertyName,$identifiers)) {
                 $updateFields[$propertyName] = $_entity->$getter();
             }
+            else{
+                $idFields[] = "$propertyName = {$_entity->$getter()}";
+            }
         }
-        $id = $_entity->getId();
-        $this->db()->update($table)->set($updateFields)->where("id = $id")->execute();
+
+        $this->db()->update($table)->set($updateFields)->where($idFields)->execute();
     }
 
     /**
      * @param Entity $_entity
      */
     private function insertEntity($_entity){
+        $_entity->setCreationTime(time());
+        $_entity->setUpdateTime(time());
+
         $refClass = new ReflectionClass($this->model);
         $table = $this->getModelTable();
 
         $insertFields = array();
+        $identifiersAnnotations = $this->getEntityMapping();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
             $getter = sprintf("get%s", $propertyName);
-            if ($propertyName != "id" && !is_array($this->$propertyName)) {
+            if(!in_array($propertyName,array_keys($identifiersAnnotations)) || $identifiersAnnotations[$propertyName]->getParameter("type") == "manual") {
                 $insertFields[$propertyName] = $_entity->$getter();
             }
         }
+
         $this->db()->insert($table,$insertFields)->execute();
     }
 
@@ -133,20 +172,18 @@ abstract class Repository
         $reader = new AnnotationReader();
         $props = $reader->getAllPropertiesAnnotations($this->model);
 
+        $identifiers = array();
         /**
          * @type Annotation $annotation
          */
         foreach ($props as $propName => $annotations) {
-            if(empty($annotations)){
-                unset($props[$propName]);
-            }
             foreach ($annotations as $key => $annotation) {
-                if(!$annotation->isAnnotationType("Id")){
-                    unset($props[$propName]);
+                if($annotation->isAnnotationType("Id")){
+                    $identifiers[$propName] = $annotation;
                 }
             }
         }
 
-        return $props;
+        return $identifiers;
     }
 }

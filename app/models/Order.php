@@ -3,7 +3,7 @@
 class Order extends Entity
 {
     /**
-     * @Id
+     * @Id(type="auto-increment")
      */
     protected $id;
 	private $status;

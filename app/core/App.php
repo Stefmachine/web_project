@@ -71,7 +71,7 @@ class App
     }
 
     /**
-     * @param Exception $exception
+     * @param Exception|PDOException $exception
      */
     function ExceptionHandler($exception){
         $_SESSION["error"] = $exception;

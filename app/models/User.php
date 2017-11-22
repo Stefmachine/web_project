@@ -3,7 +3,7 @@
 class User extends Entity
 {
     /**
-     * @Id
+     * @Id(type="auto-increment")
      */
     protected $id;
     protected $username;

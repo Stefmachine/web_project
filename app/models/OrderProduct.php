@@ -3,11 +3,11 @@
 class OrderProduct extends Entity
 {
     /**
-     * @Id
+     * @Id(type="manual")
      */
     private $orderId;
     /**
-     * @Id
+     * @Id(type="manual")
      */
     private $productId;
     private $quantity;

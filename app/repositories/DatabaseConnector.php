@@ -43,15 +43,13 @@ class DatabaseConnector
     }
 
     public function select(){
-        $args = implode(",",func_get_args());
-        $args = self::tablelize($args);
+        $args = self::tablelize(implode(",",func_get_args()));
         $this->query .= "SELECT $args";
         return $this;
     }
 
     public function from(){
-        $args = implode(",",func_get_args());
-        $args = self::tablelize($args);
+        $args = self::tablelize(implode(",",func_get_args()));
         $this->query .= " FROM $args";
         return $this;
     }
@@ -68,8 +66,8 @@ class DatabaseConnector
                 $operator = $parts[1];
                 $value = $parts[2];
                 $column = self::tablelize($name);
-                $conditions[] = "$column $operator :$name";
-                $this->executeArguments[$name] = $value;
+                $conditions[] = "$column $operator :$column";
+                $this->executeArguments[$column] = $value;
             }
         }
         $args = implode(" AND ",$conditions);
@@ -81,42 +79,47 @@ class DatabaseConnector
         $args = array();
         foreach (func_get_args() as $arg){
             if($arg != "ASC" || $arg != "DESC") {
-                $args[] = self::tablelize($arg);
+                $args[] = $arg;
             }
             else{
                 $args[] = $arg;
             }
         }
-        $args = implode(",",$args);
-        $args = self::tablelize($args);
+        $args = self::tablelize(implode(",",$args));
         $this->query .= " ORDER BY $args";
         return $this;
     }
 
     public function insert($_table,$_fields){
+        $table = self::tablelize($_table);
         $values = array();
         foreach ($_fields as $name => $newValue){
             $column = self::tablelize($name);
-            $values[] .= "$column = :$name";
-            $this->executeArguments[$name] = $newValue;
+            $values[] .= ":$column";
+            $this->executeArguments[$column] = $newValue;
         }
-        $valueString = implode(",",$values);
-        $this->query .= " INSERT INTO $_table(".implode(",",array_keys($_fields)).") VALUES($valueString)";
+        $valueString = self::tablelize(implode(",",$values));
+        $fields = self::tablelize(implode(",",array_keys($_fields)));
+        $this->query .= " INSERT INTO $table($fields) VALUES($valueString)";
         return $this;
     }
 
     public function update($_table){
-        $this->query .= " UPDATE $_table";
+        $table = self::tablelize($_table);
+        $this->query .= "UPDATE $table";
         return $this;
     }
 
     public function set($_fields){
         $this->query .= " SET ";
+        $values = array();
         foreach ($_fields as $name => $newValue){
             $column = self::tablelize($name);
-            $this->query .= "$column = :$name";
-            $this->executeArguments[$name] = $newValue;
+            $values[] = "$column = :$column";
+            $this->executeArguments[$column] = $newValue;
         }
+        $valueString = self::tablelize(implode(",",$values));
+        $this->query .= $valueString;
         return $this;
     }
 
@@ -131,42 +134,62 @@ class DatabaseConnector
     }
 
     public function getRow(){
-        $statement = $this->db()->prepare($this->query);
-        $this->fetchMode($statement);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetch();
+        try{
+            $statement = $this->db()->prepare($this->query);
+            $this->fetchMode($statement);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetch();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function getOne(){
-        $statement = $this->db()->prepare($this->query);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetchColumn();
+        try{
+            $statement = $this->db()->prepare($this->query);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetchColumn();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function getArray(){
-        $statement = $this->db()->prepare($this->query);
-        $this->fetchMode($statement);
-        $statement->execute($this->executeArguments);
-        $result = $statement->fetchAll();
+        try {
+            $statement = $this->db()->prepare($this->query);
+            $this->fetchMode($statement);
+            $statement->execute($this->executeArguments);
+            $result = $statement->fetchAll();
 
-        $this->clearQuery();
+            $this->clearQuery();
 
-        return $result;
+            return $result;
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     public function execute(){
-        $statement = $this->db()->prepare($this->query);
-        $statement->execute($this->executeArguments);
+        try {
+            $statement = $this->db()->prepare($this->query);
+            $statement->execute($this->executeArguments);
 
-        $this->clearQuery();
+            $this->clearQuery();
+        }
+        catch (PDOException $PDOException){
+            throw new Exception($PDOException->getMessage());
+        }
     }
 
     /**

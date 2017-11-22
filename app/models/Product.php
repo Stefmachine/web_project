@@ -3,7 +3,7 @@
 class Product extends Entity
 {
     /**
-     * @Id
+     * @Id(type="auto-increment")
      */
     protected $id;
     private $name;
@@ -107,16 +107,29 @@ class Product extends Entity
      */
     public function getTags()
     {
+        return $this->tags;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTagsArray()
+    {
         return explode(",",$this->tags);
     }
 
     /**
-     * @param array $_tags
+     * @param array|string $_tags
      * @return Product
      */
     public function setTags($_tags)
     {
-        $this->tags = implode(",",$_tags);
+        if(is_array($_tags)) {
+            $this->tags = implode(",", $_tags);
+        }
+        else{
+            $this->tags = $_tags;
+        }
         return $this;
     }
 

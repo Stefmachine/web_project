@@ -4,7 +4,6 @@ abstract class Entity
 {
     protected $creationTime;
     protected $updateTime;
-    protected $enabled = 1;
 
     /**
      * @return int

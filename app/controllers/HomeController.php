@@ -9,11 +9,6 @@ class HomeController extends Controller
      */
     function indexAction()
     {
-        $order = new OrderProduct();
-        $rep = new OrderProductRepository();
-        $rep->persist($order);
-
-
         $rep = new ProductRepository();
         $count = $rep->countAll();
 
