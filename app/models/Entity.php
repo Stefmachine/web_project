@@ -40,4 +40,25 @@ abstract class Entity
         $this->updateTime = $update;
         return $this;
     }
+
+    function __call($method, $value)
+    {
+        if(substr($method,0,3) == "set"){
+            $property = substr($method,3);
+
+            if(isset($value[0])){
+                $this->$property = $value[0];
+            }
+            else{
+                $this->$property = null;
+            }
+        }
+        else if(substr($method,0,3) == "get") {
+            $property =substr($method,3);
+
+            return $this->$property;
+        }
+
+        throw new BadFunctionCallException("The method ($method) you requested does not exist");
+    }
 }

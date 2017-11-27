@@ -8,11 +8,11 @@
 				<div class="col-lg-12">
 					<form id="login-form" role="form" action="<?= GlobalHelper::pageLink("user/validateLogin")?>" method="post">
 						<div class="form-group">
-							<label>Nom d'utilisateur</label>
+							<label for="username">Nom d'utilisateur</label>
 							<input class="form-control" name="username" id="username" placeholder="Nom d'utilisateur">
 						</div>
 						<div class="form-group">
-							<label>Mot de passe</label>
+							<label for="password">Mot de passe</label>
 							<input class="form-control" name="password" id="password" type="password">
 							<a href="<?= GlobalHelper::pageLink("user/passwordRecovery") ?>" class="help-block">Mot de passe oublié?</a>
 						</div>

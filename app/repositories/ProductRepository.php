@@ -7,7 +7,7 @@ class ProductRepository extends Repository
         /**
          * @type Product[] $products
          */
-        $products = $this->db()->select("*")->from($this->getModelTable())->where("tags LIKE %$_tag%")->limit($_limit)->offset($_offset)->getArray();
+        $products = $this->db()->select($this->modelProperties)->from($this->getModelTable())->where("tags LIKE %$_tag%")->limit($_limit)->offset($_offset)->getArray();
 
         return $products;
     }

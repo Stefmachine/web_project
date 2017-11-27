@@ -3,27 +3,45 @@
 abstract class Repository
 {
     protected $model;
+    protected $modelProperties;
 
     function __construct()
     {
         $this->model = $this->getRepositoryModel();
+        $ref = new ReflectionClass($this->model);
+        $props = array();
+        foreach($ref->getProperties() as $property){
+            $props[] = $property->getName();
+        }
+        $this->modelProperties = $props;
     }
 
     protected function db(){
         return new DatabaseConnector(PDO::FETCH_CLASS,$this->model);
     }
 
-    function find($_id){
+    function find(){
+        $values = func_get_args();
+        $identifiers = array_keys($this->getEntityMapping());
 
-        return $this->db()->select("*")->from($this->getModelTable())->where("id = $_id")->getRow();
+        if(count($values) != count($identifiers)){
+            throw new Exception("Missing identifiers for find() functions, having ".count($values)." requires ". count($identifiers));
+        }
+
+        $cond = array();
+        foreach ($values as $key => $value){
+            $cond[] = "{$identifiers[$key]} = $value";
+        }
+
+        return $this->db()->select($this->modelProperties)->from($this->getModelTable())->where($cond)->getRow();
     }
 
     function findAll($_limit = 0,$_offset = 0){
         if(!empty($_limit)) {
-            return $this->db()->select("*")->from($this->getModelTable())->limit($_limit)->offset($_offset)->getArray();
+            return $this->db()->select($this->modelProperties)->from($this->getModelTable())->limit($_limit)->offset($_offset)->getArray();
         }
         else{
-            return $this->db()->select("*")->from($this->getModelTable())->getArray();
+            return $this->db()->select($this->modelProperties)->from($this->getModelTable())->getArray();
         }
     }
 
@@ -32,7 +50,7 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getRow();
+        return $this->db()->select($this->modelProperties)->from($this->getModelTable())->where($conditions)->getRow();
     }
 
     function findBy($_criteria){
@@ -40,7 +58,7 @@ abstract class Repository
         foreach ($_criteria as $column => $value){
             $conditions[] = "$column = $value";
         }
-        return $this->db()->select("*")->from($this->getModelTable())->where($conditions)->getArray();
+        return $this->db()->select($this->modelProperties)->from($this->getModelTable())->where($conditions)->getArray();
     }
 
     function countAll(){
@@ -166,6 +184,21 @@ abstract class Repository
         }
 
         $this->db()->insert($table,$insertFields)->execute();
+    }
+
+    public function remove($_entity){
+        $table = $this->getModelTable();
+
+        $deleteFields = array();
+        $identifiers = array_keys($this->getEntityMapping());
+        foreach ($identifiers as $id) {
+            $getter = sprintf("get%s", $id);
+            $deleteFields[$id] = $_entity->$getter();
+        }
+
+        if(count($deleteFields) > 0) {
+            $this->db()->delete()->from($table)->where($deleteFields);
+        }
     }
 
     private function getEntityMapping(){

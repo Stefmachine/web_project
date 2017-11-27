@@ -55,7 +55,14 @@ class App
             $this->params = array_values($url);
         }
 
-        call_user_func_array(array($this->controller, $this->method), $this->params);
+        //Test for ajax stuff
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            print(json_encode(call_user_func_array(array($this->controller, $this->method), $this->params)));
+        }
+        else{
+            call_user_func_array(array($this->controller, $this->method), $this->params);
+        }
+
 
     }
 

@@ -43,8 +43,24 @@ class DatabaseConnector
     }
 
     public function select(){
-        $args = self::tablelize(implode(",",func_get_args()));
-        $this->query .= "SELECT $args";
+        $args = array();
+        foreach (func_get_args() as $arg) {
+            if(is_array($arg)) {
+                foreach ($arg as $subArg) {
+                    $args[] = self::tablelize($subArg) . " as " . self::lowerCamelCase($subArg);
+                }
+            }
+            else{
+                if(strpos($arg,"*")) {
+                    $args[] = $arg;
+                }
+                else{
+                    $args[] = self::tablelize($arg) . " as " . self::lowerCamelCase($arg);
+                }
+            }
+        }
+        $argsString = implode(",",$args);
+        $this->query .= "SELECT $argsString";
         return $this;
     }
 
@@ -106,7 +122,7 @@ class DatabaseConnector
 
     public function update($_table){
         $table = self::tablelize($_table);
-        $this->query .= "UPDATE $table";
+        $this->query .= " UPDATE $table";
         return $this;
     }
 
@@ -130,6 +146,11 @@ class DatabaseConnector
 
     public function offset($_offset){
         $this->query .= " OFFSET $_offset";
+        return $this;
+    }
+
+    public function delete(){
+        $this->query .= " DELETE";
         return $this;
     }
 
@@ -206,5 +227,9 @@ class DatabaseConnector
 
     public static function tablelize($_word){
         return strtolower(preg_replace('/\B([A-Z])/', '_$1', $_word));
+    }
+
+    public static function lowerCamelCase($_word){
+        return lcfirst(str_replace(" ", "", ucwords(str_replace("_"," ",$_word))));
     }
 }

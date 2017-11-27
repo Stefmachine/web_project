@@ -53,16 +53,17 @@ class UserController extends Controller
      * Validate login information before connection
      */
     function validateLogin(){
-        $userRepository = $this->repository("User");
+        $userRep = $this->repository("User");
         $username = GlobalHelper::XPost("username");
         $password = GlobalHelper::XPost("password");
         if($username && $password) {
             /**
              * @type User $user
              */
-            $user = $userRepository->findOneBy(array("username" => $username, "password" => $password));
-            if(!empty($user)){
+            $user = $userRep->findOneBy(array("username" => $username, "password" => $password));
+            if($user){
                 GlobalHelper::setXSession("user",$user->getId());
+                $this->manageUserOrders();
                 GlobalHelper::redirect();
             }
             else{
@@ -91,36 +92,85 @@ class UserController extends Controller
      * @Page(title="Votre panier")
      */
     function cartAction(){
-		$lib = new ProductRepository();		
-		$product = $lib->find(1);
-		
-		$variable = array(new Order());
-		$variable[0]->setId(1);
-		$variable[0]->setStatus("Canceled");
-		
-		$op = new OrderProduct();
-		$op->setOrderId($variable[0]->getId());
-		$op->setProductId($product);
-		$op->setQuantity(1);
-		$op->setSize('JUMBO');
-		
-		$variable[0]->addOrderProduct($op);
-		
-        $this->view("user/cart", array("order" => $variable, "product" => $product));
+		$orderRep = new OrderRepository();
+		$orderProductRep = new OrderProductRepository();
+		$productRep = new ProductRepository();
+
+        /**
+         * @type Order[] $orders
+         */
+		$orders = $orderRep->findBy(array("userId" => GlobalHelper::XSession("user")));
+
+		foreach ($orders as $key => $order){
+            /**
+             * @type OrderProduct[] $orderLines
+             */
+            $orderLines = $orderProductRep->findBy(array("orderId" => $order->getId()));
+            foreach ($orderLines as $opKey => $line){
+                /**
+                 * @type Product $product
+                 */
+                $product = $productRep->find($line->getProductId());
+                $orderLines[$opKey]->product = $product;
+            }
+            $orders[$key]->lines = $orderLines;
+        }
+
+        $this->view("user/cart", array("orders" => $orders));
+    }
+
+    private function manageUserOrders(){
+        $orderRep = new OrderRepository();
+        $order = $orderRep->findOneBy(array(
+            "userId" => GlobalHelper::XSession("user"),
+            "state" => "pending"
+        ));
+
+        if(!$order && GlobalHelper::XSession("user")){
+            $order = new Order();
+            $order->setUserId(GlobalHelper::XSession("user"))
+                ->setState("pending");
+
+            $orderRep->persist($order);
+        }
     }
 
     /**
      * Adds product to cart
-     * (Ajax?)
      * @Secured
      */
     function addToCart(){
+        $productId = GlobalHelper::XPost("productId");
+        $size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular" );
+        $quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1 );
 
+        $productRep = new ProductRepository();
+        $product = $productRep->find($productId);
+
+        if ($product) {
+            $orderRep = new OrderRepository();
+            $order = $orderRep->findOneBy(array(
+                "userId" => GlobalHelper::XSession("user"),
+                "state" => "pending"
+            ));
+            if ($order) {
+                $orderProductRep = new OrderProductRepository();
+                $orderLine = new OrderProduct();
+                $orderLine->setOrderId($order->getId())
+                    ->setProductId($product->getId())
+                    ->setQuantity($quantity)
+                    ->setSize($size);
+
+                $orderProductRep->persist($orderLine);
+
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * Removes product from cart
-     * (Ajax?)
      * @Secured
      */
     function removeFromCart(){

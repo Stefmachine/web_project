@@ -5,7 +5,7 @@ class Product extends Entity
     /**
      * @Id(type="auto-increment")
      */
-    protected $id;
+    private $id;
     private $name;
     private $description;
     private $cost;

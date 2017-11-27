@@ -1,3 +1,11 @@
+.content-right p{
+	font-size: 1.5em;
+}
+
+table{
+	font-size: 2em;
+}
+
 .header {
 	background: url(../img/pages/header.jpg) no-repeat center;
 	background-size: cover;
@@ -31,6 +39,14 @@
 	color: #fff;
 	background-color: #005238;
 	border-color: #003218;
+}
+
+.transitionAll{
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	-moz-transition: 0.5s all;
 }
 
 .btn-fitIn:hover{

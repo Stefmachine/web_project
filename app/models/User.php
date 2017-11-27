@@ -5,12 +5,12 @@ class User extends Entity
     /**
      * @Id(type="auto-increment")
      */
-    protected $id;
-    protected $username;
-    protected $password;
-    protected $firstName;
-    protected $lastName;
-    protected $email;
+    private $id;
+    private $username;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $email;
 
     /**
      * @return mixed

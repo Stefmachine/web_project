@@ -5,8 +5,9 @@ class Order extends Entity
     /**
      * @Id(type="auto-increment")
      */
-    protected $id;
-	private $status;
+    private $id;
+
+	private $state;
 	private $completedTime;
 	private $userId;
 
@@ -31,18 +32,18 @@ class Order extends Entity
 	/**
      * @return string
      */
-    public function getStatus()
+    public function getState()
     {
-        return $this->status;
+        return $this->state;
     }
 
     /**
-     * @param string $status
+     * @param string $state
      * @return Order
      */
-    public function setStatus($status)
+    public function setState($state)
     {
-        $this->status = $status;
+        $this->state = $state;
         return $this;
     }
 
