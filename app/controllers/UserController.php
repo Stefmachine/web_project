@@ -63,8 +63,13 @@ class UserController extends Controller
             $user = $userRep->findOneBy(array("username" => $username, "password" => $password));
             if($user){
                 GlobalHelper::setXSession("user",$user->getId());
+                if(GlobalHelper::XPost("save-session")){
+                    GlobalHelper::setXCookie("connected",$user->getId(),array());
+                }
                 $this->manageUserOrders();
-                GlobalHelper::redirect();
+                $redirect = GlobalHelper::XSession("loginRedirect");
+                GlobalHelper::removeXSession("loginRedirect");
+                GlobalHelper::redirect($redirect);
             }
             else{
                 GlobalHelper::redirect("user/login/error1");
@@ -83,6 +88,7 @@ class UserController extends Controller
      */
     function logoutAction(){
         GlobalHelper::removeXSession("user");
+        GlobalHelper::removeXCookie("connected");
         GlobalHelper::redirect();
     }
 
@@ -159,7 +165,8 @@ class UserController extends Controller
                 $orderLine->setOrderId($order->getId())
                     ->setProductId($product->getId())
                     ->setQuantity($quantity)
-                    ->setSize($size);
+                    ->setSize($size)
+                    ->setCost($this->calculateCost($product->getCost(),$size,$quantity));
 
                 $orderProductRep->persist($orderLine);
 
@@ -174,6 +181,55 @@ class UserController extends Controller
      * @Secured
      */
     function removeFromCart(){
+        $productId = GlobalHelper::XPost("productId");
 
+
+        $orderRep = new OrderRepository();
+        $order = $orderRep->findOneBy(array(
+            "userId" => GlobalHelper::XSession("user"),
+            "state" => "pending"
+        ));
+        if ($order) {
+            $orderProductRep = new OrderProductRepository();
+            $orderLine = $orderProductRep->findOneBy(array(
+                "orderId" => $order->getId(),
+                "productId" => $productId
+            ));
+            $orderProductRep->remove($orderLine);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param Product $_product
+     * @param string $_size
+     * @param int $_quantity
+     * @return float
+     * @throws Exception
+     */
+    public function calculateCost($_baseCost = null,$_size = null,$_quantity = null){
+        $kid = 0.75;
+        $small = 1;
+        $regular = 1.5;
+
+        if(empty($_baseCost) || empty($_size) || empty($_quantity)) {
+            $productId = GlobalHelper::XPost("productId");
+            $_size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular");
+            $_quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1);
+
+            $productRep = new ProductRepository();
+            $product = $productRep->find($productId);
+
+            $_baseCost = $product->getCost();
+        }
+
+        if(!isset($$_size)){
+            throw new Exception("Size type '$_size' does not exist.");
+        }
+
+        return $_baseCost * $$_size * $_quantity;
     }
 }

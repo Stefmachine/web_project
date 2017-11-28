@@ -13,6 +13,11 @@ class App
         @set_error_handler(array($this,'ErrorHandler'));
 
         session_start();
+
+        if(GlobalHelper::XCookie("connected")){
+            GlobalHelper::setXSession("user",GlobalHelper::XCookie("connected"));
+        }
+
         $url = $this->parseUrl();
 
         if(isset($url[0])) {
@@ -43,11 +48,11 @@ class App
             }
         }
 
+        $connectionRequired = false;
         if(!$this->userIsConnected()) {
             $security = new AnnotationReader();
             if($security->isSecured($this->controller, $this->method)){
-                GlobalHelper::redirect("user/login");
-                exit();
+                $connectionRequired = true;
             }
         }
 
@@ -57,10 +62,22 @@ class App
 
         //Test for ajax stuff
         if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            print(json_encode(call_user_func_array(array($this->controller, $this->method), $this->params)));
+            if($connectionRequired){
+                print(json_encode("connectionRequired"));
+            }
+            else{
+                print(json_encode(call_user_func_array(array($this->controller, $this->method), $this->params)));
+            }
         }
         else{
-            call_user_func_array(array($this->controller, $this->method), $this->params);
+            if($connectionRequired){
+                GlobalHelper::setXSession("loginRedirect",GlobalHelper::XGet("url"));
+                GlobalHelper::redirect("user/login");
+                exit();
+            }
+            else{
+                call_user_func_array(array($this->controller, $this->method), $this->params);
+            }
         }
 
 

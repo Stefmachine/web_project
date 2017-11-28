@@ -151,7 +151,7 @@ abstract class Repository
         $idFields = array();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
-            $getter = sprintf("get%s", $propertyName);
+            $getter = sprintf("get%s", ucfirst($propertyName));
             if(!in_array($propertyName,$identifiers)) {
                 $updateFields[$propertyName] = $_entity->$getter();
             }
@@ -177,7 +177,7 @@ abstract class Repository
         $identifiersAnnotations = $this->getEntityMapping();
         foreach ($refClass->getProperties() as $property) {
             $propertyName = $property->getName();
-            $getter = sprintf("get%s", $propertyName);
+            $getter = sprintf("get%s", ucfirst($propertyName));
             if(!in_array($propertyName,array_keys($identifiersAnnotations)) || $identifiersAnnotations[$propertyName]->getParameter("type") == "manual") {
                 $insertFields[$propertyName] = $_entity->$getter();
             }
@@ -192,12 +192,12 @@ abstract class Repository
         $deleteFields = array();
         $identifiers = array_keys($this->getEntityMapping());
         foreach ($identifiers as $id) {
-            $getter = sprintf("get%s", $id);
-            $deleteFields[$id] = $_entity->$getter();
+            $getter = sprintf("get%s", ucfirst($id));
+            $deleteFields[] = "$id = {$_entity->$getter()}";
         }
 
         if(count($deleteFields) > 0) {
-            $this->db()->delete()->from($table)->where($deleteFields);
+            $this->db()->delete()->from($table)->where($deleteFields)->execute();
         }
     }
 

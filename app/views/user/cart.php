@@ -12,40 +12,53 @@
                  */
                 foreach ($_data["orders"] as $orderNum => $order) { ?>
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse<?= $orderNum; ?>">Order #<?= $order->getId(); ?></a>
-                            </h4>
-                        </div>
+                        <a data-toggle="collapse" href="#collapse<?= $orderNum; ?>">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    Order #<?= $order->getId(); ?>
+                                </h4>
+                                <h6 class="panel-title">
+                                    <?= (!empty($order->getCompletedTime()) ? $order->getCompletedTime() : "" ); ?>
+                                </h6>
+                            </div>
+                        </a>
                         <div id="collapse<?= $orderNum; ?>" class="panel-collapse collapse">
-                            <table class="table table-striped text-center">
+                            <table id="cart-table" class="table table-striped table-hover text-center">
                                 <thead class="text-left">
                                 <tr>
-                                    <td>Nom</td>
-                                    <td>Image</td>
-                                    <td>Portion</td>
-                                    <td>Quantité</td>
-                                    <td>Coût</td>
-                                    <td></td>
+                                    <th>Nom</th>
+                                    <th>Image</th>
+                                    <th>Portion</th>
+                                    <th>Quantité</th>
+                                    <th>Coût</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <?php
                                 /**
-                                 * Order line was added in controller
+                                 * Order lines were added in controller
                                  * @type OrderProduct $orderLine
                                  */
                                 foreach ($order->lines as $lineNum => $orderLine) {
                                     /**
+                                     * Product was added in controller
                                      * @type Product $product
                                      */
                                     $product = $orderLine->product;?>
 
-                                    <tr>
+                                    <tr id="rowProduct<?= $product->getId() ?>">
                                         <td><?= $product->getName() ?></td>
                                         <td><img width="100px" src="<?= resource("img/products/" . $product->getPicture()) ?>" alt="<?= $product->getName() ?> image"></td>
-                                        <td><?= $orderLine->getSize() ?></td>
-                                        <td><?= $orderLine->getQuantity() ?></td>
-                                        <td></td>
+                                        <td>
+                                            <select onchange="updateAttributes(<?= $product->getId(); ?>)" class="form-control size" name="size" id="size">
+                                                <option <?= ($orderLine->getSize() == "kid")? "selected=selected" : "" ?> value="kid">Enfant</option>
+                                                <option <?= ($orderLine->getSize() == "small")? "selected=selected" : "" ?> value="small">Petit</option>
+                                                <option <?= ($orderLine->getSize() == "regular")? "selected=selected" : "" ?> value="regular">Régulier</option>
+                                            </select>
+                                        </td>
+                                        <td><input onchange="updateAttributes(<?= $product->getId(); ?>)" class="form-control quantity" type="number" min="1" max="20" value="<?= $orderLine->getQuantity() ?>"></td>
+                                        <td id="cost<?= $product->getId() ?>"><?= number_format($orderLine->getCost(),2); ?>$</td>
+                                        <td><a class="btn btn-danger glyphicon glyphicon-remove" onclick="removeFromCart(<?= $product->getId() ?>)"></a></td>
                                     </tr>
                                 <?php } ?>
                             </table>

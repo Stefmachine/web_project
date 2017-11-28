@@ -93,16 +93,17 @@ class DatabaseConnector
 
     public function orderBy(){
         $args = array();
+        $type = "ASC";
         foreach (func_get_args() as $arg){
             if($arg != "ASC" || $arg != "DESC") {
                 $args[] = $arg;
             }
             else{
-                $args[] = $arg;
+                $type = $arg;
             }
         }
         $args = self::tablelize(implode(",",$args));
-        $this->query .= " ORDER BY $args";
+        $this->query .= " ORDER BY $args $type";
         return $this;
     }
 

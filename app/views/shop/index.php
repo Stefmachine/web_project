@@ -35,7 +35,9 @@ $productCount = count($_data["products"]); ?>
                             </div>
                         </a>
                     </div>
-                    <div id="alert<?= $product->getId(); ?>" class="hidden alert" role="alert"></div>
+                    <h3>
+                        <div id="alert<?= $product->getId(); ?>" class="hidden alert" role="alert"></div>
+                    </h3>
                 </div>
                 <?php if ((!boolval(($key + 1) % 3) && $key > 0) || $key + 1 == $productCount){ ?>
                     <div class="clearfix"></div>

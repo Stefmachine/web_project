@@ -1,9 +1,39 @@
+.loading{
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.toggle-menu li>a{
+	width: 100%;
+}
+
+.toggle-menu li{
+	width: 80%!important;
+}
+
 .content-right p{
-	font-size: 1.5em;
+	 font-size: 1.5em;
+}
+
+table a{
+	text-underline: none;
 }
 
 table{
 	font-size: 2em;
+}
+
+td{
+	vertical-align: middle!important;
+}
+
+td.form-control{
+	padding-right: 0!important;
+}
+
+table input[type=number]{
+	width:100%;
 }
 
 .header {

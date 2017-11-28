@@ -19,11 +19,12 @@
 						<div class="form-group">
 							<div class="checkbox">
 								<label>
-									<input name="save-session" type="checkbox" value="">Se souvenir de moi
+									<input name="save-session" type="checkbox" value="1">Se souvenir de moi
 								</label>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-fitIn">Se connecter</button>
+                        <input name="from" type="hidden" value="">
 					</form>
 				</div>
 			</div>

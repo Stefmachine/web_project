@@ -25,7 +25,7 @@ if(!empty($userId)){
 				$datos = $_data["pageConfigs"];
 				$context = $datos["index"];
 			?>
-            <div class="toggle">
+            <nav class="toggle text-center">
                 <ul class="toggle-menu">
                     <li><a href="<?= GlobalHelper::pageLink("home/index"); ?>"<?= ($context == 'home/index' ? 'class="active"' : '');?>> Accueil </a></li>
                     <li><a href="<?= GlobalHelper::pageLink("shop/index"); ?>"<?= ($context == 'shop/index' ? 'class="active"' : '');?>> Menu </a></li>
@@ -41,7 +41,7 @@ if(!empty($userId)){
                         <li><a href="<?= GlobalHelper::pageLink("user/logout"); ?>"<?= ($context == 'user/logout' ? 'class="active"' : '');?>> Déconnexion </a></li>
                     <?php } ?>
                 </ul>
-            </div>
+            </nav>
             <script>
                 $('.navicon').on('click', function (e) {
                     e.preventDefault();

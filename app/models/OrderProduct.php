@@ -12,6 +12,7 @@ class OrderProduct extends Entity
     private $productId;
     private $quantity;
     private $size;
+    private $cost;
 
     /**
      * @return int
@@ -85,5 +86,21 @@ class OrderProduct extends Entity
         return $this;
     }
 
+    /**
+     * @return float
+     */
+    public function getCost()
+    {
+        return $this->cost;
+    }
 
+    /**
+     * @param float $cost
+     * @return OrderProduct
+     */
+    public function setCost($cost)
+    {
+        $this->cost = $cost;
+        return $this;
+    }
 }

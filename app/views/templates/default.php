@@ -55,9 +55,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <?php include_once "includes/header.php"; ?>
+<div id="loading" class="loading" style="display: none;"><img width="100" height="100" src="<?= resource("img/pages/loading.gif"); ?>"></div>
+<div id="loading-still" class="loading"><img width="100" height="100" src="<?= resource("img/pages/loading-still.gif"); ?>"></div>
 <div class="content" id="content-down">
     <?= $content ?>
 </div>
 <?php include_once "includes/footer.php"; ?>
+<script type="text/javascript" src="<?= resource("js/master.js"); ?>"></script>
 </body>
 </html>

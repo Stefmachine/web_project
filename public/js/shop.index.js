@@ -1,32 +1,23 @@
-function addToCart(_itemId){
-    alertDiv = $("#alert"+_itemId);
+function addToCart(_productId){
+    alertDiv = $("#alert"+_productId);
     $.ajax({
         url: "index.php?url=user/addToCart",
         type: "POST",
         dataType: 'json',
-        data: {productId:_itemId},
+        data: {productId:_productId},
         success: function(data){
             if(data == true){
-                alertDiv.removeClass("alert-warning");
-                alertDiv.removeClass("alert-danger");
-                alertDiv.removeClass("hidden");
-                alertDiv.addClass("alert-success");
-                alertDiv.html("Produit ajouté à votre commande avec succès");
+                alertMode(alertDiv,"success","Produit ajouté à votre commande avec succès");
+            }
+            else if(data == "connectionRequired"){
+                alertMode(alertDiv,"info","Vous devez être connecté pour pouvoir ajouter un produit à votre panier");
             }
             else{
-                alertDiv.removeClass("alert-success");
-                alertDiv.removeClass("alert-danger");
-                alertDiv.removeClass("hidden");
-                alertDiv.addClass("alert-warning");
-                alertDiv.html("Il est impossible d'ajouter ce produit à votre commande");
+                alertMode(alertDiv,"warning","Il est impossible d'ajouter ce produit à votre commande");
             }
         },
-        error: function(){
-            alertDiv.removeClass("alert-success");
-            alertDiv.removeClass("alert-warning");
-            alertDiv.removeClass("hidden");
-            alertDiv.addClass("alert-danger");
-            alertDiv.html("Un problème est survenu");
+        error: function(response){
+            alertMode(alertDiv,"danger","Un problème est survenu");
         }
     });
 }

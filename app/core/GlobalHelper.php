@@ -61,4 +61,33 @@ abstract class GlobalHelper
     static function setXSession($_key,$_value){
         $_SESSION[$_key] = htmlentities($_value);
     }
+
+    static function XCookie($_key){
+        return isset($_COOKIE[$_key]) ? htmlentities($_COOKIE[$_key]) : "" ;
+    }
+
+    static function setXCookie($_key, $_value, $options = array()){
+        $defaultOptions = array(
+            "expire" => strtotime("+2 days"),
+            "path" => "/",
+            "domain" => null,
+            "secure" => false,
+            "httponly" => true
+        );
+        foreach ($defaultOptions as $option => $default){
+            if(empty($options[$option])){
+               $options[$option] = $default;
+            }
+        }
+        setcookie($_key,htmlentities($_value),$options["expire"],$options["path"],$options["domain"],$options["secure"],$options["httponly"]);
+    }
+
+    static function removeXCookie($_key){
+        if(isset($_COOKIE[$_key])) {
+            setcookie($_key, "", 1, "/", null, false, true);
+            unset($_COOKIE[$_key]);
+            return true;
+        }
+        return false;
+    }
 }
