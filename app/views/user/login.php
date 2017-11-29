@@ -1,5 +1,5 @@
 <div class="container s-10">
-	<div class="panel panel-fitIn col-lg-4 col-md-8 col-sm-12">
+	<div class="panel panel-fitIn col-lg-6 col-md-8 col-sm-12">
 		<div class="panel-heading">
 			Veuillez vous connecter pour continuer
 		</div>
@@ -44,14 +44,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-8 text-center s-40 m-20 align-center">
+	<div class="col-md-6 text-center s-40 m-20 align-center">
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<img src="<?= resource('/eshop-theme/images/me1.jpg') ?>" class="img-thumbnail"/>
 			</div>
 		</div>
 		<div class="row s-10">
-			<i><h2>Connectez-vous pour avoir accès au magasin en ligne et à des offres aussi alléchantes que nos plats!</h2></i>
+			<h2>Connectez-vous pour avoir accès au magasin en ligne et à des offres aussi alléchantes que nos plats!</h2>
 		</div>
 	</div>
 </div>

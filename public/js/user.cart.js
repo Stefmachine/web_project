@@ -1,15 +1,3 @@
-// JavaScript Document
-$(document).ready(
-	function() {
-		$("#lst_departement").change(OnIndexChanged);
-	}
-);
-
-function OnIndexChanged()
-{
-
-
-}
 
 function removeFromCart(_productId){
 	$.ajax({
@@ -35,6 +23,7 @@ function removeFromCart(_productId){
 }
 
 function updateAttributes(_productId){
+
     size = $("#rowProduct"+_productId+">td>.size").val();
     quantity = $("#rowProduct"+_productId+">td>.quantity").val();
 
@@ -81,4 +70,15 @@ function updateCost(_productId){
             alert("ohshit");
         }
     });
+}
+
+function toggleArrow(){
+    if($("#arrow").hasClass("glyphicon-menu-up")) {
+        $("#arrow").removeClass("glyphicon-menu-up");
+        $("#arrow").addClass("glyphicon-menu-down");
+    }
+    else{
+        $("#arrow").removeClass("glyphicon-menu-down");
+        $("#arrow").addClass("glyphicon-menu-up");
+    }
 }

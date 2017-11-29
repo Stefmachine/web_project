@@ -31,12 +31,13 @@ $productCount = count($_data["products"]); ?>
                             <div class="captn">
                                 <h4><?= $product->getName() ?></h4>
                                 <p><?= $product->getCost() ?>$</p>
-                                <p class="btn fitIn" onclick="addToCart(<?= $product->getId(); ?>); return false;">Ajouter au panier</p>
+                                <p id="addToCart<?= $product->getId() ?>" <?= (in_array($product->getId(),$_data["onOrder"]) ? "style='display:none'" : "" ); ?> class="btn fitIn" onclick="addToCart(<?= $product->getId(); ?>); return false;">Ajouter au panier</p>
+                                <p id="inCart<?= $product->getId() ?>" <?= (!in_array($product->getId(),$_data["onOrder"]) ? "style='display:none'" : "" ); ?> class="">Déjà dans le panier <i class="glyphicon glyphicon-shopping-cart"></i> </p>
                             </div>
                         </a>
                     </div>
                     <h3>
-                        <div id="alert<?= $product->getId(); ?>" class="hidden alert" role="alert"></div>
+                        <div id="alert<?= $product->getId(); ?>" class="hidden customAlert alert" role="alert"></div>
                     </h3>
                 </div>
                 <?php if ((!boolval(($key + 1) % 3) && $key > 0) || $key + 1 == $productCount){ ?>

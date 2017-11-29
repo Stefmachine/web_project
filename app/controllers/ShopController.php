@@ -20,7 +20,27 @@ class ShopController extends Controller
 
         $products = $rep->findAllByTag($limit,$offset,$_tag);
 
-        $this->view('shop/index',array("products" => $products,"pagesCount" => $pageCount,"tag" => $_tag, "index" => $_page));
+        $onOrder = array();
+        if(GlobalHelper::XSession("user")){
+            $orderRep = new OrderRepository();
+            $orderProductRep = new OrderProductRepository();
+            /**
+             * @type Order[] $orders
+             */
+            $orders = $orderRep->findBy(array("userId" => GlobalHelper::XSession("user")));
+
+            foreach ($orders as $key => $order){
+                /**
+                 * @type OrderProduct[] $orderLines
+                 */
+                $orderLines = $orderProductRep->findBy(array("orderId" => $order->getId()));
+                foreach ($orderLines as $opKey => $line){
+                    $onOrder[] = $line->getProductId();
+                }
+            }
+        }
+
+        $this->view('shop/index',array("products" => $products,"pagesCount" => $pageCount,"tag" => $_tag, "index" => $_page, "onOrder" => $onOrder));
     }
 
     /**

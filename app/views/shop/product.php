@@ -32,7 +32,7 @@ $product = $_data["product"]; ?>
 			<form>
 				<div class="row">
 					<div class="form-group col-md-6">
-						<input type="numeric" class="form-control" id="quantitee" placeholder="Quantity" value=1>
+						<input type="number" class="form-control" id="quantitee" placeholder="Quantity" value=1>
 					</div>
 					
 				</div>
@@ -40,8 +40,7 @@ $product = $_data["product"]; ?>
 					<a type="submit" class="btn cart-button col-md-6">
 						<i class="glyphicon glyphicon-shopping-cart"></i> <h4>Add to Cart</h4>
 					</a>
-					</div>
-				</div>
+                </div>
 			</form>
 		</div>
 	</div>

@@ -33,10 +33,10 @@ if(!empty($userId)){
                 </ul>
                 <hr>
                 <ul class="toggle-menu">
-                    <li><a href="<?= GlobalHelper::pageLink("user/cart"); ?>"<?= ($context == 'user/cart' ? 'class="active"' : '');?>> Panier </a></li>
                     <?php if(empty($user)){ ?>
                         <li><a href="<?= GlobalHelper::pageLink("user/login"); ?>"<?= ($context == 'user/login' ? 'class="active"' : '');?>> Connexion </a></li>
                     <?php } else { ?>
+                        <li><a href="<?= GlobalHelper::pageLink("user/cart"); ?>"<?= ($context == 'user/cart' ? 'class="active"' : '');?>> Panier </a></li>
                         <li><a href="<?= GlobalHelper::pageLink("user/profile"); ?>"<?= ($context == 'user/profile' ? 'class="active"' : '');?>> Profile </a></li>
                         <li><a href="<?= GlobalHelper::pageLink("user/logout"); ?>"<?= ($context == 'user/logout' ? 'class="active"' : '');?>> Déconnexion </a></li>
                     <?php } ?>

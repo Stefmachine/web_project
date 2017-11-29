@@ -15,5 +15,8 @@ $(document).ajaxStart(function() {
 });
 
 $(document).ajaxStop(function() {
-    $("#loading").hide();
+    setTimeout(function(){
+        $("#loading").hide();
+    }, 500);
 });
+

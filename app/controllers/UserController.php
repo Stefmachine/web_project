@@ -42,11 +42,11 @@ class UserController extends Controller
      */
     function loginAction($_error = ""){
         $error1 = array("type" => "error","message" => "Le nom d'utilisateur et/ou le mot de passe sont invalides.");
-        $error2 = array("tpe" => "error","message" => "Vous devez inscrire un nom d'utilisateur et un mot de passe pour vous connecter.");
+        $error2 = array("type" => "error","message" => "Vous devez inscrire un nom d'utilisateur et un mot de passe pour vous connecter.");
         $mailSent = array("type" => "success","message" => "Un lien pour récupérer votre mot de passe vous parviendra sous peu à l'adresse indiqué.");
 
         $loginError = isset($$_error) ? $$_error : array();
-        $this->view("user/login",$loginError);
+        $this->view("user/login", $loginError);
     }
 
     /**
@@ -183,7 +183,6 @@ class UserController extends Controller
     function removeFromCart(){
         $productId = GlobalHelper::XPost("productId");
 
-
         $orderRep = new OrderRepository();
         $order = $orderRep->findOneBy(array(
             "userId" => GlobalHelper::XSession("user"),
@@ -204,32 +203,40 @@ class UserController extends Controller
     }
 
     /**
-     * @param Product $_product
-     * @param string $_size
-     * @param int $_quantity
      * @return float
      * @throws Exception
      */
-    public function calculateCost($_baseCost = null,$_size = null,$_quantity = null){
+    public function calculateCost(){
         $kid = 0.75;
         $small = 1;
         $regular = 1.5;
 
-        if(empty($_baseCost) || empty($_size) || empty($_quantity)) {
-            $productId = GlobalHelper::XPost("productId");
-            $_size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular");
-            $_quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1);
+        $productId = GlobalHelper::XPost("productId");
+        $_size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular");
+        $_quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1);
 
-            $productRep = new ProductRepository();
-            $product = $productRep->find($productId);
+        $productRep = new ProductRepository();
+        $product = $productRep->find($productId);
 
-            $_baseCost = $product->getCost();
-        }
+        $_baseCost = $product->getCost();
 
         if(!isset($$_size)){
             throw new Exception("Size type '$_size' does not exist.");
         }
 
         return $_baseCost * $$_size * $_quantity;
+    }
+
+    /**
+     * @param string $_username
+     * @return bool
+     */
+    public function checkUserName(){
+        $_username = GlobalHelper::XPost("username");
+
+        $userRep = new UserRepository();
+        $user = $userRep->findOneBy(array("username" => $_username));
+
+        return boolval($user);
     }
 }

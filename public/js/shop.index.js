@@ -7,6 +7,7 @@ function addToCart(_productId){
         data: {productId:_productId},
         success: function(data){
             if(data == true){
+                toggleInCart(_productId);
                 alertMode(alertDiv,"success","Produit ajouté à votre commande avec succès");
             }
             else if(data == "connectionRequired"){
@@ -20,4 +21,9 @@ function addToCart(_productId){
             alertMode(alertDiv,"danger","Un problème est survenu");
         }
     });
+}
+
+function toggleInCart(_itemId){
+    $("#addToCart"+_itemId).hide();
+    $("#inCart"+_itemId).show();
 }

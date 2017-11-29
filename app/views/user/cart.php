@@ -12,15 +12,15 @@
                  */
                 foreach ($_data["orders"] as $orderNum => $order) { ?>
                     <div class="panel panel-default">
-                        <a data-toggle="collapse" href="#collapse<?= $orderNum; ?>">
+                        <a data-toggle="collapse" onclick="toggleArrow()" href="#collapse<?= $orderNum; ?>">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    Order #<?= $order->getId(); ?>
-                                </h4>
-                                <h6 class="panel-title">
+                                    Commande #<?= $order->getId(); ?>
                                     <?= (!empty($order->getCompletedTime()) ? $order->getCompletedTime() : "" ); ?>
-                                </h6>
+                                <div class="text-right"><i id="arrow" class="glyphicon glyphicon-menu-down"></i></div>
+                                </h4>
                             </div>
+
                         </a>
                         <div id="collapse<?= $orderNum; ?>" class="panel-collapse collapse">
                             <table id="cart-table" class="table table-striped table-hover text-center">
@@ -56,7 +56,7 @@
                                                 <option <?= ($orderLine->getSize() == "regular")? "selected=selected" : "" ?> value="regular">Régulier</option>
                                             </select>
                                         </td>
-                                        <td><input onchange="updateAttributes(<?= $product->getId(); ?>)" class="form-control quantity" type="number" min="1" max="20" value="<?= $orderLine->getQuantity() ?>"></td>
+                                        <td><input onchange="updateAttributes(<?= $product->getId(); ?>)" class="form-control quantity" type="text" value="<?= $orderLine->getQuantity() ?>"></td>
                                         <td id="cost<?= $product->getId() ?>"><?= number_format($orderLine->getCost(),2); ?>$</td>
                                         <td><a class="btn btn-danger glyphicon glyphicon-remove" onclick="removeFromCart(<?= $product->getId() ?>)"></a></td>
                                     </tr>

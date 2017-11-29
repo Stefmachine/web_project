@@ -25,15 +25,15 @@
             </div>
             <div class="col-md-9 contact-para animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
                 <h5>Remplissez notre formulaire et laissez-nous votre commentaire</h5>
-                <form id="contactForm">
+                <form id="contact-form">
                     <div class="grid-contact">
                         <div class="col-md-6 contact-grid">
                             <p class="your-para">Prénom</p>
-                            <input type="text" name="prenom" id="prenom" placeholder="Votre prénom...">
+                            <input type="text" name="firstname" id="firstname" placeholder="Votre prénom...">
                         </div>
                         <div class="col-md-6 contact-grid">
                             <p class="your-para">Nom</p>
-                            <input type="text" name="nom" id="nom" placeholder="Votre nom...">
+                            <input type="text" name="lastname" id="lastname" placeholder="Votre nom...">
                         </div>
                         <div class="clearfix"></div>
                     </div>
