@@ -10,15 +10,15 @@ function removeFromCart(_productId){
 				$("#rowProduct"+_productId).remove();
 			}
 			else if(data == "connectionRequired"){
-
+                console.log(data);
 			}
 			else{
-				alert("fuck");
-			}
+                console.log(data);
+            }
 		},
 		error: function(response){
-            alert("ohshit");
-		}
+            console.log(response);
+        }
 	});
 }
 
@@ -37,14 +37,14 @@ function updateAttributes(_productId){
                 updateCost(_productId);
             }
             else if(data == "connectionRequired"){
-
+                console.log(data);
             }
             else{
-                alert("fuck");
+                console.log(data);
             }
         },
         error: function(response){
-            alert("ohshit");
+            console.log(response);
         }
     });
 }
@@ -60,14 +60,14 @@ function updateCost(_productId){
                 $("#cost"+_productId).html(data.toFixed(2)+"$");
             }
             else if(data == "connectionRequired"){
-
+                console.log(data);
             }
             else{
-                alert("fuck");
+                console.log(data);
             }
         },
         error: function(response){
-            alert("ohshit");
+            console.log(response);
         }
     });
 }

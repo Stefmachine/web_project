@@ -2,6 +2,11 @@ label.error{
 	color: red;
 }
 
+img.bordered{
+	border: 12px solid #ddd;
+	border-radius: 2em;
+}
+
 .loading{
 	position: fixed;
 	top: 0;
@@ -201,7 +206,7 @@ color: red;
 
 .cart-button {
 	background-color: orange;
-	color: white;
+	color: white!important;
 }
 
 /* Images */

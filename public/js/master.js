@@ -8,6 +8,7 @@ function alertMode(alertDiv,mode,message) {
 
     alertDiv.html(message);
     alertDiv.removeClass("hidden");
+    setTimeout(function(){alertDiv.fadeTo(100,0)},2000);
 }
 
 $(document).ajaxStart(function() {

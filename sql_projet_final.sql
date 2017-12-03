@@ -2,10 +2,10 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 29, 2017 at 06:00 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Client :  127.0.0.1
+-- Généré le :  Dim 03 Décembre 2017 à 19:50
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_ooze`
+-- Base de données :  `db_ooze`
 --
 CREATE DATABASE IF NOT EXISTS `db_ooze` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `db_ooze`;
 
+DELIMITER $$
+--
+-- Procédures
+--
+DROP PROCEDURE IF EXISTS `findCurrentOrder`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `findCurrentOrder` (IN `userId` INT)  READS SQL DATA
+SELECT tbl_order.id,tbl_order.completed_time as completedTime, tbl_order.state, tbl_order.user_id as userId, tbl_order.update_time as updateTime, tbl_order.creation_time as creationTime from tbl_order WHERE (tbl_order.user_id = userId and tbl_order.state = "pending")$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order`
+-- Structure de la table `tbl_order`
 --
 
 DROP TABLE IF EXISTS `tbl_order`;
@@ -39,16 +49,22 @@ CREATE TABLE `tbl_order` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `tbl_order`
+-- Contenu de la table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`id`, `completed_time`, `user_id`, `state`, `update_time`, `creation_time`) VALUES
-(1, NULL, 1, 'pending', 1511739857, 1511739857);
+(1, 1512325186, 1, 'completed', 1512325186, 1511739857),
+(2, 1512326068, 1, 'completed', 1512326068, 1512325186),
+(3, 1512326815, 1, 'completed', 1512326815, 1512326068),
+(4, 1512326911, 1, 'completed', 1512326911, 1512326815),
+(5, 1512327164, 1, 'completed', 1512327164, 1512326911),
+(6, 1512327252, 1, 'completed', 1512327252, 1512327164),
+(7, NULL, 1, 'pending', 1512327252, 1512327252);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order_product`
+-- Structure de la table `tbl_order_product`
 --
 
 DROP TABLE IF EXISTS `tbl_order_product`;
@@ -63,22 +79,25 @@ CREATE TABLE `tbl_order_product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `tbl_order_product`
+-- Contenu de la table `tbl_order_product`
 --
 
 INSERT INTO `tbl_order_product` (`order_id`, `product_id`, `quantity`, `size`, `cost`, `creation_time`, `update_time`) VALUES
-(1, 2, 1, 'small', 3.99, 1511936110, 1511936110),
-(1, 15, 1, 'regular', 5.99, 1511934844, 1511934844),
-(1, 12, 3, 'regular', 17.95, 1511919834, 1511919834),
-(1, 7, 1, 'regular', 4.49, 1511919824, 1511919824),
-(1, 9, 3, 'small', 8.97, 1511919838, 1511919838),
-(1, 10, 1, 'regular', 2.98, 1511919784, 1511919784),
-(1, 8, 1, 'small', 3.49, 1511919440, 1511919440);
+(1, 1, 12, 'regular', 44.82, 1512324223, 1512324223),
+(1, 2, 1, 'regular', 5.99, 1512324270, 1512324270),
+(1, 5, 1, 'regular', 2.98, 1512324272, 1512324272),
+(3, 1, 1, 'regular', 3.73, 1512326801, 1512326801),
+(3, 3, 1, 'regular', 1.49, 1512326803, 1512326803),
+(4, 1, 19, 'regular', 70.97, 1512326886, 1512326886),
+(4, 8, 1, 'regular', 5.24, 1512326899, 1512326899),
+(5, 6, 5, 'small', 14.95, 1512327148, 1512327148),
+(6, 1, 11, 'kid', 20.54, 1512327239, 1512327239),
+(7, 5, 1, 'regular', 2.98, 1512330460, 1512330460);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product`
+-- Structure de la table `tbl_product`
 --
 
 DROP TABLE IF EXISTS `tbl_product`;
@@ -94,7 +113,7 @@ CREATE TABLE `tbl_product` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_product`
+-- Contenu de la table `tbl_product`
 --
 
 INSERT INTO `tbl_product` (`id`, `name`, `description`, `cost`, `picture`, `tags`, `creation_time`, `update_time`) VALUES
@@ -117,7 +136,7 @@ INSERT INTO `tbl_product` (`id`, `name`, `description`, `cost`, `picture`, `tags
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Structure de la table `tbl_user`
 --
 
 DROP TABLE IF EXISTS `tbl_user`;
@@ -133,24 +152,24 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_user`
+-- Contenu de la table `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `creation_time`, `update_time`) VALUES
 (1, 'admin', 'admin', 'Admin', 'User', 'fake@address.com', 0, 0);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `tbl_order`
+-- Index pour la table `tbl_order`
 --
 ALTER TABLE `tbl_order`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_product`
+-- Index pour la table `tbl_product`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`id`),
@@ -158,28 +177,28 @@ ALTER TABLE `tbl_product`
   ADD UNIQUE KEY `name` (`name`);
 
 --
--- Indexes for table `tbl_user`
+-- Index pour la table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `tbl_order`
+-- AUTO_INCREMENT pour la table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `tbl_product`
+-- AUTO_INCREMENT pour la table `tbl_product`
 --
 ALTER TABLE `tbl_product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT pour la table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

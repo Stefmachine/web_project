@@ -97,7 +97,7 @@ class UserController extends Controller
      * @Secured
      * @Page(title="Votre panier")
      */
-    function cartAction(){
+    function cartAction($_completed = false){
 		$orderRep = new OrderRepository();
 		$orderProductRep = new OrderProductRepository();
 		$productRep = new ProductRepository();
@@ -122,7 +122,20 @@ class UserController extends Controller
             $orders[$key]->lines = $orderLines;
         }
 
-        $this->view("user/cart", array("orders" => $orders));
+        switch ($_completed){
+            case "success":
+                $message = "L'opération s'est complété avec succès.";
+                break;
+            case "warning":
+                $message = "Impossible de compléter la commande.";
+                break;
+            default:
+                $message = "Une erreur s'est produite.";
+                $_completed = (!empty($_completed) ? "danger" : "");
+                break;
+        }
+
+        $this->view("user/cart", array("orders" => $orders, "completed" => $_completed, "message"=>$message));
     }
 
     private function manageUserOrders(){
@@ -149,6 +162,14 @@ class UserController extends Controller
         $productId = GlobalHelper::XPost("productId");
         $size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular" );
         $quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1 );
+
+        if(!in_array($size,array("regular", "small","kid"))){
+            return false;
+        }
+
+        if( $quantity < 1 || $quantity > 20){
+            return false;
+        }
 
         $productRep = new ProductRepository();
         $product = $productRep->find($productId);
@@ -206,19 +227,21 @@ class UserController extends Controller
      * @return float
      * @throws Exception
      */
-    public function calculateCost(){
+    public function calculateCost($_baseCost = null, $_size = null, $_quantity = null){
         $kid = 0.75;
         $small = 1;
         $regular = 1.5;
 
-        $productId = GlobalHelper::XPost("productId");
-        $_size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular");
-        $_quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1);
+        if(empty($_baseCost) && empty($_size) && empty($_quantity)) {
+            $productId = GlobalHelper::XPost("productId");
+            $_size = (!empty(GlobalHelper::XPost("size")) ? GlobalHelper::XPost("size") : "regular");
+            $_quantity = (!empty(GlobalHelper::XPost("quantity")) ? GlobalHelper::XPost("quantity") : 1);
 
-        $productRep = new ProductRepository();
-        $product = $productRep->find($productId);
+            $productRep = new ProductRepository();
+            $product = $productRep->find($productId);
 
-        $_baseCost = $product->getCost();
+            $_baseCost = $product->getCost();
+        }
 
         if(!isset($$_size)){
             throw new Exception("Size type '$_size' does not exist.");
@@ -238,5 +261,34 @@ class UserController extends Controller
         $user = $userRep->findOneBy(array("username" => $_username));
 
         return boolval($user);
+    }
+
+    public function completeOrder(){
+        $status = "warning";
+        $orderRep = new OrderRepository();
+        /**
+         * @type Order $order
+         */
+        $order = $orderRep->findOneBy(array(
+            "userId" => GlobalHelper::XSession("user"),
+            "state" => "pending"
+        ));
+
+        if($order){
+            $orderProductRep = new OrderProductRepository();
+            $orderLines = $orderProductRep->findBy(array(
+                "orderId" => $order->getId()
+            ));
+            if(count($orderLines) > 0) {
+                $order->setCompletedTime(time());
+                $order->setState("completed");
+                $orderRep->persist($order);
+                $status = "success";
+            }
+        }
+
+        $this->manageUserOrders();
+
+        GlobalHelper::redirect("user/cart/$status");
     }
 }

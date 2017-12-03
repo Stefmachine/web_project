@@ -27,7 +27,7 @@ class ShopController extends Controller
             /**
              * @type Order[] $orders
              */
-            $orders = $orderRep->findBy(array("userId" => GlobalHelper::XSession("user")));
+            $orders = $orderRep->executeStoreProc("findCurrentOrder",array("userId" => GlobalHelper::XSession("user")));
 
             foreach ($orders as $key => $order){
                 /**
@@ -55,6 +55,20 @@ class ShopController extends Controller
             GlobalHelper::redirect("shop/index");
         }
 
+        $hasProduct = false;
+        if(GlobalHelper::XSession("user")){
+            $orderRep = new OrderRepository();
+            $orderProductRep = new OrderProductRepository();
+            /**
+             * @type Order[] $orders
+             */
+            $orders = $orderRep->executeStoreProc("findCurrentOrder",array("userId" => GlobalHelper::XSession("user")));
+
+            foreach ($orders as $key => $order){
+                $hasProduct = boolval($orderProductRep->findBy(array("orderId" => $order->getId(),"productId" => $_id)));
+            }
+        }
+
         $rep = new ProductRepository();
         $product = $rep->find($_id);
 
@@ -62,6 +76,6 @@ class ShopController extends Controller
             throw new Exception("Le produit recherché n'existe pas");
         }
 
-        $this->view("shop/product",array("product"=>$product));
+        $this->view("shop/product",array("product"=>$product,"inOrder" => $hasProduct));
     }
 }

@@ -42,6 +42,16 @@ class DatabaseConnector
         $this->executeArguments = array();
     }
 
+    public function storeProc($_name,$_params = array()){
+        $this->query .= "CALL $_name(";
+        foreach ($_params as $key => $param){
+            $this->query .= ":$key";
+            $this->executeArguments[$key] = $param;
+        }
+        $this->query .= ")";
+        return $this;
+    }
+
     public function select(){
         $args = array();
         foreach (func_get_args() as $arg) {
@@ -92,18 +102,8 @@ class DatabaseConnector
     }
 
     public function orderBy(){
-        $args = array();
-        $type = "ASC";
-        foreach (func_get_args() as $arg){
-            if($arg != "ASC" || $arg != "DESC") {
-                $args[] = $arg;
-            }
-            else{
-                $type = $arg;
-            }
-        }
-        $args = self::tablelize(implode(",",$args));
-        $this->query .= " ORDER BY $args $type";
+        $args = implode(",",func_get_args());
+        $this->query .= " ORDER BY $args";
         return $this;
     }
 

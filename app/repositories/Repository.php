@@ -87,6 +87,10 @@ abstract class Repository
         }
     }
 
+    public function executeStoreProc($_name,$_params){
+        return $this->db()->storeProc($_name,$_params)->getRow();
+    }
+
     /**
      * fixme: unstable, can't be used with association classes (multiple ids)
      * @param Entity $_entity
