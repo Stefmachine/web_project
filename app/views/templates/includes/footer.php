@@ -13,11 +13,11 @@
                 <label><i class="glyphicon glyphicon-menu-up"></i></label>
                 <p>Visiter nos différentes pages sur divers réseaux sociaux</p>
                 <ul class="social-ic">
-                    <li><a href="#"><i></i></a></li>
-                    <li><a href="#"><i class="ic"></i></a></li>
-                    <li><a href="#"><i class="ic1"></i></a></li>
-                    <li><a href="#"><i class="ic2"></i></a></li>
-                    <li><a href="#"><i class="ic3"></i></a></li>
+                    <li><a href="https://www.pinterest.ca/loscharroshermanos/"><i></i></a></li>
+                    <li><a href="https://plus.google.com/102377559626191676172"><i class="ic"></i></a></li>
+                    <li><a href="https://www.instagram.com/loscharroshermanos/"><i class="ic1"></i></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCarG2nyL9XDdgo6AtasxI3g"><i class="ic2"></i></a></li>
+                    <li><a href="https://www.facebook.com/los.charros.hermanos/"><i class="ic3"></i></a></li>
                 </ul>
 
             </div>
